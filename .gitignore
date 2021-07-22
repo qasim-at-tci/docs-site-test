@@ -1,3 +1,7 @@
 .vscode
-
 hugo.exe
+
+
+public/
+resources/
+node_modules/

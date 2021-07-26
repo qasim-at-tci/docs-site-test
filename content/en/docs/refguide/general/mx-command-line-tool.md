@@ -1,6 +1,7 @@
 ---
 title: "mx Command-Line Tool"
 category: "General Info"
+url: /refguide/mx-command-line-tool
 #menu_order: 50
 description: "Describes the options of the mx command-line tool"
 tags: ["mx", "project", "command-line", "tool", "mx", "studio pro", "windows", "linux"]

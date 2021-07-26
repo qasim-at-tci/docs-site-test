@@ -1,6 +1,7 @@
 ---
 title: "System Requirements"
 category: "General Info"
+url: /refguide/system-requirements
 #menu_order: 10
 description: "Presents the system requirements for using the Mendix Platform."
 tags: ["studio pro"]

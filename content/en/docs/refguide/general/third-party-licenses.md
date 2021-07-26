@@ -1,6 +1,7 @@
 ---
 title: "Third-Party Licenses"
 category: "General Info"
+url: /refguide/third-party-licenses
 #menu_order: 70
 tags: ["studio pro", "license", "library"]
 ---

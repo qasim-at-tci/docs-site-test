@@ -1,11 +1,13 @@
 ---
 title: "MxBuild"
 category: "General Info"
-url: /refguide/mxbuild
+url: /es/refguide/mxbuild
 weight: 4
 description: "Describes MxBuild which is a command-line tool for building and deploying Mendix Apps"
 tags: ["build", "deploy", "deployment package", "command-line", "studio pro"]
 ---
+
+##This page is in Spanish 
 
 ## 1 Introduction
 

@@ -1,10 +1,12 @@
 ---
 title: "Third-Party Licenses"
 category: "General Info"
-url: /refguide/third-party-licenses
+url: /es/refguide/thrid-party-licenses
 weight: 6
 tags: ["studio pro", "license", "library"]
 ---
+
+##This page is in Spanish 
 
 ## 1 Introduction
 

@@ -2,9 +2,11 @@
 title: "Studio Pro 9 Guide"
 description: "The various sections of the Mendix Studio Pro Guide provide details on the features and functionality of the Mendix Platform."
 tags: ["studio pro"]
-url: /refguide
+url: /es/refguide
 weight: 2
 ---
+
+##This page is in Spanish 
 
 ## 1 Introduction
 

@@ -1,9 +1,11 @@
 ---
 title: "General Info"
 tags: ["studio pro"]
-url: /refguide/general
+url: /es/refguide/general
 weight: 1
 ---
+
+## This is in spanish!
 
 ## 1 Introduction
 

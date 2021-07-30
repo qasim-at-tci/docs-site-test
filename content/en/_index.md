@@ -1,18 +1,3 @@
 ---
-title: "landing page"
-linkTitle: "landing page"
-aliases:
-    - /docs/index.html
-    - /docs/Overview.html
+#this has to be here, otherwise site fails to build, butis overwritten by content/en/docs/_index.md
 ---
-
-
-
-{{< blocks/cover title="This is the landing page! Hello :)" image_anchor="top" height="full" color="blue" >}}
-<div class="mx-auto">
-	<a class="btn btn-lg btn-primary mr-3 mb-4" href="{{< relref "/docs" >}}">
-		Learn More <i class="fas fa-arrow-alt-circle-right ml-2"></i>
-	</a>
-	{{< blocks/link-down color="info" >}}
-</div>
-{{< /blocks/cover >}}

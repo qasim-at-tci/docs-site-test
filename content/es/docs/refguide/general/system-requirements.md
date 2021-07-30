@@ -1,12 +1,14 @@
 ---
 title: "System Requirements"
 category: "General Info"
-url: /refguide/system-requirements
+url: /es/refguide/system-requirements
 weight: 1
 description: "Presents the system requirements for using the Mendix Platform."
 tags: ["studio pro"]
 #If moving or renaming this doc file, implement a temporary redirect and let the respective team know they should update the URL in the product. See Mapping to Products for more details.
 ---
+
+##This page is in Spanish 
 
 ## 1 Introduction
 

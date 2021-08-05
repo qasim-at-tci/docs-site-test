@@ -5,3 +5,6 @@ hugo.exe
 public/
 resources/
 node_modules/
+
+# Put HUGO and NODE (and dependencies) into /bin folder
+/bin/

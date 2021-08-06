@@ -145,6 +145,9 @@ nav.foldable-nav {
         list-style: none;
         padding: 0;
         margin: 0;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
     }
     
     .ul-1 > li {

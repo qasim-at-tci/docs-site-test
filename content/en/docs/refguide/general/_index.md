@@ -3,7 +3,20 @@ title: "General Info"
 tags: ["studio pro"]
 url: /refguide/general
 weight: 1
+no_list: true
 ---
+
+{{% alert title="Warning" color="warning" %}}
+This is a warning! Just for show.
+{{% /alert %}}
+
+{{% alert title="Info" color="info" %}}
+This is an info shortcode. Just for show.
+{{% /alert %}}
+
+{{% alert title="Primary" color="primary" %}}
+This is a primary shortcode. Just for show.
+{{% /alert %}}
 
 ## 1 Introduction
 

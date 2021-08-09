@@ -17,7 +17,12 @@ defaultContentLanguageInSubdir = false
 # Useful when translating.
 enableMissingTranslationPlaceholders = true
 
-disableKinds = ["taxonomy", "taxonomyTerm"]
+#disableKinds = ["taxonomy","taxonomyTerm"]
+
+[params.taxonomy]
+taxonomyCloud = ["tags"] # set taxonomyCloud = [] to hide taxonomy clouds
+taxonomyCloudTitle = [] # if used, must have same lang as taxonomyCloud
+taxonomyPageHeader = [] # set taxonomyPageHeader = [] to hide taxonomies on the page headers
 
 # Highlighting config
 pygmentsCodeFences = true

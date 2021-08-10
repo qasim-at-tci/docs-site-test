@@ -41,3 +41,8 @@ What about cards?
 	We can even put images in.
   {{< /card >}}
 {{< /cardpane >}}
+
+{{< highlight Shell "linenos=table" >}}
+# some code
+echo "Hello World"
+{{< /highlight >}}

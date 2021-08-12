@@ -4,7 +4,8 @@ url: /
 aliases:
     - /docs/index.html
     - /docs/Overview.html
-no_list: true
+cascade:
+    - no_list: true
 ---
 
 This is the landing page! Hello :)

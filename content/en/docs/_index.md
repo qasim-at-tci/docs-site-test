@@ -43,7 +43,12 @@ What about cards?
   {{< /card >}}
 {{< /cardpane >}}
 
-{{< highlight Shell "linenos=table" >}}
+``` Shell {linenos=table}
 # some code
 echo "Hello World"
-{{< /highlight >}}
+```
+
+{{< highlight Shell "linenos=table" >}}
+# Another way to do the same code block
+echo "Hello World"
+{{< / highlight >}}

@@ -1,10 +1,15 @@
+
+# Individual Visual Studio Code settings
 .vscode
+# NK - Hugo 
 hugo.exe
 
-
+# The built site
 public/
+
 resources/
+# Node modules required for the site - built each time using npm install
 node_modules/
 
-# Put HUGO and NODE (and dependencies) into /bin folder
+# MvM - Put HUGO and NODE (and dependencies) into /bin folder
 /bin/

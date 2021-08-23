@@ -81,6 +81,7 @@ time_format_blog = "02.01.2006"
       style = "tango"
       # Uncomment if you want your chosen highlight style used for code blocks without a specified language
       # guessSyntax = "true"
+  # NK - set up table of contents to support correct depth for our document structure
   [markup.tableOfContents]
     endLevel = 6
     ordered = false
@@ -91,6 +92,14 @@ time_format_blog = "02.01.2006"
 # Comment out if you don't want the "print entire section" link enabled.
 [outputs]
 section = ["HTML", "print"]
+# MvM - add line below to print every page
+page = ["HTML", "print"]
+
+# MvM - add line below to activate production of RSS pages
+[outputFormats]
+    [outputFormats.RSS]
+        mediatype = "application/rss"
+        baseName = "rss"
 
 [params]
 copyright = "The Docsy Authors"
@@ -153,6 +162,7 @@ sidebar_search_disable = true
 navbar_logo = false
 # Set to true to disable the About link in the site footer
 footer_about_disable = true
+# NK - set sidebar to be foldable
 sidebar_menu_foldable = true
 
 # Adds a H2 section titled "Feedback" to the bottom of each doc. The responses are sent to Google Analytics as events.

@@ -26,7 +26,9 @@ Insert with Markdown
 
 ![](attachments/lights-bundle.png)
 
-insert with figure {{< figure src="attachments/lights-bundle.png" >}}
+insert with figure - relative reference {{< figure src="attachments/lights-bundle.png" >}}
+
+insert with figure - absolute reference {{< figure src="/docs/marks-portal/attachments/lights-bundle.png" >}}
 
 ### Attachment from static
 

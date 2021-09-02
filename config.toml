@@ -7,6 +7,9 @@ enableRobotsTXT = true
 # Hugo allows theme composition (and inheritance). The precedence is from left to right.
 theme = ["docsy"]
 
+# NK - Changes default ERROR message when unable to resolve ref/relref links to WARNING
+refLinksErrorLevel = "WARNING"
+
 # Will give values to .Lastmod etc.
 enableGitInfo = true
 

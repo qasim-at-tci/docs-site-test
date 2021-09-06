@@ -1,7 +1,3 @@
-<!-- ---
-aliases:
-    - /docs/index.html
-    - /docs/Overview.html
---- -->
-
-This is the landing page. Hello :)
+---
+#this has to be here, otherwise site fails to build, butis overwritten by content/en/docs/_index.md
+---

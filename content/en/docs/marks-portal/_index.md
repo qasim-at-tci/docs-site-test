@@ -1,7 +1,6 @@
 ---
 title: "Mark's Portal Test"
 description: "A section of the Docsy docs site to do lots of controlled tests" 
-no_list: false
 #linktitle: "A title for links - need to look this up - used in restore-backup-locally.md"
 #tags: ["These", "are", "Example", "Tags"]
 #weight: 10
@@ -21,6 +20,12 @@ no_list: false
 First subsection of Mark's Portal
 
 **This is the file /content/en/docs/marks-portal/_index.md**
+
+### Links (to other test pages)
+
+[RSS]({{< relref "mark-portal-section-1"  >}} "Go to page with RSS example") (relref and tooltip/title)
+
+[Shortcodes]({{< ref "mark-portal-section-3" >}}) (ref)
 
 ### Attachment from attachments in this bundle
 

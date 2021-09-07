@@ -16,47 +16,70 @@ linktitle: "Mark Portal 3"
 #   - /xyzzy.html
 ---
 
-## 1 Test
+## Introduction
+
+This page uses all the existing shortcodes from Mendix Docs to see what Docsy produces, and what Docsy/HUGO codes could be used in their place.
+
+### linktitle:
 
 Uses linktitle: – menu is sorted by linktitle:, not by title:
 
-## 2 Second Section
+## Shortcodes
 
-This is a second section
+The Original Docs Site versions of the shortcodes use `Page.Dir` which is deprecated.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+### alert
 
-### 2.1 First Subsection of the Second Section
+Need to change type to color - can use any of the theme colours set in `assets/scss/_variables.scss`
+Can add a "title"
 
-You've guessed it.
+{{% alert type="alert" %}}Original Alert Box - only used once on site{{% /alert %}}
+{{% alert color="warning" %}}Updated Warning Box{{% /alert %}}
 
+{{% alert type="info" %}}Original Info Box{{% /alert %}}
+{{% alert color="info" %}}Updated Info Box{{% /alert %}}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+{{% alert type="success" %}}Original Success Box{{% /alert %}}
+{{% alert color="success" %}}Updated Success Box{{% /alert %}}
 
-### 2.2 Second Subsection of the Second Section
+{{% alert type="warning" %}}Original Warning Box{{% /alert %}}
+{{% alert color="warning" %}}Updated Warning Box{{% /alert %}}
 
-This subsection has two sub-subsections.
+{{% alert type="danger" %}}Original Danger Box - Not used at all on the site{{% /alert %}}
+{{% alert color="danger" %}}Updated Danger Box{{% /alert %}}
 
+### category_block
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The Category Block doesn't work and can probably be replaced by no_list: false - provided the category block goes at the end of the page.
 
-#### 2.2.1 Two Point Two Point One
+{{%/* category_block */%}}
 
-This is the first sub-subsection.
+### Image_Container
 
+Image container does not work, but can probably be replaced by using the `height` and `width` attributes of the Figure shortcode
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+{{%/* image_container width="100" */%}}[![](/attachments/docs/marks-portal/lights-static.png)](https://marketplace.mendix.com/link/studiopro/){{%/* /image_container */%}}
 
-#### 2.2.2 Two Point Two Point Two
+{{< figure src="/attachments/docs/marks-portal/lights-static.png" width="100">}}
 
-This is the second sub-subsection.
+### modelerdownloadlink
 
+Works as expected
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+{{% modelerdownloadlink "9.5.0" %}}
 
-## 3 Section Three
+### number_child_pages
 
-The last section.
+{{%/* number_child_pages sort="desc" */%}}
 
+### snippet
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+{{%/* snippet file="refguide/common-section-link.md" */%}}
+
+### youtube
+
+{{% youtube _QMhOmc2LKA %}}
+
+### todo
+
+{{% todo %}}[Todo will appear in Travis]{{% /todo %}}

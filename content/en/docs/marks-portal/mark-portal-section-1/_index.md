@@ -3,6 +3,9 @@ title: "ZZ MP 1"
 description: "First subsection of Mark's Portal" 
 no_list: false
 linktitle: "Mark Portal 1"
+outputs:
+    - HTML
+    - RSS
 #tags: ["These", "are", "Example", "Tags"]
 # weight: 10
 #notoc: true
@@ -23,6 +26,14 @@ linktitle: "Mark Portal 1"
 ### linktitle:
 
 Uses linktitle: – menu is sorted by linktitle:, not by title:
+
+### outputs:
+
+Output RSS just for this page at [rss.xml](rss.xml).
+
+RSS template needs to be updated to capture what we want for
+* Single pages with dated/version entries such as Developer Portal
+* Multiple pages such as Studio Pro
 
 ### Attachment from attachments in this bundle
 

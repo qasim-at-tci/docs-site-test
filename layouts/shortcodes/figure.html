@@ -1,6 +1,9 @@
 {{ $src := (.Page.Resources.GetMatch (printf "**%s*" (.Get "src"))) }}
 <!--
     Start of code which will send a warning to the log if the image link is incorrect
+    Rewrite using '$variable =' instead of '$variable :=' (HUGO v0.48 and above) to create global variables
+    try using  'or (test) (test2)'' to do two tests at the same time
+    See https://gohugo.io/templates/introduction/ for help
 -->
     {{ if $src }}
         {{ $imagepath := $src.RelPermalink }}

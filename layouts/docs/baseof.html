@@ -5,8 +5,7 @@
   </head>
   <body class="td-{{ .Kind }}">
 
-    <!-- <div>{{ partial "mx-dock.html" . }}</div> -->
-    <!-- <div>{{ partial "navbar.html" . }}</div> -->
+    <!-- NK - deactivation of original navbar <div>{{ partial "navbar.html" . }}</div> -->
 
     <div class="container-fluid td-outer">
       <div class="td-main">
@@ -20,6 +19,9 @@
             {{ partial "taxonomy_terms_clouds.html" . }}
           </aside>
           <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+		 <!-- NK - START of addition of versions and language selector menus, 
+		taken from themes\docsy\layouts\partials\navbar.html, 
+		this might get moved again, with furhter styling changes -->
 			{{ if  .Site.Params.versions }}
 			<li class="nav-item dropdown mr-4 d-none d-lg-block">
 				{{ partial "navbar-version-selector.html" . }}
@@ -30,6 +32,7 @@
 				{{ partial "navbar-lang-selector.html" . }}
 			</li>
 			{{ end }}
+		  <!-- END of addition -->
             {{ partial "version-banner.html" . }}
             {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
             {{ block "main" . }}{{ end }}

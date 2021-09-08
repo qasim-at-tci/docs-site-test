@@ -1,1 +1,45 @@
 <div>{{ partial "mx-dock.html" . }}</div>
+
+<!-- NK - the code below implements ToC element highlighting based on scroll action.
+	It's taken from an example here:
+	https://github.com/google/docsy/issues/281#issuecomment-640077009
+	Changes from example:
+	- adjusted the rootMargin, so the bounding box would be smaller.
+	- added h4 and h5 elements
+	- added element constant
+	An alternate value for rootMargin: '-200px 0px -800px 0px'
+	Still not happy with how it works, it can highlight too many elements, 
+	the remove('activeToc') doesn't get applied in an adequate way.
+	Can also have no elements highlighted if no headers are in view.
+	Ideally only one header will be active at all times.
+-->
+<script type="text/javascript">
+	window.addEventListener("load", (event) => {
+		createObserver();
+	}, false);
+
+	function createObserver() {
+		let observer;
+
+		let options = {
+			root: null,
+			rootMargin: '-30% 0px -50% 0px'
+		};
+
+		observer = new IntersectionObserver((entries, observer) => {
+			entries.forEach(entry => {
+				const id = entry.target.getAttribute('id');
+				const element = document.querySelector(`nav li a[href="#${id}"]`).classList;
+				if (entry.intersectionRatio > 0) {
+					element.add('activeToc');
+				} else {
+					element.remove('activeToc');
+				}
+			});
+			
+		},options);
+			document.querySelectorAll('h2[id], h3[id], h4[id], h5[id]').forEach((section) => {
+				observer.observe(section);
+			});
+	}
+</script>

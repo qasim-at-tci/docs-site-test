@@ -54,6 +54,10 @@
                 text-decoration: none;
             }
         }
+        // NK - styling for ToC highlighting
+		.activeToc {
+			font-weight: $font-weight-bold;
+		}
     }
 
     ul {

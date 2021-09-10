@@ -5,42 +5,25 @@
     try using  'or (test) (test2)'' to do two tests at the same time
     See https://gohugo.io/templates/introduction/ for help
 -->
-    {{ if $src }}
-        {{ $imagepath := $src.RelPermalink }}
-        {{ if  eq `/` (substr $imagepath 0 1) }} <!-- path is absolute - test path and path with /static in front -->
-            {{ $fullimagepath := printf "/static%s" $imagepath}}
-            {{ if not ( fileExists $fullimagepath) }}  <!-- /static file doesn't exist -->
-                {{ if not ( fileExists $imagepath)}} <!-- content file doesn't exist - ALL files will show an image with absolute reference -->
-                   {{ warnf "The image %s cannot be shown on page %s" $imagepath .Page.File.Path}}
-                {{ end }}
-            {{ end }}
-        {{ else }}
-            {{ $fullimagepath := printf "/%s%s" .Page.File.Dir $imagepath}} <!-- fileExists needs full path -->
-            {{ if not (fileExists $fullimagepath) }}
-                {{ warnf "The image %s cannot be shown on page %s" $imagepath .Page.File.Path}}
-            {{ else }}
-                {{ if not (eq .Page.File.BaseFileName "_index") }} <!-- can't show bundle pages if it is not an _index file -->
-                    {{ warnf "The image %s cannot be shown on non _index page %s" $imagepath .Page.File.Path}}
-                {{ end }}
-            {{ end }}
+    {{ $fullimagepath := "string" }} <!-- Need to define $imagepath and $fullimagepath first -->
+    {{ $imagepath := "string" }}
+    {{ if $src }} <!-- Get $imagepath from correct place (see img tag below) -->
+        {{ $imagepath = $src.RelPermalink }}
+    {{ else }}
+        {{ $imagepath =  (.Get "src") }}
+    {{ end }}
+    {{ if  eq `/` (substr $imagepath 0 1) }} <!-- path is absolute - test path itself and path with /static in front -->
+        {{ $fullimagepath = printf "/static%s" $imagepath}}
+        {{ if not ( or ( fileExists $fullimagepath) ( fileExists $imagepath ) ) }}  <!-- /static file doesn't exist nor absolute content file doesn't exist - ALL files will show an image with absolute reference -->
+               {{ warnf "File %s \n\t\t\t\tcannot show image %s\n " .Page.File.Path  $imagepath }}
         {{ end }}
     {{ else }}
-        {{ $imagepath :=  (.Get "src") }}
-        {{ if  eq `/` (substr $imagepath 0 1) }} <!-- path is absolute - test path and path with /static in front -->
-            {{ $fullimagepath := printf "/static%s" $imagepath}}
-            {{ if not ( fileExists $fullimagepath) }}  <!-- /static file doesn't exist -->
-                {{ if not ( fileExists $imagepath)}} <!-- content file doesn't exist - ALL files will show an image with absolute reference -->
-                   {{ warnf "The image %s cannot be shown on page %s" $imagepath .Page.File.Path}}
-                {{ end }}
-            {{ end }}
+        {{ $fullimagepath = printf "/%s%s" .Page.File.Dir $imagepath}} <!-- relative path: fileExists needs full path -->
+        {{ if not (fileExists $fullimagepath) }}
+            {{ warnf "File %s \n\t\t\t\tcannot show image %s\n " .Page.File.Path  $imagepath }}
         {{ else }}
-            {{ $fullimagepath := printf "/%s%s" .Page.File.Dir $imagepath}} <!-- fileExists needs full path -->
-            {{ if not (fileExists $fullimagepath) }}
-                {{ warnf "The image %s cannot be shown on page %s" $imagepath .Page.File.Path}}
-            {{ else }}
-                {{ if not (eq .Page.File.BaseFileName "_index") }} <!-- can't show bundle pages if it is not an _index file -->
-                    {{ warnf "The image %s cannot be shown on non _index page %s" $imagepath .Page.File.Path}}
-                {{ end }}
+            {{ if not (eq .Page.File.BaseFileName "_index") }} <!-- can't show bundle pages if it is not an _index file -->
+                {{ warnf  "File %s \n\t\t\t\tis not a _index file so cannot show image %s\n " .Page.File.Path  $imagepath }}
             {{ end }}
         {{ end }}
     {{ end }}

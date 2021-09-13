@@ -48,6 +48,9 @@
 
         a {
             color: $gray-600;
+			// NK - styling for ToC highlighting
+			border-left: 2px solid transparent;
+			padding-left: 20px;
 
             &:hover {
                 color: $blue;
@@ -57,6 +60,8 @@
         // NK - styling for ToC highlighting
 		.activeToc {
 			font-weight: $font-weight-bold;
+			color: $blue;
+			border-left-color: $blue;
 		}
     }
 

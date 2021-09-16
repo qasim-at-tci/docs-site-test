@@ -1,6 +1,9 @@
 ---
 title: "Mark's Portal Test"
-description: "A section of the Docsy docs site to do lots of controlled tests" 
+description: "A section of the Docsy docs site to do lots of controlled tests"
+cascade:
+    sitemap: 
+        priority: 0.7
 #linktitle: "A title for links - need to look this up - used in restore-backup-locally.md"
 #tags: ["These", "are", "Example", "Tags"]
 #weight: 10

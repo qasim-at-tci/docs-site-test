@@ -2,6 +2,8 @@
 title: "MM MP 3"
 description: "First subsection of Mark's Portal" 
 linktitle: "Mark Portal 3"
+cascade:
+    - banner: "This is a page banner cascaded through all sub pages"
 #tags: ["These", "are", "Example", "Tags"]
 # weight: 10
 #notoc: true
@@ -23,17 +25,16 @@ This page uses all the existing shortcodes from Mendix Docs to see what Docsy pr
 
 Uses linktitle: – menu is sorted by linktitle:, not by title:
 
+### Dead Link Triggers a Warning
+
+
+[Dead Link]({{< ref "dead-link" >}})
+
 ## banner
 
-For example, to show that all Mx10 documentation is in Beta.
+(See top of page!) For example, to show that all Mx10 documentation is in Beta.
 
 Need to set - currently in spaces.yml, add as a (cascaded) front matter? Need to add to a partial with a switch?
-
-Use docsy {{%/* pageinfo */%}} shortcode
-
-{{% pageinfo color="warning" %}}
-This is placeholder content.
-{{% /pageinfo %}}
 
 ## Shortcodes
 
@@ -53,7 +54,7 @@ Can add a "title"
 {{% alert type="success" %}}Original Success Box{{% /alert %}}
 {{% alert color="success" %}}Updated Success Box{{% /alert %}}
 
-{{% alert type="warning" %}}Original Warning Box{{% /alert %}}
+{{% alert type="warning" title="H4 - does it appear in the ToC?" %}}Original Warning Box{{% /alert %}}
 {{% alert color="warning" %}}Updated Warning Box{{% /alert %}}
 
 {{% alert type="danger" %}}Original Danger Box - Not used at all on the site{{% /alert %}}
@@ -130,3 +131,12 @@ Not displaying properly - do we need to add class `vidyard-player-embed` to see 
 ### todo
 
 {{% todo %}}[Todo will appear in Travis]{{% /todo %}}
+
+### pageinfo
+
+Can create a block on the page by using the Docsy {{%/* pageinfo */%}} shortcode
+
+{{% pageinfo color="warning" %}}
+This is placeholder content.
+{{% /pageinfo %}}
+

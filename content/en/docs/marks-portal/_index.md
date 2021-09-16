@@ -27,6 +27,8 @@ First subsection of Mark's Portal
 
 [Shortcodes]({{< ref "mark-portal-section-3" >}}) (ref)
 
+[Cascading banner]({{< ref "mark-portal-section-3" >}}) (ref)
+
 ### Attachment from attachments in this bundle
 
 Insert with Markdown

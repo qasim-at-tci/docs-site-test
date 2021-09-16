@@ -2,9 +2,8 @@
     Check if the page has a banner: "string" set
     If yes, display a banner. -->
   {{ with .Params.banner}}
-  {{ $bannertext := $.Params.banner }}
   <div class="pageinfo pageinfo-warning">
-      <p>{{ $.Params.banner }}</p>
+      <p>{{ . }}</p>
   </div>
 {{end}}
 <!-- END OF CUSTOMIZATION -->

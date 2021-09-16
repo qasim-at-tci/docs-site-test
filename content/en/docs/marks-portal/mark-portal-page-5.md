@@ -1,8 +1,7 @@
 ---
-title: "Mark Portal 5"
+linktitle: "Mark Portal 5"
 description: "A section of the Docsy docs site to do lots of controlled tests" 
 no_list: false
-#linktitle: "A title for links - need to look this up - used in restore-backup-locally.md"
 #tags: ["These", "are", "Example", "Tags"]
 #weight: 10
 #notoc: true

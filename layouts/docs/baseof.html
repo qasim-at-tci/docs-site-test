@@ -19,6 +19,10 @@
             {{ partial "taxonomy_terms_clouds.html" . }}
           </aside>
           <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+        <!-- MvM - Do a test for missing Title -->
+        {{ if not .Title }}
+            {{ warnf "File %s \n\t\t\t\thas no title in the front matter\n " .Page.File.Path }}
+        {{ end }}
 		 <!-- NK - START of addition of versions and language selector menus, 
 		taken from themes\docsy\layouts\partials\navbar.html, 
 		this might get moved again, with furhter styling changes -->

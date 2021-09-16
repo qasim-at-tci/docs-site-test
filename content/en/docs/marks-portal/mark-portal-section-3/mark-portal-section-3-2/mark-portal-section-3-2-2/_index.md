@@ -1,7 +1,6 @@
 ---
 title: "MP 3.2.2"
 description: "First subsection of Mark's Portal" 
-no_list: false
 #linktitle: "A title for links - need to look this up - used in restore-backup-locally.md"
 #tags: ["These", "are", "Example", "Tags"]
 # weight: 10

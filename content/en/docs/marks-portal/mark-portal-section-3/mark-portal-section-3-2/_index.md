@@ -16,11 +16,18 @@ no_list: false
 #   - /xyzzy.html
 ---
 
-## 1 Introduction
+## 1 Tests
 
-First subsection of Mark's Portal
+### no_list: false
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Can override the no_list setting in /content/en/docs/_index.md
+
+```
+cascade:
+    - no_list: true
+```
+
+This can replace the {{%/* category_block */%}} in, for example, `/releasenotes/index.md`
 
 ## 2 Second Section
 

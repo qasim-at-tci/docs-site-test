@@ -20,14 +20,15 @@
 		let observer;
 
 		let options = {
-			root: null,
-			rootMargin: '-30% 0px -50% 0px'
+			root: document.querySelector('#main'),
+			rootMargin: '-60px 0px -80% 0px',
+            threshold: 0.1
 		};
 
 		observer = new IntersectionObserver((entries, observer) => {
 			entries.forEach(entry => {
 				const id = entry.target.getAttribute('id');
-				if (entry.intersectionRatio > 0) {
+				if (entry.intersectionRatio > 0 ) {
 					clearActiveStatesInTableOfContents();
 					document.querySelector(`nav li a[href="#${id}"]`).classList.add('activeToc');
 				}

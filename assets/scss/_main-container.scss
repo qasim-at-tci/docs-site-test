@@ -23,10 +23,14 @@
 
 .td-main {
     flex-grow: 1;
+	
+
 
     main {
         @include media-breakpoint-up(md) {
             padding-top: 5.5rem;
+			border-left: 1px solid $border-color; // NK - moved from toc, to fully span height of screen
+			border-right: 1px solid $border-color; // NK - moved from left menu, to fully span height of screen
         }
 
 

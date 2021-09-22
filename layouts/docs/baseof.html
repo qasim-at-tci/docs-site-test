@@ -40,10 +40,18 @@
             {{ partial "version-banner.html" . }}
             {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
             {{ block "main" . }}{{ end }}
+		  <!-- NK - moved part of footer to base of body -->
+			<div class="mt-3 pt-3 border-top">
+				<div class="container">
+					<span class="pull-left footer_text">Want to contribute to our documentation? <a href="/developerportal/community-tools/contribute-to-the-mendix-documentation" title="Want to contribute to our documentation?">Start here!</a></span>
+					<span class="pull-right footer_text">Copyright &copy; {{ dateFormat "2006" now }} Mendix Technology B.V., documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span>
+				</div>
+			</div>
+		  <!-- END of addition -->
           </main>
         </div>
       </div>
-      {{ partial "footer.html" . }}
+	  {{ partial "footer.html" . }}
     </div>
     {{ partial "scripts.html" . }}
   </body>

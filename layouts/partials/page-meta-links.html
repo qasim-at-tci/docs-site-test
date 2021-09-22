@@ -33,6 +33,7 @@
     {{ end }}
 
   {{ end }}
+  <!-- MvM: get the alternative output formats from the PAGE (in theme it is for Section) and change text to print_page-->
   {{ with .AlternativeOutputFormats.Get "print" }}
     <a id="print" href="{{ .Permalink | safeURL }}"><i class="fa fa-print fa-fw"></i> {{ T "print_page" }}</a>
   {{ end }}

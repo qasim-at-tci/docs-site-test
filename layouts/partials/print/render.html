@@ -41,15 +41,20 @@
 <div class="td-content">
 <div class="pageinfo pageinfo-primary d-print-none">
 <p>
-{{ T "print_printable_section" }}
+{{ T "print_printable_page" }}
 <a href="#" onclick="print();return false;">{{ T "print_click_to_print" }}</a>.
 </p><p>
 <a href="{{ .RelPermalink }}">{{ T "print_show_regular" }}</a>.
 </p>
 </div>
+
+<!-- MvM - add in banner on printed pages -->
+{{ partial "version-banner.html" . }}
+<!-- End of insert -->
+
 {{ partial "print/page-heading.html" . }}
 
-<!--
+<!-- MvM: Remove ToC from the printed section pages
 {{ if not (.Param "print.disable_toc") }}
     <ul>
     {{ template "recurse-toc" (dict "section" .CurrentSection "psid" "") }}
@@ -61,6 +66,6 @@
       {{ .Content }}
 </div>
 </div>
-<!--
+<!-- MvM: Do not print other documents in the section, just the current _index document
 {{ template "recurse-content" (dict "section" .CurrentSection "psid" "") }}
 -->

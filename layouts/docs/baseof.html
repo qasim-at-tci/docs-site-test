@@ -20,6 +20,7 @@
           </aside>
           <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
             {{ partial "page-meta-links.html" . }}
+			<a href="{{ .Permalink }}">{{ .Title }}</a> <!-- NK - insert of title into ToC -->
             {{ partial "toc.html" . }}
             {{ partial "taxonomy_terms_clouds.html" . }}
           </aside>

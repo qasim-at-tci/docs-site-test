@@ -1,6 +1,6 @@
-baseURL = "http://example.org/"
+baseURL = "http://mendix-new-docs-site.s3-website.eu-central-1.amazonaws.com/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Mendix Docs Test Site"
 
 enableRobotsTXT = true
 

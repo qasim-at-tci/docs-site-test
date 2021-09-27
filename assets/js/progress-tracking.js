@@ -32,7 +32,13 @@
       const target = hash.substr(1);
       let targetElement;
       if (target) {
-        targetElement = document.querySelector(`#${target}`);
+// include a try-catch to ensure that invalid targets (beginning with a number) do not cause this to crash
+          try{
+            targetElement = document.querySelector(`#${target}`);
+          }
+          catch(err) {
+            targetElement = document.body;
+          }
       } else {
         targetElement = document.body;
       }

@@ -29,23 +29,20 @@
         {{ if not .Title }}
             {{ warnf "File %s \n\t\t\t\thas no title in the front matter\n " .Page.File.Path }}
         {{ end }}
-		 <!-- NK - START of addition of versions and language selector menus, 
+		 <!-- NK - START of addition of versions selector menu, 
 		taken from themes\docsy\layouts\partials\navbar.html, 
-		this might get moved again, with furhter styling changes -->
+		this might get moved again, with further styling changes -->
 			{{ if  .Site.Params.versions }}
 			<li class="nav-item dropdown mr-4 d-none d-lg-block">
 				{{ partial "navbar-version-selector.html" . }}
 			</li>
 			{{ end }}
-			{{ if  (gt (len .Site.Home.Translations) 0) }}
-			<li class="nav-item dropdown mr-4 d-none d-lg-block">
-				{{ partial "navbar-lang-selector.html" . }}
-			</li>
-			{{ end }}
 		  <!-- END of addition -->
           <!-- MvM: Move breadcrumb above banner -->
           {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
+		  
           {{ partial "version-banner.html" . }}
+		  
             {{ block "main" . }}{{ end }}
 		  <!-- NK - moved part of footer to base of body -->
 			<div class="mt-3 pt-3 border-top">

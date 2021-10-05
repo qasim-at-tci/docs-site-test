@@ -16,11 +16,11 @@ linktitle: "Mark Portal 2"
 #   - /xyzzy.html
 ---
 
-## 1 Introduction
+## Introduction
 
 Introduction to this page 
 
-### linktitle
+### linktitle:
 
 Uses linktitle: – menu is sorted by linktitle:, not by title:
 

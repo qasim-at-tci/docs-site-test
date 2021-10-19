@@ -1,0 +1,70 @@
+// NK - Tabs implementation taken from https://github.com/fluxcd/website
+
+ul.nav.nav-tabs {
+	list-style-type: none;
+	overflow: hidden;
+	content: none;
+	border-bottom-color: $gray-600;
+	//border-bottom-width: 0.5px;
+	border-bottom-style: solid;
+	border-bottom-width: 0.1rem;
+  }
+  
+  li.nav-tab.tabby {
+	padding: 10px 20px;
+	float: left;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: $gray-600;
+	//font-size: 14px;
+  }
+  
+  li.tabby.active {
+	color: $secondary;
+	border-color: $secondary;
+	border-bottom-style: solid;
+	border-bottom-width: 0.2rem;
+	background: transparent;
+  }
+  
+  a.nav-tab {
+	all: unset;
+	cursor: pointer;
+  }
+  
+  div.tab-pane {
+	display: none;
+  }
+  
+  div.tab-pane.active {
+	  display: block;
+	  padding: 20px;
+	  background: $white;
+  }
+  
+  code {
+	word-break: keep-all;
+  }
+  
+  .hero-logo {
+	margin-bottom: -2rem;
+	width: 60%;
+  }
+  
+  footer.auto-height {
+	min-height: auto;
+  }
+  
+  .inline-svg {
+	display: inline-block;
+	vertical-align: middle;
+  
+	svg {
+	  width: 1em;
+	  height: 1em;
+	  fill: currentColor;
+	  display: inline-block;
+	}
+  }

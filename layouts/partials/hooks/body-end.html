@@ -45,3 +45,7 @@
 		});
 	}
 </script>
+
+<!-- NK - Tabs implementation taken from https://github.com/fluxcd/website -->
+{{ $tabs := resources.Get "js/landingtabs.js" | js.Build "landingtabs.js" }}
+<script type="text/javascript" src="{{ $tabs.RelPermalink }}" defer></script>

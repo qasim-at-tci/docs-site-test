@@ -32,9 +32,10 @@
       const target = hash.substr(1);
       let targetElement;
       if (target) {
-// include a try-catch to ensure that invalid targets (beginning with a number) do not cause this to crash
+// include a try-catch to ensure that invalid targets do not cause this to crash
+// replace document.queryselector with document.getElementById (doesn't crash with leading numeric)
           try{
-            targetElement = document.querySelector(`#${target}`);
+            targetElement = document.getElementById(target);
           }
           catch(err) {
             targetElement = document.body;

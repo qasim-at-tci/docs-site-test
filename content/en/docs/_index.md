@@ -2,6 +2,9 @@
 title: "Welcome to Mendix Docs"
 linktitle: "Docs"
 url: /
+type: landingpage
+layout: landingpage
+description: Search, collaborate & contribute to build better Mendix apps
 aliases:
     - /docs/index.html
     - /docs/Overview.html
@@ -9,11 +12,6 @@ cascade:
     - no_list: true
 #for future ease of maintenance, the tab contents might have to be split up into snippets
 ---
-
-Search, collaborate & contribute to build better Mendix apps
-<br>
-<br>
-<br>
 
 {{< landingtabs >}}
 {{< landingtab "Studio Pro 9" >}}

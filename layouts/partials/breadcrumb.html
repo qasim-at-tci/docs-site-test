@@ -1,0 +1,31 @@
+<nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<div class="row"> <!-- NK - added row and columns for layout -->
+		<div class="col-sm-10" style="padding-top: 0.5rem">
+			<ol class="breadcrumb spb-1">
+				{{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
+			</ol>
+		</div>
+		<!-- NK - moved language dropdown here -->
+		<div class="col-sm-2">
+			{{ if  (gt (len .Site.Home.Translations) 0) }}
+				<li class="nav-item dropdown d-none d-md-block d-print-none">
+				{{ partial "navbar-lang-selector.html" . }}
+				</li>
+			{{ end }}
+			<!-- NK - end of move -->
+		</div>
+	</div>
+</nav>
+{{ define "breadcrumbnav" }}
+{{ if .p1.Parent }}
+{{ if not .p1.Parent.IsHome }}
+{{ template "breadcrumbnav" (dict "p1" .p1.Parent "p2" .p2 )  }}
+{{ end }}
+{{ else if not .p1.IsHome }}
+{{ template "breadcrumbnav" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
+{{ end }}
+{{ $isActive :=  eq .p1 .p2  }}
+<li class="breadcrumb-item{{ if $isActive }} active{{ end }}" {{ if $isActive }}aria-current="page"{{ end }}>
+	<a href="{{ .p1.Permalink }}">{{ .p1.LinkTitle }}</a>
+</li>
+{{ end }}

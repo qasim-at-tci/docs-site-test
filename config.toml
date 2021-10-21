@@ -1,6 +1,6 @@
-baseURL = "http://example.org/"
+baseURL = "http://mendix-new-docs-site.s3-website.eu-central-1.amazonaws.com/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Mendix Docs Test Site"
 
 enableRobotsTXT = true
 
@@ -23,30 +23,33 @@ enableMissingTranslationPlaceholders = true
 disableKinds = ["taxonomy","taxonomyTerm"]
 
 # NK - taxonomy section adds the tag cloud to the ToC section - need to comment out "disableKinds"
-# [params.taxonomy]
-# taxonomyCloud = ["tags"] # set taxonomyCloud = [] to hide taxonomy clouds
-# taxonomyCloudTitle = [] # if used, must have same lang as taxonomyCloud
-# taxonomyPageHeader = [] # set taxonomyPageHeader = [] to hide taxonomies on the page headers
+# NK - values can be empty to not have tags, instead of commented out
+[params.taxonomy]
+taxonomyCloud = [] #["tags"] # set taxonomyCloud = [] to hide taxonomy clouds
+taxonomyCloudTitle = [] # if used, must have same lang as taxonomyCloud
+taxonomyPageHeader = [] # set taxonomyPageHeader = [] to hide taxonomies on the page headers
 
 # Highlighting config
-pygmentsCodeFences = true
-pygmentsUseClasses = false
+# NK - commented out all regarding Chroma and Pygments, as we use Prism
+#pygmentsCodeFences = false
+#pygmentsUseClasses = false
 # Use the new Chroma Go highlighter in Hugo.
-pygmentsUseClassic = false
-pygmentsOptions = "linenos=table"
+#pygmentsUseClassic = false
+#pygmentsOptions = "linenos=table"
 # See https://help.farbox.com/pygments.html
-pygmentsStyle = "tango"
+#pygmentsStyle = "tango"
 
 # Configure how URLs look like per section.
 [permalinks]
 blog = "/:section/:year/:month/:day/:slug/"
 
 ## Configuration for BlackFriday markdown parser: https://github.com/russross/blackfriday
-[blackfriday]
-plainIDAnchors = true
-hrefTargetBlank = true
-angledQuotes = false
-latexDashes = true
+# NK - commented out everything related to BlackFriday, as we use Goldmark
+#[blackfriday]
+#plainIDAnchors = true
+#hrefTargetBlank = true
+#angledQuotes = false
+#latexDashes = true
 
 # Image processing configuration.
 [imaging]
@@ -98,12 +101,21 @@ time_format_blog = "02.01.2006"
 section = ["HTML", "print"]
 # MvM - add line below to print every page
 page = ["HTML", "print"]
+# NK - add line below to output Algolia at root of /public
+home = ["Algolia"]
 
 # MvM - add line below to activate production of RSS pages
 [outputFormats]
     [outputFormats.RSS]
         mediatype = "application/rss"
         baseName = "rss"
+	# NK - Algolia outputFormats parameters
+	[outputFormats.Algolia]
+		baseName = "algolia" # specifies how to look for Hugo layout for this output format
+		isPlainText = true # specifies GoLang’s plain text parser for the layout, preventing automatic HTML formatting in JSON
+		mediaType = "application/json" # file output type
+		notAlternative = true # excludes from looping over .AlternativeOutputFormats page variable
+
 
 [params]
 copyright = "The Docsy Authors"
@@ -213,3 +225,8 @@ enable = false
 	url = "https://example.org/mail"
 	icon = "fa fa-envelope"
         desc = "Discuss development issues around the project"
+
+# NK - Algolia parameters to parse
+[params.algolia]
+	vars = ["title", "summary", "content", "rawcontent", "date", "publishdate", "expirydate", "permalink"] # page parameters to include in index
+	params = ["categories", "tags"] # custom page parameters to include in index

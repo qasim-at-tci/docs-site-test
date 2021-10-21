@@ -1,10 +1,10 @@
 language: node_js
+node_js:
+  - lts/*             # latest LTS version ('node' will give latest version)
 # arch: amd64         # optional, this is default, routes to a full VM
 arch: arm64           # this is the recommended LXD container - faster spin up but some limitations
 os: linux             # optional, this is default
 dist: xenial          # or bionic | xenial | trusty | precise with xenial as default - Recommended here: https://docs.travis-ci.com/user/reference/overview/#deprecated-virtualization-environments
-node_js:
-  - node              # latest stable version
 addons:
   snaps:              # Installs hugo if dist: xenial or bionic see https://gohugo.io/getting-started/installing/#snap-package and https://docs.travis-ci.com/user/installing-dependencies/#installing-snap-packages-with-the-snaps-addon
     - name: hugo
@@ -55,7 +55,7 @@ script:
   - echo $TRAVIS_CPU_ARCH
   - echo $TRAVIS_PULL_REQUEST
   - echo $TRAVIS_PULL_REQUEST_BRANCH
-  - cd $HOME/public
+  - cd $TRAVIS_BUILD_DIR/public
   - pwd
 
 before_deploy:

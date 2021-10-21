@@ -46,7 +46,9 @@
           <!-- MvM: Move breadcrumb above banner -->
           {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
           {{ partial "version-banner.html" . }}
-		  {{ .Page.Description}}
+		  <h1>{{ .Page.Title}}</h1>
+		  <br><br>
+		  <h3>{{ .Page.Description}}</h3>
 		  <br><br><br>
 		  {{ .Page.Content }}
           </main>

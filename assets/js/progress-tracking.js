@@ -78,3 +78,4 @@
     handleActiveSection();
   };
   runProgressTracking();
+  

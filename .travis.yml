@@ -55,12 +55,11 @@ script:
   - echo $TRAVIS_CPU_ARCH
   - echo $TRAVIS_PULL_REQUEST
   - echo $TRAVIS_PULL_REQUEST_BRANCH
-  - cd $TRAVIS_BUILD_DIR/public
   - pwd
 
 before_deploy:
   - curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
-  - unzip awscliv2.zip
+  - unzip -q awscliv2.zip
   - sudo ./aws/install
   - aws --version
 
@@ -69,7 +68,7 @@ deploy:
 #  - aws s3 sync . s3://$TARGETAWSBUCKET --delete --only-show-errors
   - provider: script
     script:
-      - ./_scripts/deploy.sh
+      - $TRAVIS_BUILD_DIR/_scripts/deploy.sh
     skip_cleanup: true
     on:
       branch:

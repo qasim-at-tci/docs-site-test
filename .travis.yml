@@ -70,16 +70,16 @@ deploy:
   - provider: script
     script:
       - ./_scripts/deploy.sh
-    skip_cleanup: true
     on:
       branch:
         - master
         - development
-        
+
 after_deploy:
-  on:
-    branch:
-      - master #only do Algolia on the master build
+# Need to upload to Algolia here
+#  on:
+#    branch:
+#      - master #only do Algolia on the master build
 
 after_script:
 

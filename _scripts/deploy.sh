@@ -35,6 +35,10 @@ aws --version
 #
 # HUGO creates new files with a newer timestamp except those in the /static folder 
 # so this will always push all the html, but only changed /static files.
+#
+# Need to use old method - or a new method to reduce number of docs transferred.
+# see https://stackoverflow.com/questions/1964470/whats-the-equivalent-of-subversions-use-commit-times-for-git/13284229#13284229 for a possiblity
+#
 start=$SECONDS
 echo "Starting sync to AWS"
 aws s3 sync . s3://$TARGETAWSBUCKET --delete

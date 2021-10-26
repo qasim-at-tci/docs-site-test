@@ -24,6 +24,7 @@ fi
 echo "Deploying to AWS bucket $TARGETAWSBUCKET"
 
 cd $TRAVIS_BUILD_DIR/public
+pwd
 aws --version
 
 # This depends on the following (secret) Environment Variables being set up in Travis-CI
@@ -36,7 +37,7 @@ aws --version
 # so this will always push all the html, but only changed /static files.
 start=$SECONDS
 echo "Starting sync to AWS"
-# aws s3 sync . s3://$TARGETAWSBUCKET --delete
+aws s3 sync . s3://$TARGETAWSBUCKET --delete
 echo "Upload to AWS took $((SECONDS - start)) seconds"
 
 exit 0

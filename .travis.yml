@@ -62,7 +62,7 @@ before_deploy:
   - unzip -q awscliv2.zip
   - sudo ./aws/install
   - aws --version
-  - chmod +x TRAVIS_BUILD_DIR/_scripts/deploy.sh
+  - chmod +x $TRAVIS_BUILD_DIR/_scripts/deploy.sh
 
 deploy:
 # Need to decide where to deploy to, so need to do the actual deployment in a script https://docs.travis-ci.com/user/job-lifecycle#complex-build-commands

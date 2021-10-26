@@ -1,0 +1,85 @@
+language: node_js
+node_js:
+  - lts/*             # latest LTS version ('node' will give latest version)
+# arch: amd64         # optional, this is default, routes to a full VM
+arch: arm64           # this is the recommended LXD container - faster spin up but some limitations
+os: linux             # optional, this is default
+dist: xenial          # or bionic | xenial | trusty | precise with xenial as default - Recommended here: https://docs.travis-ci.com/user/reference/overview/#deprecated-virtualization-environments
+addons:
+  snaps:              # Installs hugo if dist: xenial or bionic see https://gohugo.io/getting-started/installing/#snap-package and https://docs.travis-ci.com/user/installing-dependencies/#installing-snap-packages-with-the-snaps-addon
+    - name: hugo
+      channel: extended # needs extended to compile SCSS etc.
+
+git:
+  depth: 20000 # We're cloning a max of xxx commits, so the author date is correct
+
+env: # Do we need any environment variables?
+
+# Should we use Stages to separate master and development builds?
+# see https://config.travis-ci.com/ref/stages
+
+# build only development and master
+branches:
+  only:
+  - master
+  - development
+
+before_install:
+  - npm install # use npm rather than yarn - HUGO doesn't have that many dependencies
+
+install:
+  - hugo # which flags do we need?
+
+before_script:
+
+script:
+  - echo $HOME
+  - echo $TRAVIS_NODE_VERSION
+  - echo $TRAVIS_BRANCH
+  - echo $TRAVIS_BUILD_DIR
+  - echo $TRAVIS_BUILD_ID
+  - echo $TRAVIS_BUILD_NUMBER
+  - echo $TRAVIS_BUILD_WEB_URL
+  - echo $TRAVIS_COMMIT
+  - echo $TRAVIS_COMMIT_MESSAGE
+  - echo $TRAVIS_COMMIT_RANGE
+  - echo $TRAVIS_COMPILER
+  - echo $TRAVIS_DEBUG_MODE
+  - echo $TRAVIS_DIST
+  - echo $TRAVIS_EVENT_TYPE
+  - echo $TRAVIS_JOB_ID
+  - echo $TRAVIS_JOB_NAME
+  - echo $TRAVIS_JOB_NUMBER
+  - echo $TRAVIS_JOB_WEB_URL
+  - echo $TRAVIS_OS_NAME
+  - echo $TRAVIS_CPU_ARCH
+  - echo $TRAVIS_PULL_REQUEST
+  - echo $TRAVIS_PULL_REQUEST_BRANCH
+  - cd $TRAVIS_BUILD_DIR/public
+  - pwd
+
+before_deploy:
+  - travis_retry curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  - unzip -q awscliv2.zip
+  - sudo ./aws/install
+  - aws --version
+
+deploy:
+# Need to decide where to deploy to, so need to do the actual deployment in a script https://docs.travis-ci.com/user/job-lifecycle#complex-build-commands
+#  - aws s3 sync . s3://$TARGETAWSBUCKET --delete --only-show-errors
+  - provider: script
+    script:
+      - ./_scripts/deploy.sh
+    on:
+      branch:
+        - master
+        - development
+
+after_deploy:
+# Need to upload to Algolia here
+#  on:
+#    branch:
+#      - master #only do Algolia on the master build
+
+after_script:
+

@@ -24,7 +24,7 @@ Before installing Mendix 9, it is important to understand the [System Requiremen
 
 If you have been using Studio Pro version 8, we advise reading [Moving from Mendix Studio Pro 8 to 9](moving-from-8-to-9).
 
-{{% snippet file="static\_includes\common-section-link.md" %}}
+{{% snippet file="static/_includes/common-section-link.md" %}}
 
 ## 2 Main Documents in This Category
 

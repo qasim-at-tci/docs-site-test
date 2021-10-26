@@ -24,6 +24,7 @@ fi
 echo "Deploying to AWS bucket $TARGETAWSBUCKET"
 
 cd $TRAVIS_BUILD_DIR/public
+aws --version
 
 # This depends on the following (secret) Environment Variables being set up in Travis-CI
 # AWS key needs to have appropriate access to the TARGETAWSBUCKET

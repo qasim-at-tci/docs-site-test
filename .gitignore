@@ -3,6 +3,8 @@
 .vscode
 # NK - Hugo 
 hugo.exe
+# MvM - htmltest
+htmltest.exe
 
 # The built site
 public/
@@ -11,7 +13,7 @@ resources/
 # Node modules required for the site - built each time using npm install
 node_modules/
 
-# MvM - Put HUGO and NODE (and dependencies) into /bin folder
+# MvM - Put HUGO and NODE and htmltest (and dependencies) into /bin folder
 /bin/
 
 # NK - ingore htmltest tmp files

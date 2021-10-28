@@ -1,11 +1,11 @@
-DirectoryPath: "C:/Users/Natasa.Kralj/Documents/docs/demo-test/public/docs/marks-portal"
-EnforceHTTPS: true
+DirectoryPath: "C:/Users/Natasa.Kralj/Documents/docs/demo-test/public"
+EnforceHTTPS: false
 FileExtension: .html
 IgnoreURLs:
 - "example.com"
 IgnoreInternalURLs:
 - "/misc/js/script.js"
-- "/tabs.js"
+- "/js/"
 IgnoreDirs:
 - "lib"
 - "/js"
@@ -15,5 +15,6 @@ CheckMailto: false
 CheckTel: false
 IgnoreAltMissing: true
 IgnoreDirectoryMissingTrailingSlash: true
-EnforceHTTPS: false
 DirectoryIndex: "index.html"
+IgnoreInternalEmptyHash: true
+IgnoreEmptyHref: true

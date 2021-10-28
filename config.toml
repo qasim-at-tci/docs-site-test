@@ -64,20 +64,20 @@ anchor = "smart"
 
 # Language configuration
 
-[languages]
-[languages.en]
-title = "Docsy Theme Test English"
-description = "Docsy theme test English site"
-languageName ="English"
-# Weight used for sorting.
-weight = 1
-[languages.es]
-title = "Docsy Theme Test Spanish"
-description = "Docsy theme test Spanish site"
-languageName ="Espanol"
-contentDir = "content/es"
-time_format_default = "02.01.2006"
-time_format_blog = "02.01.2006"
+# [languages]
+# [languages.en]
+# title = "Docsy Theme Test English"
+# description = "Docsy theme test English site"
+# languageName ="English"
+# # Weight used for sorting.
+# weight = 1
+# [languages.es]
+# title = "Docsy Theme Test Spanish"
+# description = "Docsy theme test Spanish site"
+# languageName ="Espanol"
+# contentDir = "content/es"
+# time_format_default = "02.01.2006"
+# time_format_blog = "02.01.2006"
 
 [markup]
   [markup.goldmark]

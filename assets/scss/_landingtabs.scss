@@ -67,8 +67,34 @@ ul.nav.nav-tabs {
   footer.auto-height {
 	min-height: auto;
   }
+  .my-column{
+	margin-top: 0.25rem;
+	margin-bottom: 1rem;
+	margin-left: 0.75%;
+	margin-right: 1%;
+	padding: 1rem;
+	border-color: lightgray;
+	border-width: 0.5px;
+	border-style: solid;
+	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	@include media-breakpoint-up(xl){
+		flex: 0 0 31%;
+		max-width: 31%;
+	}
+	@include media-breakpoint-down(lg){
+		flex: 0 0 97%;
+		max-width: 97%;
+	}
+}
+
+  .row.lp-row{
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: 1%;
+  }
   
-  .inline-svg {
+  /* .inline-svg {
 	display: inline-block;
 	vertical-align: middle;
   
@@ -78,4 +104,4 @@ ul.nav.nav-tabs {
 	  fill: currentColor;
 	  display: inline-block;
 	}
-  }
+  } */

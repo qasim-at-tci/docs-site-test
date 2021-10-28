@@ -27,16 +27,23 @@ First subsection of Mark's Portal
 ### Links (to other test pages)
 
 [RSS]({{< relref "mark-portal-section-1"  >}} "Go to page with RSS example") (relref and tooltip/title)
+**Should always use relref, otherwise development links will point to production site**
 
 [Shortcodes]({{< ref "mark-portal-section-3" >}}) (ref)
 
 [Cascading banner]({{< ref "mark-portal-section-3" >}}) (ref)
 
+[Normal link to anchor 3](#anchor3)
+
+[relref to anchor 3]({{< relref "#anchor3" >}})
+
+[Cascading banner](mark-portal-section-3) and [Shortcodes](mark-portal-section-3)
+
 ### Attachment from attachments in this bundle
 
 Insert with Markdown
 
-![](attachments/lights-bundle.png)
+![Insert lights bundle image](attachments/lights-bundle.png)
 
 insert with figure {{< figure src="attachments/lights-bundle.png" >}}
 
@@ -82,7 +89,7 @@ This is the second sub-subsection.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-## 3 Section Three
+## 3 Section Three{#anchor3}
 
 The last section.
 

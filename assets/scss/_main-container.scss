@@ -23,7 +23,6 @@
 
 .td-main {
     flex-grow: 1;
-	
 
 
     main {
@@ -36,4 +35,17 @@
 
         padding-bottom: 2rem;
     }
+	div.stretch-main{
+		height: 100%; // NK - so that all of main (side menus and content get stretched to bottom of page)
+	}
+}
+// NK - to fully stretch the footer & bottom of dock
+div.footer{
+	background-color: $gray-100;
+	border-top: 1px solid $border-color;
+	margin: 0 -15px;
+	padding: 0.5rem 0;
+}
+div.mx-dock-footer{
+	margin: 0 -15px;
 }

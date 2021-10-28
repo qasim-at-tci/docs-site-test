@@ -1,0 +1,81 @@
+// NK - Tabs implementation taken from https://github.com/fluxcd/website 
+// Copyright 2021 fluxcd.io
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+ul.nav.nav-tabs {
+	list-style-type: none;
+	overflow: hidden;
+	content: none;
+	border-bottom-color: $gray-600;
+	//border-bottom-width: 0.5px;
+	border-bottom-style: solid;
+	border-bottom-width: 0.1rem;
+  }
+  
+  li.nav-tab.tabby {
+	padding: 10px 20px;
+	float: left;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: $gray-600;
+	//font-size: 14px;
+  }
+  
+  li.tabby.active {
+	color: $secondary;
+	border-color: $secondary;
+	border-bottom-style: solid;
+	border-bottom-width: 0.2rem;
+	background: transparent;
+  }
+  
+  a.nav-tab {
+	all: unset;
+	cursor: pointer;
+  }
+  
+  div.tab-pane {
+	display: none;
+  }
+  
+  div.tab-pane.active {
+	  display: block;
+	  padding: 20px;
+	  background: $white;
+  }
+  
+  code {
+	word-break: keep-all;
+  }
+  
+  .hero-logo {
+	margin-bottom: -2rem;
+	width: 60%;
+  }
+  
+  footer.auto-height {
+	min-height: auto;
+  }
+  
+  .inline-svg {
+	display: inline-block;
+	vertical-align: middle;
+  
+	svg {
+	  width: 1em;
+	  height: 1em;
+	  fill: currentColor;
+	  display: inline-block;
+	}
+  }

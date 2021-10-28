@@ -1,5 +1,3 @@
-<div>{{ partial "mx-dock.html" . }}</div>
-
 <!-- NK - Tabs implementation taken from https://github.com/fluxcd/website 
 Copyright 2021 fluxcd.io
 
@@ -14,5 +12,6 @@ Copyright 2021 fluxcd.io
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License. -->
-{{ $tabs := resources.Get "js/landingtabs.js" | js.Build "landingtabs.js" }}
-<script type="text/javascript" src="{{ $tabs.RelPermalink }}" defer></script>
+<div class="tab-pane" title="{{ .Get 0 }}">
+	{{ .Inner }}
+</div>

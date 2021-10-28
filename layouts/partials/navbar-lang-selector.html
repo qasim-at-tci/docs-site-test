@@ -4,8 +4,9 @@
 <i class="fas fa-language" style="font-size: 1.5rem;"></i> <!-- NK - added icon and size-->
 	<!-- {{ $langPage.Language.LanguageName }} --> <!-- NK - deactivated, moved to list -->
 </a>
-<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-	{{ range $.Site.Home.AllTranslations }} <!-- NK - changed to display all languages in list -->
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> <!-- NK - changed to display all languages in list -->
+	<a class="dropdown-item" href="{{ .RelPermalink }}">{{ $langPage.Language.LanguageName }}</a> <!-- NK - first lists current language in list -->
+	{{ range $langPage.Translations }} <!-- NK - loops through other languages -->
 	<a class="dropdown-item" href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</a>
 	{{ end }}
 </div>

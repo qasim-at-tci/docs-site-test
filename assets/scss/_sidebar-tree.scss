@@ -56,11 +56,11 @@
         display: block;
         padding-bottom: 0.375rem;
 
-        // NK - disables special styling for pages with no children
-        /* &__page {
-            color: $gray-700;
-            font-weight: $font-weight-light;
-        } */
+        // NK - overrides special styling for pages with no children
+        &__page {
+            color: inherit;//$gray-700;
+            font-weight: inherit;//$font-weight-light;
+        }
     }
 
     a {

@@ -1,0 +1,60 @@
+{
+    "categories": [
+        "General Info",
+    ],
+    "pages": [
+        {
+            "t": "Atlas 3 Change Summary",
+            "i": "atlas3-change-summary",
+            "u": "/refguide/atlas3-change-summary",
+            "d": "/refguide/",
+            "p": "moving-from-atlas-2-to-3",
+            "mo": 7
+        },
+        {
+            "t": "General Info",
+            "i": "general",
+            "u": "/refguide/general",
+            "d": "/refguide/"
+        },
+        {
+            "t": "Studio Pro 9 Guide",
+            "i": "index",
+            "u": "/refguide/",
+            "d": "/refguide/",
+            "m": true
+        },
+        {
+            "t": "Moving from Mendix Studio Pro 8 to 9",
+            "c": "General Info",
+            "i": "moving-from-8-to-9",
+            "u": "/refguide/moving-from-8-to-9",
+            "d": "/refguide/",
+            "mo": 20
+        },
+        {
+            "t": "Migrate From Atlas 2 To Atlas 3",
+            "i": "moving-from-atlas-2-to-3",
+            "u": "/refguide/moving-from-atlas-2-to-3",
+            "d": "/refguide/",
+            "p": "moving-from-8-to-9",
+            "mo": 6
+        },
+       {
+            "t": "System Requirements",
+            "c": "General Info",
+            "i": "system-requirements",
+            "u": "/refguide/system-requirements",
+            "d": "/refguide/",
+            "mo": 10
+        },
+        {
+            "t": "Migrate Workflow Apps to Mendix 9.6 and Above",
+            "c": "General Info",
+            "i": "workflow-beta-migration",
+            "u": "/refguide/workflow-beta-migration",
+            "d": "/refguide/",
+            "mo": 25
+        }
+    ]
+}

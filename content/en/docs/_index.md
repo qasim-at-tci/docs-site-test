@@ -16,7 +16,7 @@ cascade:
 {{< landingtabs >}}
 {{< landingtab "Studio Pro 9" >}}
 
-{{< blocks/section color="white" >}}
+{{< blocks/section color="white" type="lp-row">}}
 {{< blocks/feature icon="fas fa-play-circle" title="Getting Started" icon_url="https://docs.mendix.com/refguide">}}
 Take a look at the articles below to get started!
 
@@ -42,7 +42,7 @@ For announcement of latest release notes, features and issues.
 {{< /blocks/feature >}}
 {{< /blocks/section >}}
 
-{{< blocks/section color="white" >}}
+{{< blocks/section color="white" type="lp-row">}}
 {{< blocks/feature icon="fas fa-book-open" title="How-to's" icon_url="https://docs.mendix.com/how-to">}}
 How-to articles for Studio Pro 9
 

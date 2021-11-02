@@ -42,7 +42,7 @@ for dirpath, dirnames, allfiles in os.walk(topdir):
             os.altsep = '/'
             altPath = dirpath.replace(os.sep, os.altsep)
             # for toplevel directory
-            with fileinput.input(os.path.join(dirpath, name), inplace=True, backup='') as file:
+            with fileinput.input(os.path.join(dirpath, name), inplace=True, backup='', encoding="utf-8") as file:
                 for line in file:
                     if re.match(start,line) != None:
                         matched = re.match(start,line)

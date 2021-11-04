@@ -10,3 +10,5 @@ dicts = [
 print (dicts)
 print(next(item for item in dicts if item["name"] == "Pam"))
 print(next(item for item in dicts if item["name"] == "Pam")['age'])
+print([item for item in dicts if item["name"] == "Pam"])
+print(tuple(item for item in dicts if item["name"] == "Pam"))

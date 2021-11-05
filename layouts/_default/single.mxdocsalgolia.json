@@ -1,16 +1,56 @@
-{{/* Generates a valid Algolia search index */}}
-{{- $hits := slice -}}
-{{- $section := $.Site.GetPage "section" .Section }}
+{{/* Try to create Algolia file (just from a single page to start with) */}}
+This is an Algolia file
+{{/* Define Global variables */}}
+{{ $firstloop := true}}
+{{/* Get Algolia parameters from config.toml */}}
 {{- $validVars := $.Param "algolia.vars" | default slice -}}
 {{- $validParams := $.Param "algolia.params" | default slice -}}
-{{ $validVars }}
-{{ $validParams }}
-{{/* Include What Pages? */}}
-{{/* range $i, $hit := .Site.AllPages */}}
-{{- range $i, $hit := where (where .Site.Pages "Type" "in" (slice "docs")) "IsPage" true -}}
-  {{- $dot := . -}}
-  {{- if or (and ($hit.IsDescendant $section) (and (not $hit.Draft) (not $hit.Params.private))) $section.IsHome -}}
-    {{/* Set the hit's objectID */}}
+{{- $hit := . -}}
+{{- $dot := . -}}
+
+Markdown
+{{ .RawContent }}
+
+HTML
+{{ .Content }}
+{{ $Content := .Content}}
+
+HTMLUnescape Plain
+{{ htmlUnescape (.Plain) }}
+
+{{/* Will split on the following characters */}}
+{{ $splitchars := slice "<h2" "<p>"}}
+
+Need to put #Content into a single slice
+Iterate through the slice splitting each value 
+Iterate through the splits adding the missing text back in and creating a new slice with all the split strings
+Put the new slice back into the old slice and go round again iterating through each slice in the new slice
+
+See if this discussion helps? https://discourse.gohugo.io/t/is-it-possible-to-change-map-value-by-key/32538/12
+
+
+
+
+{{- range $splitchar := $splitchars }}
+{{/* Split HTML on $splitchar */}}
+    {{ $splitchar}}
+
+    {{ $h2split := split $Content $splitchar }}
+
+{{/* Add the original $splitchar back in */}}
+
+    {{ $firstloop = true}}
+    {{- range $h2string := $h2split -}}
+        {{- if $firstloop -}}
+            {{ $firstloop = false }}
+        {{ else }}
+            {{ $h2string = printf "%s/%s" $splitchar $h2string }}
+        {{- end -}}
+    {{- end -}}
+    {{ $h2split }}
+{{- end -}}
+
+   {{/* Set the hit's objectID */}}
     {{- .Scratch.SetInMap $hit.File.Path "objectID" $hit.File.UniqueID -}}
     {{/* Store built-in page variables in iterable object */}}
     {{- .Scratch.SetInMap "temp" "content" $hit.Plain -}}
@@ -34,6 +74,7 @@
 	{{- .Scratch.SetInMap "temp" "toc" $hit.TableOfContents -}}
     {{- .Scratch.SetInMap "temp" "title" $hit.Title -}}
     {{- .Scratch.SetInMap "temp" "type" $hit.Type -}}
+    {{/* Is this always there, or do we want to take the .RelPermalink if Params.url is empty?*/}}
     {{- .Scratch.SetInMap "temp" "url" $hit.Params.url -}}
     {{- .Scratch.SetInMap "temp" "weight" $hit.Weight -}}
     {{- .Scratch.SetInMap "temp" "wordcount" $hit.WordCount -}}
@@ -51,6 +92,4 @@
       {{- end -}}
     {{- end -}}
     {{- $.Scratch.SetInMap "hits" $hit.File.Path (.Scratch.Get $hit.File.Path) -}}
-  {{- end -}}
-{{- end -}}
 {{- jsonify ($.Scratch.GetSortedMapValues "hits") -}}

@@ -7,7 +7,10 @@ outputs:
     - Print
     - MxDocsAlgolia
 #    - Print#linktitle: "A title for links - need to look this up - used in restore-backup-locally.md"
-#tags: ["These", "are", "Example", "Tags"]
+tags: ["These", "are", "Example", "Tags"]
+space: "Studio Pro 10 Guide"
+mendix_version: 10
+weight: 50
 #weight: 10
 #notoc: true
 #layout: wide
@@ -30,5 +33,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Will want to test all sorts of Markdown here: lists, tables, headings, image links, cross referencing, bold, italic, etc.
 
+### 2.1 A level 3 header
+
 Mark's apostrophe :-) 
+
+#### 2.1.1 A level 4 header
+
+level 4
+
+##### 2.1.1.1 A level 5 header
+
+level 5
+
+## 3 Level 2 again
+
+More text
 

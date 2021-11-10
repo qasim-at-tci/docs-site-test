@@ -103,6 +103,7 @@ section = ["HTML", "print"]
 page = ["HTML", "print"]
 # NK - add line below to output Algolia at root of /public
 home = ["Algolia"]
+home = ["MxDocsAlgolia"]
 
 # MvM - add line below to activate production of RSS pages
 [outputFormats]
@@ -231,7 +232,7 @@ enable = false
 	icon = "fa fa-envelope"
         desc = "Discuss development issues around the project"
 
-# NK - Algolia parameters to parse
+# NK - Algolia parameters to parse (MvM - not used in mxdocsalgolia processing)
 [params.algolia]
-	vars = ["title", "summary", "content", "rawcontent", "date", "publishdate", "expirydate", "permalink"] # page parameters to include in index
-	params = ["categories", "tags"] # custom page parameters to include in index
+	vars = ["title", "summary", "content", "rawcontent", "date", "publishdate", "expirydate", "permalink", "url"] # page parameters to include in index
+	params = ["description", "tags"] # custom page parameters to include in index

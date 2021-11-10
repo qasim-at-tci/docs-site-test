@@ -1,95 +1,145 @@
-{{/* Try to create Algolia file (just from a single page to start with) */}}
-This is an Algolia file
-{{/* Define Global variables */}}
-{{ $firstloop := true}}
-{{/* Get Algolia parameters from config.toml */}}
-{{- $validVars := $.Param "algolia.vars" | default slice -}}
-{{- $validParams := $.Param "algolia.params" | default slice -}}
-{{- $hit := . -}}
-{{- $dot := . -}}
+{{- /*
+Algolia generation based on this blog: https://forestry.io/blog/search-with-algolia-in-hugo/
 
-Markdown
-{{ .RawContent }}
+Create a list.mxdocsalgolia.json to loop through all the files in the space
 
-HTML
-{{ .Content }}
-{{ $Content := .Content}}
-
-HTMLUnescape Plain
-{{ htmlUnescape (.Plain) }}
-
-{{/* Will split on the following characters */}}
-{{ $splitchars := slice "<h2" "<p>"}}
-
-Need to put #Content into a single slice
-Iterate through the slice splitting each value 
-Iterate through the splits adding the missing text back in and creating a new slice with all the split strings
-Put the new slice back into the old slice and go round again iterating through each slice in the new slice
-
-See if this discussion helps? https://discourse.gohugo.io/t/is-it-possible-to-change-map-value-by-key/32538/12
-
-
-
-
-{{- range $splitchar := $splitchars }}
-{{/* Split HTML on $splitchar */}}
-    {{ $splitchar}}
-
-    {{ $h2split := split $Content $splitchar }}
-
-{{/* Add the original $splitchar back in */}}
-
-    {{ $firstloop = true}}
-    {{- range $h2string := $h2split -}}
-        {{- if $firstloop -}}
-            {{ $firstloop = false }}
-        {{ else }}
-            {{ $h2string = printf "%s/%s" $splitchar $h2string }}
+Define Global variables
+*/ -}}
+{{- $firstloop := true -}}
+{{- /* 
+    Ignore Algolia parameters - hard code the ones we want
+    Get Algolia parameters from config.toml 
+    {{- $validVars := $.Param "algolia.vars" | default slice -}}
+    {{- $validParams := $.Param "algolia.params" | default slice -}}
+*/ -}}
+{{- $pageDot := . -}}
+{{- /* Use a local scratchpad - Page scratchpad already contains other stuff */ -}}
+{{- $scratch := newScratch -}}
+{{- /* Put list of characters we will split into $splitcharList do we want to have headings separate? */ -}}
+{{- $splitcharList := slice "<h2" "<h3" "<h4" "<h5" "<h6" "<p" -}}
+{{- /* Make a slice of the page content */ -}}
+{{- $contentSlices := slice .Content -}}
+{{- /* Make an empty slice to hold the results */ -}}
+{{- $resultSlices := slice "" -}}
+{{- /* Cycle through the split characters in splitcharList */ -}}
+{{- range $splitchar := $splitcharList -}}
+    {{- /* Cycle through the slices in $contentSlices */ -}}
+    {{- range $htmlSlice := $contentSlices -}}
+        {{- /* Split HTML on $splitchar */ -}}
+        {{- $thischarSplit := split $htmlSlice $splitchar -}}
+        {{- /* Add the original $splitchar back in (but not first slice - it is before the split) */ -}}
+        {{- $firstloop = true -}}
+        {{- range $splitString := $thischarSplit -}}
+            {{- if $firstloop -}}
+                {{- $firstloop = false -}}
+            {{- else -}}
+                {{- $splitString = printf "%s%s" $splitchar $splitString -}}
+            {{- end -}}
+            {{- /* Append result to the resultSlices (more difficult to update in place?) See if this discussion helps? https://discourse.gohugo.io/t/is-it-possible-to-change-map-value-by-key/32538/12 */ -}}
+            {{- $resultSlices = $resultSlices | append $splitString -}}
         {{- end -}}
     {{- end -}}
-    {{ $h2split }}
+    {{- /* Put resultSlices back into contentSlices, reset resultSlices and go round again */ -}}
+    {{- $contentSlices = $resultSlices -}}
+    {{- $resultSlices = slice "" -}}
 {{- end -}}
+{{- /* 
+$contentSlices now contains a slice of strings containing the file content split by the markers in splitcharList
+*/ -}}
 
-   {{/* Set the hit's objectID */}}
-    {{- .Scratch.SetInMap $hit.File.Path "objectID" $hit.File.UniqueID -}}
-    {{/* Store built-in page variables in iterable object */}}
-    {{- .Scratch.SetInMap "temp" "content" $hit.Plain -}}
-    {{- .Scratch.SetInMap "temp" "date" $hit.Date.UTC.Unix -}}
-    {{- .Scratch.SetInMap "temp" "description" $hit.Description -}}
-    {{- .Scratch.SetInMap "temp" "dir" $hit.File.Dir -}}
-    {{- .Scratch.SetInMap "temp" "path" "temp" -}}
-    {{- .Scratch.SetInMap "temp" "expirydate" $hit.ExpiryDate.UTC.Unix -}}
-    {{- .Scratch.SetInMap "temp" "path" "temp" -}}
-    {{- .Scratch.SetInMap "temp" "fuzzywordcount" $hit.FuzzyWordCount -}}
-    {{- .Scratch.SetInMap "temp" "keywords" $hit.Keywords -}}
-    {{- .Scratch.SetInMap "temp" "kind" $hit.Kind -}}
-    {{- .Scratch.SetInMap "temp" "lang" $hit.Lang -}}
-    {{- .Scratch.SetInMap "temp" "lastmod" $hit.Lastmod.UTC.Unix -}}
-    {{- .Scratch.SetInMap "temp" "permalink" $hit.Permalink -}}
-    {{- .Scratch.SetInMap "temp" "publishdate" $hit.PublishDate -}}
-	{{- .Scratch.SetInMap "temp" "rawcontent" $hit.RawContent -}}
-    {{- .Scratch.SetInMap "temp" "readingtime" $hit.ReadingTime -}}
-    {{- .Scratch.SetInMap "temp" "relpermalink" $hit.RelPermalink -}}
-    {{- .Scratch.SetInMap "temp" "summary" $hit.Summary -}}
-	{{- .Scratch.SetInMap "temp" "toc" $hit.TableOfContents -}}
-    {{- .Scratch.SetInMap "temp" "title" $hit.Title -}}
-    {{- .Scratch.SetInMap "temp" "type" $hit.Type -}}
-    {{/* Is this always there, or do we want to take the .RelPermalink if Params.url is empty?*/}}
-    {{- .Scratch.SetInMap "temp" "url" $hit.Params.url -}}
-    {{- .Scratch.SetInMap "temp" "weight" $hit.Weight -}}
-    {{- .Scratch.SetInMap "temp" "wordcount" $hit.WordCount -}}
-    {{- .Scratch.SetInMap "temp" "section" $hit.Section -}}
-    {{/* Include valid page vars */}}
-    {{- range $key, $param := (.Scratch.Get "temp") -}}
-      {{- if in $validVars $key -}}
-        {{- $dot.Scratch.SetInMap $hit.File.Path $key $param -}}
-      {{- end -}}
+{{- /*
+Cycle through all the HTML strings in contentSlices and put them into the map
+Set the hit's objectID
+*/ -}}
+{{- $sliceNumber := 0 -}}
+{{- $startSlice := "" -}}
+{{- $uniqueHit := "" -}}
+{{- $h2 := "" }}
+{{- $h3 := "" }}
+{{- $h4 := "" }}
+{{- $h5 := "" }}
+{{- $h6 := "" }}
+{{- $text := "" }}
+{{- range $processSlice := $contentSlices  -}}
+    {{- /* sliceNumber tells us where we are in the file and gives us a way of making each hit unique */ -}}
+    {{- $sliceNumber = add $sliceNumber 1 -}}
+    {{- /* Make sure process slice is not empty */ -}}
+    {{- with $processSlice -}}
+        {{- $startSlice = slicestr $processSlice 0 3 -}}
+        {{- /* Set up the heading level we are in */ -}}
+        {{- if eq $startSlice "<h2" -}}
+            {{- $h2 = htmlUnescape ($processSlice | plainify) -}}
+            {{- $h3 = "" -}}
+            {{- $h4 = "" -}}
+            {{- $h5 = "" -}}
+            {{- $h6 = "" -}}
+        {{- else if eq $startSlice "<h3" -}}
+            {{- $h3 = htmlUnescape ($processSlice | plainify) -}}
+            {{- $h4 = "" -}}
+            {{- $h5 = "" -}}
+            {{- $h6 = "" -}}
+        {{- else if eq $startSlice "<h4" -}}
+            {{- $h4 = htmlUnescape ($processSlice | plainify) -}}
+            {{- $h5 = "" -}}
+            {{- $h6 = "" -}}
+        {{- else if eq $startSlice "<h5" -}}
+            {{- $h5 = htmlUnescape ($processSlice | plainify) -}}
+            {{- $h6 = "" -}}
+        {{- else if eq $startSlice "<h6" -}}
+            {{- $h6 = htmlUnescape ($processSlice | plainify) -}}
+        {{- else -}}
+            {{- /*
+                 * Get all the information for this piece of text (not a heading) and label it uniquely
+                 * Store the values in iterable object - hardcoded for our Algolia requirements 
+            */ -}}
+            {{- $uniqueHit = printf "%s%04d" $pageDot.File.Path $sliceNumber -}}
+            {{- /* Upload a unique object ID for Algolia - needs to be unique per slice, otherwise records are merged */ -}}
+            {{- $scratch.SetInMap $uniqueHit "objectID" (printf "%s%04d" $pageDot.File.UniqueID $sliceNumber) -}}
+            {{- $scratch.SetInMap $uniqueHit "title" $pageDot.Title -}}
+            {{- /* Create a tag which is unique_hierarchy: file > h2 > h3 ... etc. where these exist */ -}}
+            {{- $uniqueHierarchy := $pageDot.Title -}}
+            {{- /* only add header tags that exist */ -}}
+            {{- with $h2 -}}
+                {{- $scratch.SetInMap $uniqueHit "h2" $h2 -}}
+                {{- $uniqueHierarchy = printf "%s > %s" $uniqueHierarchy $h2 -}}
+            {{- end -}}
+            {{- with $h3 -}}
+                {{- $scratch.SetInMap $uniqueHit "h3" $h3 -}}
+                {{- $uniqueHierarchy = printf "%s > %s" $uniqueHierarchy $h3 -}}
+            {{- end -}}
+            {{- with $h4 -}}
+                {{- $scratch.SetInMap $uniqueHit "h4" $h4 -}}
+                {{- $uniqueHierarchy = printf "%s > %s" $uniqueHierarchy $h4 -}}
+            {{- end -}}
+            {{- with $h5 -}}
+                {{- $scratch.SetInMap $uniqueHit "h5" $h5 -}}
+                {{- $uniqueHierarchy = printf "%s > %s" $uniqueHierarchy $h5 -}}
+            {{- end -}}
+            {{- with $h6 -}}
+                {{- $scratch.SetInMap $uniqueHit "h6" $h6 -}}
+                {{- $uniqueHierarchy = printf "%s > %s" $uniqueHierarchy $h6 -}}
+            {{- end -}}
+            {{- $scratch.SetInMap $uniqueHit "text" (htmlUnescape ($processSlice | plainify)) -}}
+            {{- $scratch.SetInMap $uniqueHit "tags" $pageDot.Params.tags -}}
+            {{- $scratch.SetInMap $uniqueHit "mendix_version" $pageDot.Params.mendixversion -}}
+            {{- $scratch.SetInMap $uniqueHit "time_stamp" $pageDot.Lastmod.UTC.Unix -}}
+            {{- $scratch.SetInMap $uniqueHit "weight.position" $sliceNumber -}}
+            {{- $scratch.SetInMap $uniqueHit "space" $pageDot.Params.space -}}
+            {{- $scratch.SetInMap $uniqueHit "type" $pageDot.Type -}}
+            {{- $scratch.SetInMap $uniqueHit "category" $pageDot.Params.category -}}
+            {{- $scratch.SetInMap $uniqueHit "menu_order" $pageDot.Weight -}}
+            {{- $scratch.SetInMap $uniqueHit "description" $pageDot.Description -}}
+            {{- /* Do we need different tags - currently assume anything not a heading is a paragraph */ -}}
+            {{- $scratch.SetInMap $uniqueHit "weight.tag_name" "p" -}}
+            {{- /* .URL takes into account any changes by using the url: tag in the front matter */ -}}
+            {{- $scratch.SetInMap $uniqueHit "url" $pageDot.URL -}}
+            {{- $scratch.SetInMap $uniqueHit "slug" $pageDot.File.TranslationBaseName -}}
+            {{- $scratch.SetInMap $uniqueHit "unique_hierarchy" $uniqueHierarchy -}}
+        {{- end -}}
+        {{- /* Need to make each hits value unique, otherwise will get strange results - Don't add null values */ -}}
+        {{- with $uniqueHit -}}
+            {{- $scratch.SetInMap "hits" $uniqueHit ($scratch.Get $uniqueHit) -}}
+        {{- end -}}
     {{- end -}}
-    {{/* Include valid page params */}}
-    {{- range $key, $param := $hit.Params -}}
-      {{- if in $validParams $key -}}
-        {{- $dot.Scratch.SetInMap $hit.File.Path $key $param -}}
-      {{- end -}}
-    {{- end -}}
-    {{- $.Scratch.SetInMap "hits" $hit.File.Path (.Scratch.Get $hit.File.Path) -}}
-{{- jsonify ($.Scratch.GetSortedMapValues "hits") -}}
+{{- end -}}
+{{- jsonify ($scratch.GetSortedMapValues "hits") -}}

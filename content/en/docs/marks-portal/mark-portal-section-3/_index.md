@@ -101,6 +101,9 @@ For example {{%/* snippet file="/static/_includes/common-section-link.md" */%}}
 Currently embedded with HTML:
 
 ```
+<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
+(best in header or footer)
+
 <img
   style="width: 100%; margin: auto; display: block;"
   class="vidyard-player-embed"
@@ -110,8 +113,8 @@ Currently embedded with HTML:
   data-type="inline"
 />
 ```
-
-Not displaying properly - do we need to add class `vidyard-player-embed` to see the video
+<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
+Works OK once script is included on page.
 
 <img
   style="width: 100%; margin: auto; display: block;"

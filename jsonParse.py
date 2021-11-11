@@ -123,24 +123,29 @@ with open(jsonToParse, "r") as read_file:
             #set dir path
             item["d"] = baseParent["u"] + item["i"] + "/"
 
+        #save items to results
         results += '%s\n' % item
 
+#for all files in dir path
 for dirpath, dirnames, allfiles in os.walk(topdir):
     for name in allfiles:
+        #if name is lowecase with extension .md
         if name.lower().endswith(exten):
-            print('File: ', os.path.join(dirpath, name))  # Print Filename
-            #find item matching name of file (without extension) in myList
-            #take item["d"] and feed that into check for dir -> if it exists great, if not, create
-            #move file
-            #if indexFile = true - rename to _index
+            #matches next item by name
             itemGrab = nextItem("i", name[:-(len(exten))], myList)
-            altPath = itemGrab["d"].replace('/', os.sep)
+            #if the name exists in myList
             if itemGrab != None:
-                print("Altpath: ", altPath)
-                print("Item: ", itemGrab)
-                print("Current dir path: ", dirpath)
-                print("Item dir: ", item["d"])
-                #os.makedirs()
+                #reverse / to \ in path
+                altPath = itemGrab["d"].replace('/', os.sep)
+                #make all levels of directories between supplied path of itemGrab and starting directory
+                os.makedirs((startDir + altPath), exist_ok=True)
+                #if file has indexFlag
+                if "indexFlag" in itemGrab:
+                    #move file and rename to _index.md
+                    os.replace(startDir + dirpath + '\\' + name, startDir + altPath + '\\' + '_index.md')
+                else:
+                    #move file
+                    os.replace(startDir + dirpath + '\\' + name, startDir + altPath + '\\' + name)
 
 # Write results to logfile
 with open(logname, 'w') as logfile:

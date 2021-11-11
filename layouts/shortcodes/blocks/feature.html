@@ -1,14 +1,14 @@
 <!-- NK - simplified shortcode for front page use, with no text turning into code -->
 {{ $icon := .Get "icon" | default "fas fa-lightbulb" }}
 {{ $icon_url := .Get "icon_url" }}
-<div class="col-lg-4 mb-5 mb-lg-0 text-justify my-column">
+<div class="col-12 col-xl-4 text-left my-column">
   <div class="mb-4 h1 card-icon text-center">
     <a href="{{ $icon_url }}"><i class="{{ $icon }}"></i></a>
   </div>
   <h4 class="h3 text-center">
       {{ .Get "title" }}
   </h4>
-  <p class="mb-0 text-justify">
+  <p class="mb-0 text-left">
     {{ .Inner }}
   </p>
 </div>

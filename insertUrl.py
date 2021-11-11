@@ -25,13 +25,15 @@ print('\nCurrent working directory: ', os.getcwd(), end='\n')
 # The top argument for walk
 topdir = '.'
 # The extension to search through
-exten = input('\nPlease specify file extension to search: ')
+#let's hardcode .md
+exten = '.md'#input('\nPlease specify file extension to search: ')
 
 logname = 'findfiletype.log'
 # What will be logged
 results = str()
 # What are we searching for
-start = input('\nPlease type in Regex to match:\n(hint: to match an entire title type in title: ".*") ')
+#let's hardcode
+start = 'title: ".*"'#input('\nPlease type in Regex to match:\n(hint: to match an entire title type in title: ".*") ')
 
 for dirpath, dirnames, allfiles in os.walk(topdir):
     for name in allfiles:
@@ -40,23 +42,18 @@ for dirpath, dirnames, allfiles in os.walk(topdir):
             os.altsep = '/'
             altPath = dirpath.replace(os.sep, os.altsep)
             # for toplevel directory
-            if dirpath == '.':
-                with fileinput.input(os.path.join(dirpath, name), inplace=True, backup='') as file:
-                    for line in file:
-                        if re.match(start,line) != None:
-                            matched = re.match(start,line)
-                            insert = matched.string + '\nurl: /' + name[:-(len(exten))] + '\n'
-                            line = re.sub(r''+start,insert,line.rstrip())
-                        print(line, end='')
-            # for any directory within toplevel
-            else:
-                with fileinput.input(os.path.join(dirpath, name), inplace=True, backup='') as file:
-                    for line in file:
-                        if re.match(start,line) != None:
-                            matched = re.match(start,line)
+            with fileinput.input(os.path.join(dirpath, name), inplace=True, backup='', encoding="utf-8") as file:
+                for line in file:
+                    if re.match(start,line) != None:
+                        matched = re.match(start,line)
+                        # for toplevel directory
+                        if dirpath == '.':
+                            insert = matched.string + 'url: /' + name[:-(len(exten))] + '\n'
+                        # anything deeper
+                        else:
                             insert = matched.string + 'url: /' + altPath[2:] + '/' + name[:-(len(exten))] + '\n'
-                            line = re.sub(r''+start,insert,line.rstrip())
-                        print(line, end='')
+                        line = re.sub(r''+start,insert,line.rstrip())
+                    print(line, end='')
 
             # Save to results string instead of printing
             results += '%s\n' % os.path.join(dirpath, name)

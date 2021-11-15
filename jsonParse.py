@@ -1,6 +1,5 @@
 import json
 import os
-import fileinput
 import copy
 
 jsonToParse = input('Please specify JSON file: ')
@@ -33,6 +32,14 @@ catList = []
 def nextItem(key, value, list_dicts):
     for item in list_dicts:
         if item[key] == value:
+            return item
+
+# returns dictionary item from a list of dictionaries
+def nextItemWithDirCheck(key, value, directory, list_dicts):
+    for item in list_dicts:
+        altPath = '.' + item["d"].replace('/', os.sep)
+        altPathClean = altPath[:-1]
+        if (item[key] == value) and (directory == altPathClean):
             return item
 
 # JSON parsing
@@ -68,10 +75,10 @@ with open(jsonToParse, "r") as read_file:
     for item in myList:
         #if item is not a parent to any page, it won't be _index, won't get a directory named after it
         if item["i"] not in parents:
-            item["d"] = "/"
+            item["newDir"] = "/"
         #if it is a parent, it will be _index and get a directory named after it
         else:
-            item["d"] = "/" + item["i"] + "/"
+            item["newDir"] = "/" + item["i"] + "/"
             item["indexFlag"] = "true"
         #checks if item has a parent
         if "p" in item:
@@ -79,10 +86,10 @@ with open(jsonToParse, "r") as read_file:
             #as long as item has a parent
             while parentChecker != None:
                 if parentChecker["i"] not in parents:
-                    item["d"] = "/" + parentChecker["p"] + item["d"]
+                    item["newDir"] = "/" + parentChecker["p"] + item["newDir"]
                 else:
                 #add parent name to dir path
-                    item["d"] = "/" + parentChecker["i"] + item["d"]
+                    item["newDir"] = "/" + parentChecker["i"] + item["newDir"]
                 #set parent
                 item["p"] = parentChecker["p"]
                 #grabs next parent, if there is one
@@ -94,7 +101,7 @@ with open(jsonToParse, "r") as read_file:
                 #set parent to child of category
                 item["p"] = childOfCategoryChecker["i"]
                 #add child category name to dir path
-                item["d"] = "/" + childOfCategoryChecker["i"] + item["d"]
+                item["newDir"] = "/" + childOfCategoryChecker["i"] + item["newDir"]
             #checks if the next parent is a category
             categoryChecker = nextItem("t", childOfCategoryChecker["c"], catList)
             #if next parent is a category
@@ -102,7 +109,7 @@ with open(jsonToParse, "r") as read_file:
                 #set parent to category
                 item["p"] = categoryChecker["i"]
                 #add base directory and category to dir path
-                item["d"] = baseParent["u"] + categoryChecker["i"] + item["d"]
+                item["newDir"] = baseParent["u"] + categoryChecker["i"] + item["newDir"]
         #checks if item has a category as parent (for items with only category parents)
         elif "c" in item:
             categoryChecker = nextItem("t", item["c"], catList)
@@ -111,32 +118,39 @@ with open(jsonToParse, "r") as read_file:
                 #set parent to category
                 item["p"] = categoryChecker["i"]
                 #add base directory and category to dir path
-                item["d"] = baseParent["u"] + categoryChecker["i"] + item["d"]
+                item["newDir"] = baseParent["u"] + categoryChecker["i"] + item["newDir"]
         #checks if item is baseParent
         elif "m" in item:
             #set dir path
-            item["d"] = baseParent["u"]
+            item["newDir"] = baseParent["u"]
             #add indexFlag
             item["indexFlag"] = "true"
         #for categories
         else:
-            #set dir path
-            item["d"] = baseParent["u"] + item["i"] + "/"
+            #set dir path for categories
+            item["newDir"] = baseParent["u"] + item["i"] + "/"
 
         #save items to results
         results += '%s\n' % item
 
+#prep baseParent directory to compare
+dirBaseParent = '.' + baseParent["u"].replace('/', os.sep)
+dirBaseParentClean = dirBaseParent[:-1]
 #for all files in dir path
 for dirpath, dirnames, allfiles in os.walk(topdir):
     for name in allfiles:
-        #if name is lowecase with extension .md
-        if name.lower().endswith(exten):
+        #if name is lowercase with extension .md & path is same as baseParent
+        #second check is used to exclude files outside of baseParent
+        if name.lower().endswith(exten) and (dirpath == dirBaseParentClean):
             #matches next item by name
-            itemGrab = nextItem("i", name[:-(len(exten))], myList)
+            #makes sure it's right item name by comparing initial directory
+            #with current directory of name file
+            #there can't be 2 files in the same initial dir with the same name
+            itemGrab = nextItemWithDirCheck("i", name[:-(len(exten))], dirpath, myList)
             #if the name exists in myList
             if itemGrab != None:
                 #reverse / to \ in path
-                altPath = itemGrab["d"].replace('/', os.sep)
+                altPath = itemGrab["newDir"].replace('/', os.sep)
                 #make all levels of directories between supplied path of itemGrab and starting directory
                 os.makedirs((startDir + altPath), exist_ok=True)
                 #if file has indexFlag

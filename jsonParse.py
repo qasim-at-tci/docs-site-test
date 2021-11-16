@@ -15,9 +15,7 @@ print('\nCurrent working directory: ', os.getcwd(), end='\n')
 topdir = '.'
 # The extension to search through
 exten = '.md'
-# What will be logged
-logname = 'json-log.log'
-catName = 'json-cat.log'
+
 results = str()
 categories = str()
 myList = []
@@ -34,7 +32,7 @@ def nextItem(key, value, list_dicts):
         if item[key] == value:
             return item
 
-# returns dictionary item from a list of dictionaries
+# returns dictionary item from a list of dictionaries & checks if directory is the same
 def nextItemWithDirCheck(key, value, directory, list_dicts):
     for item in list_dicts:
         altPath = '.' + item["d"].replace('/', os.sep)
@@ -62,9 +60,14 @@ with open(jsonToParse, "r") as read_file:
         # grabs baseparent of all entries in json
         elif "m" in item:
             baseParent = item
+        # grabs non baseParent index files - currently only category files
+        elif (item["i"] == "index") and ("m" not in item):
+            categories += '%s\n' % item["t"]
+            catList.append(item)
+            parents.append(item["t"])
         # grabs all categories and adds to catList and parents list
         else:
-            categories += '%s\n' % item["i"]
+            categories += '%s\n' % item["t"]
             catList.append(item)
             parents.append(item["i"])
 
@@ -76,7 +79,7 @@ with open(jsonToParse, "r") as read_file:
         #if item is not a parent to any page, it won't be _index, won't get a directory named after it
         if item["i"] not in parents:
             item["newDir"] = "/"
-        #if it is a parent, it will be _index and get a directory named after it
+        #if it is a parent, it will be turned into _index and get a directory named after it
         else:
             item["newDir"] = "/" + item["i"] + "/"
             item["indexFlag"] = "true"
@@ -85,11 +88,8 @@ with open(jsonToParse, "r") as read_file:
             parentChecker = nextItem("i", item["p"], childrenOfParentsCopy)
             #as long as item has a parent
             while parentChecker != None:
-                if parentChecker["i"] not in parents:
-                    item["newDir"] = "/" + parentChecker["p"] + item["newDir"]
-                else:
                 #add parent name to dir path
-                    item["newDir"] = "/" + parentChecker["i"] + item["newDir"]
+                item["newDir"] = "/" + parentChecker["i"] + item["newDir"]
                 #set parent
                 item["p"] = parentChecker["p"]
                 #grabs next parent, if there is one
@@ -106,24 +106,44 @@ with open(jsonToParse, "r") as read_file:
             categoryChecker = nextItem("t", childOfCategoryChecker["c"], catList)
             #if next parent is a category
             if categoryChecker != None:
-                #set parent to category
-                item["p"] = categoryChecker["i"]
-                #add base directory and category to dir path
-                item["newDir"] = baseParent["u"] + categoryChecker["i"] + item["newDir"]
+                #for category items that are named index
+                if categoryChecker["i"] == "index":
+                    indexCat = categoryChecker["d"][len(baseParent["u"]):]
+                    #set parent to category
+                    item["p"] = indexCat
+                    #add base directory and category to dir path
+                    item["newDir"] = baseParent["u"] + indexCat + item["newDir"]
+                else:
+                    #set parent to category
+                    item["p"] = categoryChecker["i"]
+                    #add base directory and category to dir path
+                    item["newDir"] = baseParent["u"] + categoryChecker["i"] + item["newDir"]
         #checks if item has a category as parent (for items with only category parents)
         elif "c" in item:
             categoryChecker = nextItem("t", item["c"], catList)
             #if next parent is a category
             if categoryChecker != None:
-                #set parent to category
-                item["p"] = categoryChecker["i"]
-                #add base directory and category to dir path
-                item["newDir"] = baseParent["u"] + categoryChecker["i"] + item["newDir"]
+                #for category items that are named index
+                if categoryChecker["i"] == "index":
+                    indexCat = categoryChecker["d"][len(baseParent["u"]):]
+                    #set parent to category
+                    item["p"] = indexCat
+                    #add base directory and category to dir path
+                    item["newDir"] = categoryChecker["d"]
+                else:
+                    #set parent to category
+                    item["p"] = categoryChecker["i"]
+                    #add base directory and category to dir path
+                    item["newDir"] = baseParent["u"] + categoryChecker["i"] + item["newDir"]
         #checks if item is baseParent
         elif "m" in item:
             #set dir path
             item["newDir"] = baseParent["u"]
             #add indexFlag
+            item["indexFlag"] = "true"
+        #for categories that are already index files
+        elif item["t"] in parents:
+            item["newDir"] = item["d"]
             item["indexFlag"] = "true"
         #for categories
         else:
@@ -141,7 +161,7 @@ for dirpath, dirnames, allfiles in os.walk(topdir):
     for name in allfiles:
         #if name is lowercase with extension .md & path is same as baseParent
         #second check is used to exclude files outside of baseParent
-        if name.lower().endswith(exten) and (dirpath == dirBaseParentClean):
+        if name.lower().endswith(exten) and (dirpath[:len(dirBaseParentClean)] == dirBaseParentClean):
             #matches next item by name
             #makes sure it's right item name by comparing initial directory
             #with current directory of name file
@@ -160,6 +180,10 @@ for dirpath, dirnames, allfiles in os.walk(topdir):
                 else:
                     #move file
                     os.replace(startDir + dirpath + '\\' + name, startDir + altPath + '\\' + name)
+
+# What will be logged
+logname = baseParent["u"].strip("/") + '-json-log.log'
+catName = baseParent["u"].strip("/") + '-json-cat.log'
 
 # Write results to logfile
 with open(logname, 'w') as logfile:

@@ -172,14 +172,14 @@ for dirpath, dirnames, allfiles in os.walk(topdir):
                 #reverse / to \ in path
                 altPath = itemGrab["newDir"].replace('/', os.sep)
                 #make all levels of directories between supplied path of itemGrab and starting directory
-                os.makedirs((startDir + altPath), exist_ok=True)
+                os.makedirs((startDir + 'en\\docs' + altPath), exist_ok=True)
                 #if file has indexFlag
                 if "indexFlag" in itemGrab:
                     #move file and rename to _index.md
-                    os.replace(startDir + dirpath + '\\' + name, startDir + altPath + '\\' + '_index.md')
+                    os.replace(startDir + dirpath + '\\' + name, startDir + 'en\\docs' + altPath + '_index.md')
                 else:
                     #move file
-                    os.replace(startDir + dirpath + '\\' + name, startDir + altPath + '\\' + name)
+                    os.replace(startDir + dirpath + '\\' + name, startDir + 'en\\docs' + altPath + name)
 
 # What will be logged
 logname = baseParent["u"].strip("/") + '-json-log.log'

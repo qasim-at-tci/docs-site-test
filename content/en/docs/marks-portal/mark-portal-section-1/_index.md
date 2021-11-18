@@ -6,6 +6,8 @@ linktitle: "Mark Portal 1"
 outputs:
     - HTML
     - RSS
+#    - Print
+# outputs: overrides config.toml. If '- Print' is left off then there will be no printed version produced
 #tags: ["These", "are", "Example", "Tags"]
 # weight: 10
 #notoc: true

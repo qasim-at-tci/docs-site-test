@@ -5,8 +5,12 @@ Define Global variables
 {{- $firstloop := true -}}
 {{- /* Use a local scratchpad - Page scratchpad already contains other stuff */ -}}
 {{- $scratch := newScratch -}}
-{{- /* Put list of characters we will split into $splitcharList do we want to have headings separate? */ -}}
-{{- $splitcharList := slice "<h2" "<h3" "<h4" "<h5" "<h6" "<p" -}}
+{{- /* 
+     * Put list of characters we will split into $splitcharList
+     * headers, paragraph, table header, table data, list item, alert boxes, code blocks (should ignore <code> inside a paragraph)
+     * Do we want to have headings separate? 
+*/ -}}
+{{- $splitcharList := slice `<h2` `<h3` `<h4` `<h5` `<h6` `<p` `<th` `<td` `<li` `<div class="alert` `<code ` -}}
 {{- /* Include What Pages? */ -}}
 {{- /* range $i, $hit := .Site.AllPages */ -}}
 {{- $section := $.Site.GetPage "section" .Section }}
@@ -114,7 +118,8 @@ Define Global variables
                         {{- $scratch.SetInMap $uniqueHit "h6" $h6 -}}
                         {{- $uniqueHierarchy = printf "%s > %s" $uniqueHierarchy $h6 -}}
                     {{- end -}}
-                    {{- $scratch.SetInMap $uniqueHit "text" (htmlUnescape ($processSlice | plainify)) -}}
+                    {{- $text = trim (htmlUnescape ($processSlice | plainify)) " " -}}
+                    {{- $scratch.SetInMap $uniqueHit "text" $text -}}
                     {{- $scratch.SetInMap $uniqueHit "tags" $pageDot.Params.tags -}}
                     {{- $scratch.SetInMap $uniqueHit "mendix_version" $pageDot.Params.mendixversion -}}
                     {{- $scratch.SetInMap $uniqueHit "time_stamp" $pageDot.Lastmod.UTC.Unix -}}
@@ -124,16 +129,32 @@ Define Global variables
                     {{- $scratch.SetInMap $uniqueHit "category" $pageDot.Params.category -}}
                     {{- $scratch.SetInMap $uniqueHit "menu_order" $pageDot.Weight -}}
                     {{- $scratch.SetInMap $uniqueHit "description" $pageDot.Description -}}
-                    {{- /* Do we need different tags - currently assume anything not a heading is a paragraph */ -}}
-                    {{- $scratch.SetInMap $uniqueHit "weight.tag_name" "p" -}}
+                    {{- /* Set different tags depending on whether it is paragraph, list, table, code, or alert */ -}}
+                    {{- $tagName := "p" -}}
+                    {{- with $startSlice -}}
+                        {{- if eq $startSlice "<li" -}}
+                            {{- $tagName = "li" -}}
+                        {{- else if eq $startSlice "<th" -}}
+                            {{- $tagName = "th" -}}
+                        {{- else if eq $startSlice "<td" -}}
+                            {{- $tagName = "td" -}}
+                        {{- else if eq $startSlice "<co" -}}
+                            {{- $tagName = "code" -}}
+                        {{- else if eq $startSlice "<di" -}}
+                            {{- $tagName = "alert" -}}
+                        {{- end -}}
+                    {{- end -}}
+                    {{- $scratch.SetInMap $uniqueHit "weight.tag_name" $tagName -}}
                     {{- /* .URL takes into account any changes by using the url: tag in the front matter */ -}}
                     {{- $scratch.SetInMap $uniqueHit "url" $pageDot.URL -}}
                     {{- $scratch.SetInMap $uniqueHit "slug" $pageDot.File.TranslationBaseName -}}
                     {{- $scratch.SetInMap $uniqueHit "unique_hierarchy" $uniqueHierarchy -}}
                 {{- end -}}
-                {{- /* Need to make each hits value unique, otherwise will get strange results - Don't add null values */ -}}
+                {{- /* Need to make each hits value unique, otherwise will get strange results - Don't add null values of $uniqueHit or $text */ -}}
                 {{- with $uniqueHit -}}
-                    {{- $scratch.SetInMap "hits" $uniqueHit ($scratch.Get $uniqueHit) -}}
+                    {{- with $text -}}
+                        {{- $scratch.SetInMap "hits" $uniqueHit ($scratch.Get $uniqueHit) -}}
+                    {{- end -}}
                 {{- end -}}
             {{- end -}}
         {{- end -}}

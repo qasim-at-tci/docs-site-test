@@ -101,21 +101,20 @@ time_format_blog = "02.01.2006"
 section = ["HTML", "print"]
 # MvM - add line below to print every page
 page = ["HTML", "print"]
-# NK - add line below to output Algolia at root of /public
-home = ["Algolia"]
+# MvM - add line below to output MxDocsAlgolia at root of /public
+home = ["MxDocsAlgolia"]
 
 # MvM - add line below to activate production of RSS pages
 [outputFormats]
     [outputFormats.RSS]
         mediatype = "application/rss"
         baseName = "rss"
-	# NK - Algolia outputFormats parameters
-	[outputFormats.Algolia]
-		baseName = "algolia" # specifies how to look for Hugo layout for this output format
+	# MvM - MxDocsAlgolia outputFormats parameters - attempt to generate better Algolia
+	[outputFormats.MxDocsAlgolia]
+		baseName = "mxdocsalgolia" # specifies how to look for Hugo layout for this output format
 		isPlainText = true # specifies GoLang’s plain text parser for the layout, preventing automatic HTML formatting in JSON
 		mediaType = "application/json" # file output type
 		notAlternative = true # excludes from looping over .AlternativeOutputFormats page variable
-
 
 [params]
 copyright = "The Docsy Authors"
@@ -225,8 +224,3 @@ enable = false
 	url = "https://example.org/mail"
 	icon = "fa fa-envelope"
         desc = "Discuss development issues around the project"
-
-# NK - Algolia parameters to parse
-[params.algolia]
-	vars = ["title", "summary", "content", "rawcontent", "date", "publishdate", "expirydate", "permalink"] # page parameters to include in index
-	params = ["categories", "tags"] # custom page parameters to include in index

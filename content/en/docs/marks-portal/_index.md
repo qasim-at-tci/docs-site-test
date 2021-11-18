@@ -10,7 +10,7 @@ cascade:
 #notoc: true
 #layout: wide
 #draft: true
-#toc-level: "3"as
+#toc-level: "3"
 #sitemap: false (remove from Google sitemap)
 #disable_sitemap: true (also remove from Google bot)
 #nosearch: true (remove from Algolia)

@@ -30,6 +30,8 @@ before_install:
   - python --version
   - pyenv global 3.6.7
   - python --version
+  - sudo apt install git-restore-mtime
+  - git restore-mtime --test
 
 install:
   - hugo # which flags do we need?

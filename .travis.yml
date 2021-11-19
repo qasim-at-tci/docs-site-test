@@ -28,6 +28,8 @@ before_install:
   - npm install # use npm rather than yarn - HUGO doesn't have that many dependencies
   - pyenv versions
   - python --version
+  - pyenv global 3.6.7
+  - python --version
 
 install:
   - hugo # which flags do we need?

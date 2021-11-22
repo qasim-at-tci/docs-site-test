@@ -1,11 +1,13 @@
 import json
 import os
 import copy
+import fileinput
+import re
 
-jsonToParse = input('Please specify JSON file: ')
+jsonToParse = input('Specify JSON file (cleaned up to be a list of dicts): ')
 
 # grab working directory
-startDir = input('Please specify directory: ')
+startDir = input('Specify local content directory: ')
 # change current working directory
 os.chdir(startDir)
 # print new working directory
@@ -39,6 +41,35 @@ def nextItemWithDirCheck(key, value, directory, list_dicts):
         altPathClean = altPath[:-1]
         if (item[key] == value) and (directory == altPathClean):
             return item
+
+# moves attachment files to new locations and changes references to them in files
+def attachmentChangeMove(oldPath, dirpath, newDirAtt, name):
+
+    attNameSearch = '\(.*?attachments/[-/\w]*/([-\w]*[?.]\w*)?\)' #need to grab img name from start match
+    newAttDir = startDir.replace('content\\', '') + 'static\\attachments' + newDirAtt.replace('/', os.sep)
+    with fileinput.input(os.path.join(dirpath, name), inplace=True, backup='', encoding="utf-8") as file:
+        for line in file:
+            oldAttDir = ''
+            if re.search(attNameSearch,line) != None:
+                matched = re.search(attNameSearch,line)
+                lastIndex = matched.end()
+                oldAttDir = matched.group().strip('()')
+                attName = matched.group(1)
+                os.makedirs((newAttDir+name[:-(len(exten))]), exist_ok=True)
+                fileInOldDir = os.path.exists(oldPath + '\\' + oldAttDir.replace('/', os.sep))
+                if oldAttDir.find('attachments') > 1:
+                    insert = matched.group()
+                elif name == "_index.md":
+                    insert = '(/attachments' + newDirAtt + '/' + attName + ')' + line[lastIndex:]
+                    if fileInOldDir is True:
+                        os.replace(oldPath + '\\' + oldAttDir.replace('/', os.sep), newAttDir + attName)
+                else:
+                    insert = '(/attachments' + newDirAtt + name[:-(len(exten))] + '/' + attName + ')' + line[lastIndex:]
+                    if fileInOldDir is True:
+                        os.replace(oldPath + '\\' + oldAttDir.replace('/', os.sep), newAttDir + name[:-(len(exten))] + '\\' + attName)
+                line = re.sub(r''+attNameSearch,insert,line.rstrip())
+            print(line, end='')
+
 
 # JSON parsing
 print("Started Reading JSON file")
@@ -171,19 +202,27 @@ for dirpath, dirnames, allfiles in os.walk(topdir):
             if itemGrab != None:
                 #reverse / to \ in path
                 altPath = itemGrab["newDir"].replace('/', os.sep)
+                newDir = startDir + 'en\\docs' + altPath
                 #make all levels of directories between supplied path of itemGrab and starting directory
-                os.makedirs((startDir + 'en\\docs' + altPath), exist_ok=True)
+                os.makedirs(newDir, exist_ok=True)
                 #if file has indexFlag
                 if "indexFlag" in itemGrab:
                     #move file and rename to _index.md
-                    os.replace(startDir + dirpath + '\\' + name, startDir + 'en\\docs' + altPath + '_index.md')
+                    os.replace(startDir + dirpath + '\\' + name, newDir + '_index.md')
+                    attachmentChangeMove((startDir + dirpath), newDir, itemGrab["newDir"], '_index.md')
                 else:
                     #move file
-                    os.replace(startDir + dirpath + '\\' + name, startDir + 'en\\docs' + altPath + name)
+                    os.replace(startDir + dirpath + '\\' + name, newDir + name)
+                    attachmentChangeMove((startDir + dirpath), newDir, itemGrab["newDir"], name)
 
 # What will be logged
 logname = baseParent["u"].strip("/") + '-json-log.log'
 catName = baseParent["u"].strip("/") + '-json-cat.log'
+
+
+
+
+
 
 # Write results to logfile
 with open(logname, 'w') as logfile:

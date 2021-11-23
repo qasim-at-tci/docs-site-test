@@ -26,9 +26,14 @@ branches:
 
 before_install:
   - npm install # use npm rather than yarn - HUGO doesn't have that many dependencies
+  - pyenv versions # list python versions supported by pyenv in case version in next command is removed
+  - pyenv global 3.6.7 # this version needs to be already installed in the travis build
+  - python --version # confirm which version of python we are using
+  - pip install --upgrade 'algoliasearch>=2.0,<3.0' # install Algolia Python API Client version 2
 
 install:
   - hugo # which flags do we need?
+  - python _scripts/pushmxdocsalgolia.py # eventually this should go in the deploy section!
 
 before_script:
 

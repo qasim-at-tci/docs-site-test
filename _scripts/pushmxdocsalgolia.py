@@ -18,7 +18,7 @@ mxDocsAlgoliaFileName = "public/mxdocsalgolia.json" # the algolia index generate
 algoliaApplicationID = os.environ['ALGOLIA_APPLICATION_ID']
 algoliaAdminAPIKey = os.environ['ALGOLIA_ADMIN_API_KEY']
 algoliaIndexName = os.environ['ALGOLIA_INDEX_NAME']
-pushIfBranch = "development" # push to Algolia if we are merging to this branch
+pushIfBranch = "master" # push to Algolia if we are merging to this branch
 targetBranch = os.environ['TRAVIS_BRANCH'] # which branch are we merging to
 
 if targetBranch == pushIfBranch: # Only process if this is the correct branch (e.g. master)

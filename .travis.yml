@@ -84,6 +84,7 @@ deploy:
 after_deploy:
 # Upload to Algolia here if this is the master branch
   script:
+    - python --version
     - python _scripts/pushmxdocsalgolia.py 
   on:
     branch:

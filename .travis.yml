@@ -26,14 +26,9 @@ branches:
 
 before_install:
   - npm install # use npm rather than yarn - HUGO doesn't have that many dependencies
-  - pyenv versions # list python versions supported by pyenv in case version in next command is removed
-  - pyenv global 3.6.7 # this version needs to be already installed in the travis build
-  - python --version # confirm which version of python we are using
-  - pip install --upgrade 'algoliasearch>=2.0,<3.0' # install Algolia Python API Client version 2
 
 install:
   - hugo # which flags do we need?
-  - python _scripts/pushmxdocsalgolia.py # eventually this should go in the deploy section!
 
 before_script:
 
@@ -66,9 +61,13 @@ before_deploy:
 #  - curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip" # arm version
   - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" # amd version
   - unzip -q awscliv2.zip
-  - sudo ./aws/install
+  - sudo ./aws/install # install AWS command line
   - aws --version
   - chmod +x $TRAVIS_BUILD_DIR/_scripts/deploy.sh
+  - pyenv versions # list python versions supported by pyenv in case version in next command is removed
+  - pyenv global 3.6.7 # this version needs to be already installed in the travis build
+  - python --version # confirm which version of python we are using
+  - pip install --upgrade 'algoliasearch>=2.0,<3.0' # install Algolia Python API Client version 2
 
 deploy:
 # Need to decide where to deploy to, so need to do the actual deployment in a script https://docs.travis-ci.com/user/job-lifecycle#complex-build-commands
@@ -83,10 +82,11 @@ deploy:
         - development
 
 after_deploy:
-# Need to upload to Algolia here
-#  on:
-#    branch:
-#      - master #only do Algolia on the master build
+# Upload to Algolia here if this is the master branch
+  - python _scripts/pushmxdocsalgolia.py 
+  on:
+    branch:
+      - master #only do Algolia on the master build
 
 after_script:
 

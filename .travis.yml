@@ -83,7 +83,7 @@ deploy:
 
 after_deploy:
 # Upload to Algolia here if this is the master branch
-  - python _scripts/pushmxdocsalgolia.py 
+#  - python _scripts/pushmxdocsalgolia.py 
   on:
     branch:
       - master #only do Algolia on the master build

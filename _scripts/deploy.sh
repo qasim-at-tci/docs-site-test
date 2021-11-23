@@ -41,7 +41,7 @@ aws --version
 #
 start=$SECONDS
 echo "Starting sync to AWS"
-aws s3 sync . s3://$TARGETAWSBUCKET --delete
+aws s3 sync . s3://$TARGETAWSBUCKET --delete --only-show-errors
 echo "Upload to AWS took $((SECONDS - start)) seconds"
 
 exit 0

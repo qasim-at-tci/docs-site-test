@@ -82,13 +82,6 @@ deploy:
         - development
 
 after_deploy:
-# Upload to Algolia here if this is the master branch
-  script:
-    - python --version
-    - python _scripts/pushmxdocsalgolia.py 
-  on:
-    branch:
-      - master #only do Algolia on the master build
+# Cannot get python push to Travis to work here. Added it to deploy.sh.
 
 after_script:
-

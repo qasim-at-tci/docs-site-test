@@ -49,4 +49,11 @@ echo "Upload to AWS took $((SECONDS - start)) seconds"
 cd $TRAVIS_BUILD_DIR
 pwd
 
+if ([ "${TRAVIS_BRANCH}" == "master" ])
+then
+  python --version
+  python _scripts/pushmxdocsalgolia.py
+fi
+
+
 exit 0

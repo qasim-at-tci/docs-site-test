@@ -27,6 +27,8 @@ childrenOfParents = []
 childrenOfParentsCopy = []
 parents = []
 catList = []
+attLeftover = []
+attList = []
 
 # returns dictionary item from a list of dictionaries
 def nextItem(key, value, list_dicts):
@@ -45,7 +47,7 @@ def nextItemWithDirCheck(key, value, directory, list_dicts):
 # moves attachment files to new locations and changes references to them in files
 def attachmentChangeMove(oldPath, dirpath, newDirAtt, name):
 
-    attNameSearch = '\(.*?attachments/[-/\w]*/([-\w]*[?.]\w*)?\)' #need to grab img name from start match
+    attNameSearch = '\(.*?attachments/([-/\w]*?)([-\w]*[?.]\w*)?\)' #need to grab img name from start match
     newAttDir = startDir.replace('content\\', '') + 'static\\attachments' + newDirAtt.replace('/', os.sep)
     with fileinput.input(os.path.join(dirpath, name), inplace=True, backup='', encoding="utf-8") as file:
         for line in file:
@@ -54,22 +56,27 @@ def attachmentChangeMove(oldPath, dirpath, newDirAtt, name):
                 matched = re.search(attNameSearch,line)
                 lastIndex = matched.end()
                 oldAttDir = matched.group().strip('()')
-                attName = matched.group(1)
-                os.makedirs((newAttDir+name[:-(len(exten))]), exist_ok=True)
+                attName = matched.group(2)
+                #os.makedirs((newAttDir+name[:-(len(exten))]), exist_ok=True)
+                #check to make sure there still is a file in path, otherwise os.replace errors
                 fileInOldDir = os.path.exists(oldPath + '\\' + oldAttDir.replace('/', os.sep))
                 if oldAttDir.find('attachments') > 1:
                     insert = matched.group()
+                    attLeftover.append({"file": name, "path": dirpath, "line No.": fileinput.filelineno(), "match": insert})
                 elif name == "_index.md":
-                    insert = '(/attachments' + newDirAtt + '/' + attName + ')' + line[lastIndex:]
+                    insert = '(/attachments' + newDirAtt + attName + ')' + line[lastIndex:]
+                    os.makedirs(newAttDir, exist_ok=True)
                     if fileInOldDir is True:
                         os.replace(oldPath + '\\' + oldAttDir.replace('/', os.sep), newAttDir + attName)
+                        attList.append((newAttDir + attName).replace(os.sep, '/'))
                 else:
                     insert = '(/attachments' + newDirAtt + name[:-(len(exten))] + '/' + attName + ')' + line[lastIndex:]
+                    os.makedirs((newAttDir+name[:-(len(exten))]), exist_ok=True)
                     if fileInOldDir is True:
                         os.replace(oldPath + '\\' + oldAttDir.replace('/', os.sep), newAttDir + name[:-(len(exten))] + '\\' + attName)
+                        attList.append((newAttDir + name[:-(len(exten))] + '\\' + attName).replace(os.sep, '/'))
                 line = re.sub(r''+attNameSearch,insert,line.rstrip())
             print(line, end='')
-
 
 # JSON parsing
 print("Started Reading JSON file")
@@ -187,6 +194,7 @@ with open(jsonToParse, "r") as read_file:
 #prep baseParent directory to compare
 dirBaseParent = '.' + baseParent["u"].replace('/', os.sep)
 dirBaseParentClean = dirBaseParent[:-1]
+
 #for all files in dir path
 for dirpath, dirnames, allfiles in os.walk(topdir):
     for name in allfiles:
@@ -214,15 +222,27 @@ for dirpath, dirnames, allfiles in os.walk(topdir):
                     #move file
                     os.replace(startDir + dirpath + '\\' + name, newDir + name)
                     attachmentChangeMove((startDir + dirpath), newDir, itemGrab["newDir"], name)
+        #for moving of any txt files, like MAPPING
+        if name.lower().endswith('.txt') and (dirpath[:len(dirBaseParentClean)] == dirBaseParentClean):
+            os.replace(startDir + dirpath + '\\' + name, newDir + name)
+
+for entry in attLeftover:
+    with fileinput.input(os.path.join(entry["path"], entry["file"]), inplace=True, backup='', encoding="utf-8") as file:
+        for line in file:
+            if entry["line No."] == fileinput.filelineno():
+                attNameSearch = '\((.*?)/attachments/([-/\w]*/([-\w]*[?.]\w*))?\)'
+                matched = re.search(attNameSearch,line)
+                lastIndex = matched.end()
+                for attItem in attList:
+                    if attItem.endswith(matched.group(2)):
+                        newRef = attItem.split('/attachments/', maxsplit=1)
+                        insert = '(/attachments/' + newRef[1] + ')' + line[lastIndex:]
+                line = re.sub(r''+attNameSearch,insert,line.rstrip())
+            print(line, end='')
 
 # What will be logged
 logname = baseParent["u"].strip("/") + '-json-log.log'
 catName = baseParent["u"].strip("/") + '-json-cat.log'
-
-
-
-
-
 
 # Write results to logfile
 with open(logname, 'w') as logfile:

@@ -29,6 +29,7 @@ parents = []
 catList = []
 attLeftover = []
 attList = []
+attItems = str()
 
 # returns dictionary item from a list of dictionaries
 def nextItem(key, value, list_dicts):
@@ -45,32 +46,40 @@ def nextItemWithDirCheck(key, value, directory, list_dicts):
             return item
 
 # moves attachment files to new locations and changes references to them in files
+#only works for clean references, nothing above dir where the md file is
 def attachmentChangeMove(oldPath, dirpath, newDirAtt, name):
-
-    attNameSearch = '\(.*?attachments/([-/\w]*?)([-\w]*[?.]\w*)?\)' #need to grab img name from start match
+    #pattern to search against, does not capture + or extra . in names, still can get a false positive with 
+    #multiple '![something](something)' in a single line
+    attNameSearch = '(?<=\])\(.*?attachments/([-/\w]*?)([-\w=]*[?.]\w*)?\)'
+    #define new dir for attachment
     newAttDir = startDir.replace('content\\', '') + 'static\\attachments' + newDirAtt.replace('/', os.sep)
+    #go through .md file line by line
     with fileinput.input(os.path.join(dirpath, name), inplace=True, backup='', encoding="utf-8") as file:
         for line in file:
             oldAttDir = ''
+            #if there's a match to the pattern
             if re.search(attNameSearch,line) != None:
                 matched = re.search(attNameSearch,line)
                 lastIndex = matched.end()
+                #should give back the old attachment path reference
                 oldAttDir = matched.group().strip('()')
+                #gives back the name of the attachment
                 attName = matched.group(2)
-                #os.makedirs((newAttDir+name[:-(len(exten))]), exist_ok=True)
                 #check to make sure there still is a file in path, otherwise os.replace errors
                 fileInOldDir = os.path.exists(oldPath + '\\' + oldAttDir.replace('/', os.sep))
-                if oldAttDir.find('attachments') > 1:
+                #excludes any results with more than './' preceding 'attachments'
+                if oldAttDir.find('attachments') > 2:
                     insert = matched.group()
+                    #saves the excluded to a list to run through later
                     attLeftover.append({"file": name, "path": dirpath, "line No.": fileinput.filelineno(), "match": insert})
                 elif name == "_index.md":
-                    insert = '(/attachments' + newDirAtt + attName + ')' + line[lastIndex:]
+                    insert = ('(/attachments' + newDirAtt + attName + ')' + line[lastIndex:]).replace('//', '/')
                     os.makedirs(newAttDir, exist_ok=True)
                     if fileInOldDir is True:
                         os.replace(oldPath + '\\' + oldAttDir.replace('/', os.sep), newAttDir + attName)
                         attList.append((newAttDir + attName).replace(os.sep, '/'))
                 else:
-                    insert = '(/attachments' + newDirAtt + name[:-(len(exten))] + '/' + attName + ')' + line[lastIndex:]
+                    insert = ('(/attachments' + newDirAtt + name[:-(len(exten))] + '/' + attName + ')' + line[lastIndex:]).replace('//', '/')
                     os.makedirs((newAttDir+name[:-(len(exten))]), exist_ok=True)
                     if fileInOldDir is True:
                         os.replace(oldPath + '\\' + oldAttDir.replace('/', os.sep), newAttDir + name[:-(len(exten))] + '\\' + attName)
@@ -226,26 +235,35 @@ for dirpath, dirnames, allfiles in os.walk(topdir):
         if name.lower().endswith('.txt') and (dirpath[:len(dirBaseParentClean)] == dirBaseParentClean):
             os.replace(startDir + dirpath + '\\' + name, newDir + name)
 
+#last run throuh for attachments, to go through leftover list, for attachments outside of .md directory
 for entry in attLeftover:
     with fileinput.input(os.path.join(entry["path"], entry["file"]), inplace=True, backup='', encoding="utf-8") as file:
         for line in file:
             if entry["line No."] == fileinput.filelineno():
-                attNameSearch = '\((.*?)/attachments/([-/\w]*/([-\w]*[?.]\w*))?\)'
+                attNameSearch = '(?<=\])\((.*?)/attachments/([-/\w]*/([-\w=]*[?.]\w*))?\)'
                 matched = re.search(attNameSearch,line)
-                lastIndex = matched.end()
-                for attItem in attList:
-                    if attItem.endswith(matched.group(2)):
-                        newRef = attItem.split('/attachments/', maxsplit=1)
-                        insert = '(/attachments/' + newRef[1] + ')' + line[lastIndex:]
-                line = re.sub(r''+attNameSearch,insert,line.rstrip())
+                #if there's a match on the specified line continue to change reference
+                if matched != None:
+                    lastIndex = matched.end()
+                    for attItem in attList:
+                        if attItem.endswith(matched.group(2)):
+                            newRef = attItem.split('attachments/', maxsplit=1)
+                            insert = ('(/attachments/' + newRef[1] + ')' + line[lastIndex:]).replace('//', '/')
+                            line = re.sub(r''+attNameSearch,insert,line.rstrip())
+                #otherwise add to json-att.log list
+                else:
+                    attItems += '%s\n' % entry
             print(line, end='')
 
 # What will be logged
 logname = baseParent["u"].strip("/") + '-json-log.log'
 catName = baseParent["u"].strip("/") + '-json-cat.log'
+attName = baseParent["u"].strip("/") + '-json-att.log'
 
 # Write results to logfile
 with open(logname, 'w') as logfile:
     logfile.write(results)
-with open(catName, 'w') as catfile:
-    catfile.write(categories)
+#with open(catName, 'w') as catfile:
+    #catfile.write(categories)
+with open(attName, 'w') as attfile:
+    attfile.write(attItems)

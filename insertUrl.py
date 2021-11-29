@@ -16,7 +16,7 @@ import re    # Using re.sub()
 import fileinput
 
 # grab working directory
-startDir = input('Please specify directory: ')
+startDir = input('Specify local content directory: ')
 # change current working directory
 os.chdir(startDir)
 # print new working directory
@@ -48,10 +48,16 @@ for dirpath, dirnames, allfiles in os.walk(topdir):
                         matched = re.match(start,line)
                         # for toplevel directory
                         if dirpath == '.':
-                            insert = matched.string + 'url: /' + name[:-(len(exten))] + '\n'
+                            if name == 'index.md':
+                                insert = matched.string + 'url: /' + '\n'
+                            else:
+                                insert = matched.string + 'url: /' + name[:-(len(exten))] + '\n'
                         # anything deeper
                         else:
-                            insert = matched.string + 'url: /' + altPath[2:] + '/' + name[:-(len(exten))] + '\n'
+                            if name == 'index.md':
+                                insert = matched.string + 'url: /' + altPath[2:] + '\n'
+                            else:
+                                insert = matched.string + 'url: /' + altPath[2:] + '/' + name[:-(len(exten))] + '\n'
                         line = re.sub(r''+start,insert,line.rstrip())
                     print(line, end='')
 

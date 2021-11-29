@@ -233,7 +233,7 @@ for dirpath, dirnames, allfiles in os.walk(topdir):
                     attachmentChangeMove((startDir + dirpath), newDir, itemGrab["newDir"], name)
         #for moving of any txt files, like MAPPING
         if name.lower().endswith('.txt') and (dirpath[:len(dirBaseParentClean)] == dirBaseParentClean):
-            os.replace(startDir + dirpath + '\\' + name, newDir + name)
+            os.replace(startDir + dirpath + '\\' + name, startDir + 'en\\docs' + dirpath + '\\' + name)
 
 #last run throuh for attachments, to go through leftover list, for attachments outside of .md directory
 for entry in attLeftover:

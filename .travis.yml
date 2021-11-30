@@ -11,7 +11,7 @@ addons:
       channel: extended # needs extended to compile SCSS etc.
 
 git:
-  depth: 20000 # We're cloning a max of xxx commits, so the author date is correct
+  depth: false # clone all commits, so the author date is correct
 
 env: # Do we need any environment variables?
 
@@ -28,12 +28,12 @@ before_install:
   - npm install # use npm rather than yarn - HUGO doesn't have that many dependencies
   - pyenv versions
   - python --version
-  - pyenv global 3.7.1
+  - pyenv global 3.6.7
   - python --version
   - sudo apt-get -y install git-restore-mtime
   - cd $TRAVIS_BUILD_DIR
   - pwd
-  - ls
+  - ls -a
   - git restore-mtime --help
   - git restore-mtime --test --verbose
 

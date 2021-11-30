@@ -26,6 +26,12 @@ branches:
 
 before_install:
   - npm install # use npm rather than yarn - HUGO doesn't have that many dependencies
+  - pyenv versions # list python versions supported by pyenv in case version in next command is removed
+  - pyenv global 3.6.7 # this version needs to be already installed in the travis build
+  - python --version # confirm which version of python we are using
+  - pwd
+  - ls -a
+  - python _scripts/git-restore-mtime-mvm.py --verbose
 
 install:
   - hugo # which flags do we need?

@@ -2,7 +2,7 @@
 #
 # git-restore-mtime - Change mtime of files based on commit date of last change
 # Copied from https://github.com/MestreLion/git-tools and renamed as git-restore-mtime-mvm
-# as the packaged version failed and couldn't identify the issue.
+# as the packaged version failed and couldn't identify the issue. 
 #
 #    Copyright (C) 2012 Rodrigo Silva (MestreLion) <linux@rodrigosilva.com>
 #

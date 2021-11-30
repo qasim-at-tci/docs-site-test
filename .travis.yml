@@ -32,7 +32,10 @@ before_install:
   - python --version
   - sudo apt-get -y install git-restore-mtime
   - cd $TRAVIS_BUILD_DIR
+  - pwd
+  - ls
   - git restore-mtime --help
+  - git restore-mtime --test --verbose
 
 install:
   - hugo # which flags do we need?

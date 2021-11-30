@@ -31,7 +31,7 @@ before_install:
   - python --version # confirm which version of python we are using
   - pwd
   - ls -a
-  - python _scripts/git-restore-mtime-mvm.py --verbose
+  - python _scripts/git-restore-mtime-mvm.py --verbose --force
 
 install:
   - hugo # which flags do we need?

@@ -176,7 +176,7 @@ with open(jsonToParse, "r") as read_file:
                     #set parent to category
                     item["p"] = indexCat
                     #add base directory and category to dir path
-                    item["newDir"] = categoryChecker["d"]
+                    item["newDir"] = categoryChecker["d"] + item["newDir"]
                 else:
                     #set parent to category
                     item["p"] = categoryChecker["i"]

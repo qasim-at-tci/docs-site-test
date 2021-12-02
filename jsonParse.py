@@ -7,7 +7,7 @@ import re
 jsonToParse = input('Specify JSON file (cleaned up to be a list of dicts): ')
 
 # grab working directory
-startDir = input('Specify local content directory: ')
+startDir = input('Specify FULL PATH to local content directory: ')
 # change current working directory
 os.chdir(startDir)
 # print new working directory
@@ -225,7 +225,7 @@ for dirpath, dirnames, allfiles in os.walk(topdir):
                 #if file has indexFlag
                 if "indexFlag" in itemGrab:
                     #move file and rename to _index.md
-                    os.replace(startDir + dirpath + '\\' + name, newDir + '_index.md')
+                    os.replace(startDir + dirpath + '\\' + name, newDir + '\\_index.md')
                     attachmentChangeMove((startDir + dirpath), newDir, itemGrab["newDir"], '_index.md')
                 else:
                     #move file

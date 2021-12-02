@@ -28,9 +28,9 @@ topdir = '.'
 #let's hardcode .md
 exten = '.md'#input('\nPlease specify file extension to search: ')
 
-logname = 'findfiletype.log'
+#logname = 'findfiletype.log'
 # What will be logged
-results = str()
+#results = str()
 # What are we searching for
 #let's hardcode
 start = 'title: ".*"'#input('\nPlease type in Regex to match:\n(hint: to match an entire title type in title: ".*") ')
@@ -62,11 +62,11 @@ for dirpath, dirnames, allfiles in os.walk(topdir):
                     print(line, end='')
 
             # Save to results string instead of printing
-            results += '%s\n' % os.path.join(dirpath, name)
+            #results += '%s\n' % os.path.join(dirpath, name)
  
 # Write results to logfile
-with open(logname, 'w') as logfile:
-    logfile.write(results)
+# with open(logname, 'w') as logfile:
+#     logfile.write(results)
 
 
 

@@ -16,7 +16,7 @@ import re    # Using re.sub()
 import fileinput
 
 # grab working directory
-startDir = input('Specify local content directory: ')
+startDir = input('Specify FULL PATH to local content directory: ')
 # change current working directory
 os.chdir(startDir)
 # print new working directory

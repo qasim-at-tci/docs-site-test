@@ -48,18 +48,27 @@ def nextItemWithDirCheck(key, value, directory, list_dicts):
 # moves attachment files to new locations and changes references to them in files
 #only works for clean references, nothing above dir where the md file is
 def attachmentChangeMove(oldPath, dirpath, newDirAtt, name):
+    #pattern to find any 'attachment' between () in a line, will capture the last ) in line
+    fullAttachmentRefSearch = '(?<=\])\(.*?attachments/(.*)?\)'
     #pattern to search against, does not capture + or extra . in names, still can get a false positive with 
     #multiple '![something](something)' in a single line
-    attNameSearch = '(?<=\])\(.*?attachments/([-/\w]*?)([-\w=]*[?.]\w*)?\)'
+    attNameSearch = '(?<=\])\(.*?attachments/([-/\w]*?)([-\w= ]*[?.]\w*)?\)'
+    logName = str()
     #define new dir for attachment
     newAttDir = startDir.replace('content\\', '') + 'static\\attachments' + newDirAtt.replace('/', os.sep)
     #go through .md file line by line
     with fileinput.input(os.path.join(dirpath, name), inplace=True, backup='', encoding="utf-8") as file:
         for line in file:
             oldAttDir = ''
-            #if there's a match to the pattern
-            if re.search(attNameSearch,line) != None:
-                matched = re.search(attNameSearch,line)
+            fullSearch = re.search(fullAttachmentRefSearch,line)
+            strictSearch = re.search(attNameSearch,line)
+            if fullSearch != None and strictSearch == None:
+                entry = {"file": name, "path": dirpath, "line No.": fileinput.filelineno(), "match": fullSearch.group()}
+                logName += 'FS %s\n' % entry
+            #if there's a match to the strict pattern
+            if strictSearch != None:
+                matched = strictSearch
+                entry = {"file": name, "path": dirpath, "line No.": fileinput.filelineno(), "match": matched.group()}
                 lastIndex = matched.end()
                 #should give back the old attachment path reference
                 oldAttDir = matched.group().strip('()')
@@ -71,21 +80,24 @@ def attachmentChangeMove(oldPath, dirpath, newDirAtt, name):
                 if oldAttDir.find('attachments') > 2:
                     insert = matched.group()
                     #saves the excluded to a list to run through later
-                    attLeftover.append({"file": name, "path": dirpath, "line No.": fileinput.filelineno(), "match": insert})
+                    attLeftover.append(entry)
                 elif name == "_index.md":
                     insert = ('(/attachments' + newDirAtt + attName + ')' + line[lastIndex:]).replace('//', '/')
                     os.makedirs(newAttDir, exist_ok=True)
                     if fileInOldDir is True:
                         os.replace(oldPath + '\\' + oldAttDir.replace('/', os.sep), newAttDir + attName)
                         attList.append((newAttDir + attName).replace(os.sep, '/'))
+                        logName += 'OK %s\n' % entry
                 else:
                     insert = ('(/attachments' + newDirAtt + name[:-(len(exten))] + '/' + attName + ')' + line[lastIndex:]).replace('//', '/')
                     os.makedirs((newAttDir+name[:-(len(exten))]), exist_ok=True)
                     if fileInOldDir is True:
                         os.replace(oldPath + '\\' + oldAttDir.replace('/', os.sep), newAttDir + name[:-(len(exten))] + '\\' + attName)
                         attList.append((newAttDir + name[:-(len(exten))] + '\\' + attName).replace(os.sep, '/'))
+                        logName += 'OK %s\n' % entry
                 line = re.sub(r''+attNameSearch,insert,line.rstrip())
             print(line, end='')
+    return logName
 
 # JSON parsing
 print("Started Reading JSON file")
@@ -108,7 +120,7 @@ with open(jsonToParse, "r") as read_file:
         elif "m" in item:
             baseParent = item
         # grabs non baseParent index files - currently only category files
-        elif (item["i"] == "index") and ("m" not in item):
+        elif item["i"] == "index":
             categories += '%s\n' % item["t"]
             catList.append(item)
             parents.append(item["t"])
@@ -118,8 +130,8 @@ with open(jsonToParse, "r") as read_file:
             catList.append(item)
             parents.append(item["i"])
 
-        #hardcopy of childrenOfParents list, original gets changed with every item update
-        childrenOfParentsCopy = copy.deepcopy(childrenOfParents)
+    #hardcopy of childrenOfParents list, original gets changed with every item update
+    childrenOfParentsCopy = copy.deepcopy(childrenOfParents)
 
     #loop again to sort directory of each item
     for item in myList:
@@ -215,6 +227,7 @@ for dirpath, dirnames, allfiles in os.walk(topdir):
             #with current directory of name file
             #there can't be 2 files in the same initial dir with the same name
             itemGrab = nextItemWithDirCheck("i", name[:-(len(exten))], dirpath, myList)
+            att = ''
             #if the name exists in myList
             if itemGrab != None:
                 #reverse / to \ in path
@@ -226,14 +239,20 @@ for dirpath, dirnames, allfiles in os.walk(topdir):
                 if "indexFlag" in itemGrab:
                     #move file and rename to _index.md
                     os.replace(startDir + dirpath + '\\' + name, newDir + '\\_index.md')
-                    attachmentChangeMove((startDir + dirpath), newDir, itemGrab["newDir"], '_index.md')
+                    att = attachmentChangeMove((startDir + dirpath), newDir, itemGrab["newDir"], '_index.md')
                 else:
                     #move file
                     os.replace(startDir + dirpath + '\\' + name, newDir + name)
-                    attachmentChangeMove((startDir + dirpath), newDir, itemGrab["newDir"], name)
+                    att = attachmentChangeMove((startDir + dirpath), newDir, itemGrab["newDir"], name)
+                attItems += att
         #for moving of any txt files, like MAPPING
-        if name.lower().endswith('.txt') and (dirpath[:len(dirBaseParentClean)] == dirBaseParentClean):
+        elif (name == "_MAPPING.txt") and (dirpath[:len(dirBaseParentClean)] == dirBaseParentClean):
+            os.makedirs(startDir + 'en\\docs' + dirpath, exist_ok=True)
             os.replace(startDir + dirpath + '\\' + name, startDir + 'en\\docs' + dirpath + '\\' + name)
+        #moves any '.pptx','.xls','.xlsm','.xlsx','.jar' or '.json' attachment to static\attachments
+        elif (name.lower().endswith(('.pptx','.xls','.xlsm','.xlsx','.jar','.json')) and (dirpath[:len(dirBaseParentClean)] == dirBaseParentClean)):
+            os.makedirs(startDir.replace('content\\', '') + 'static\\attachments' + dirpath.replace('attachments', ''), exist_ok=True)
+            os.replace(startDir + dirpath + '\\' + name, startDir.replace('content\\', '') + 'static\\attachments' + dirpath.replace('attachments', '') + '\\' + name)
 
 #last run throuh for attachments, to go through leftover list, for attachments outside of .md directory
 for entry in attLeftover:
@@ -250,9 +269,10 @@ for entry in attLeftover:
                             newRef = attItem.split('attachments/', maxsplit=1)
                             insert = ('(/attachments/' + newRef[1] + ')' + line[lastIndex:]).replace('//', '/')
                             line = re.sub(r''+attNameSearch,insert,line.rstrip())
+                            attItems += 'OK %s\n' % entry
                 #otherwise add to json-att.log list
                 else:
-                    attItems += '%s\n' % entry
+                    attItems += 'NO %s\n' % entry
             print(line, end='')
 
 # What will be logged
@@ -266,4 +286,5 @@ with open(logname, 'w') as logfile:
 #with open(catName, 'w') as catfile:
     #catfile.write(categories)
 with open(attName, 'w') as attfile:
+    attfile.write("FS - result of full search for any attachments reference in (), needs manual editing\nOK - reference updated and file moved\nNO - matched in 1st loop, no match in 2nd, needs manual editing\n")
     attfile.write(attItems)

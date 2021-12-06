@@ -264,13 +264,14 @@ for entry in attLeftover:
     with fileinput.input(os.path.join(entry["path"], entry["file"]), inplace=True, backup='', encoding="utf-8") as file:
         for line in file:
             if entry["line No."] == fileinput.filelineno():
-                attNameSearch = '(?<=\])\((.*?)/attachments/([-/\w]*/([-\w=]*[?.]\w*))?\)'
+                attNameSearch = '(?<=\])\((.*?)/attachments([-/\+\w]*?)([-.\+\w= ]*)\)'
                 matched = re.search(attNameSearch,line)
                 #if there's a match on the specified line continue to change reference
                 if matched != None:
                     lastIndex = matched.end()
+                    attItems += 'NO %s\n' % entry
                     for attItem in attList:
-                        if attItem.endswith(matched.group(2)):
+                        if attItem.endswith(matched.group(3)):
                             newRef = attItem.split('attachments/', maxsplit=1)
                             insert = ('(/attachments/' + newRef[1] + ')' + line[lastIndex:]).replace('//', '/')
                             line = re.sub(r''+attNameSearch,insert,line.rstrip())

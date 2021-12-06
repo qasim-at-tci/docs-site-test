@@ -52,7 +52,7 @@ def attachmentChangeMove(oldPath, dirpath, newDirAtt, name):
     fullAttachmentRefSearch = '(?<=\])\(.*?attachments/(.*)?\)'
     #pattern to search against, does not capture + or extra . in names, still can get a false positive with 
     #multiple '![something](something)' in a single line
-    attNameSearch = '(?<=\])\(.*?attachments/([-/\w]*?)([-\w= ]*[?.]\w*)?\)'
+    attNameSearch = '(?<=\])\(.*?attachments([-/\w]*?)([-.\+\w= ]*)\)'
     logName = str()
     #define new dir for attachment
     newAttDir = startDir.replace('content\\', '') + 'static\\attachments' + newDirAtt.replace('/', os.sep)
@@ -249,8 +249,13 @@ for dirpath, dirnames, allfiles in os.walk(topdir):
         elif (name == "_MAPPING.txt") and (dirpath[:len(dirBaseParentClean)] == dirBaseParentClean):
             os.makedirs(startDir + 'en\\docs' + dirpath, exist_ok=True)
             os.replace(startDir + dirpath + '\\' + name, startDir + 'en\\docs' + dirpath + '\\' + name)
+
+#for all files in dir path
+for dirpath, dirnames, allfiles in os.walk(topdir):
+    for name in allfiles:
         #moves any '.pptx','.xls','.xlsm','.xlsx','.jar' or '.json' attachment to static\attachments
-        elif (name.lower().endswith(('.pptx','.xls','.xlsm','.xlsx','.jar','.json')) and (dirpath[:len(dirBaseParentClean)] == dirBaseParentClean)):
+        #separated into another full walk through dirs, to rule out moving files before a reference for them gets picked up in the first walk
+        if (name.lower().endswith(('.pptx','.xls','.xlsm','.xlsx','.jar','.json')) and (dirpath[:len(dirBaseParentClean)] == dirBaseParentClean)):
             os.makedirs(startDir.replace('content\\', '') + 'static\\attachments' + dirpath.replace('attachments', ''), exist_ok=True)
             os.replace(startDir + dirpath + '\\' + name, startDir.replace('content\\', '') + 'static\\attachments' + dirpath.replace('attachments', '') + '\\' + name)
 

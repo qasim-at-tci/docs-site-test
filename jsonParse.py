@@ -52,7 +52,7 @@ def attachmentChangeMove(oldPath, dirpath, newDirAtt, name):
     fullAttachmentRefSearch = '(?<=\])\(.*?attachments/(.*)?\)'
     #pattern to search against, does not capture + or extra . in names, still can get a false positive with 
     #multiple '![something](something)' in a single line
-    attNameSearch = '(?<=\])\(.*?attachments([-/\w]*?)([-.\+\w= ]*)\)'
+    attNameSearch = '(?<=\])\(.*?attachments([-/\+\w]*?)([-.\+\w= ]*)\)'
     logName = str()
     #define new dir for attachment
     newAttDir = startDir.replace('content\\', '') + 'static\\attachments' + newDirAtt.replace('/', os.sep)

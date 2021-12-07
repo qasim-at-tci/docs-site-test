@@ -28,8 +28,8 @@ Offline-first progressive web apps have some restrictions to make sure they can 
 
 Within the navigation profiles the following PWA features can be configured:
 
-{{% image_container width="350" %}}![PWA settings](/attachments/refguide/mobile/progressive-web-app/settings.png){{% /image_container %}}
-{{% /image_container %}}
+{{/* % image_container width="350" % */}}![PWA settings](/attachments/refguide/mobile/progressive-web-app/settings.png){{/* % /image_container % */}}
+{{/* % /image_container % */}}
 To be able to fully test PWA functionalities, the app needs to be deployed to the cloud. This is because the service worker is only enabled in the cloud over HTTPS.
 
 ### 2.1 Publish as a Progressive Web App
@@ -56,8 +56,8 @@ PWAs can be directly viewed and tested in the browser on your machine or device.
 
 You can also open PWA profiles on your device via the **View on your device** option:
 
-{{% image_container width="350" %}}![View menu](/attachments/refguide/mobile/progressive-web-app/view-dialog.png){{% /image_container %}}
-{{% /image_container %}}
+{{/* % image_container width="350" % */}}![View menu](/attachments/refguide/mobile/progressive-web-app/view-dialog.png){{/* % /image_container % */}}
+{{/* % /image_container % */}}
 Note that if you are running on a Mac with Parallels, make sure that port 8080 (or whichever port you have configured for your app) is forwarded and that you use your Mac IP instead of the Virtual Machine’s IP. For more information on Mendix and Parallels, see [How to Configure Parallels](/howto/general/using-mendix-studio-pro-on-a-mac).
 
 {{% alert type="info" %}}
@@ -163,8 +163,8 @@ Currently, it is not possible to create a fully offline-first PWA for iOS — ad
 
 Use the following diagram to decide whether to build a PWA, a native mobile app, or both:
 
-{{% image_container width="350" %}}![Native app or PWA](/attachments/refguide/mobile/progressive-web-app/native-or-pwa.png){{% /image_container %}}
-{{% /image_container %}}
+{{/* % image_container width="350" % */}}![Native app or PWA](/attachments/refguide/mobile/progressive-web-app/native-or-pwa.png){{/* % /image_container % */}}
+{{/* % /image_container % */}}
 ## 8 Read More
 
 * [Native Mobile Reference Guide](native-mobile)

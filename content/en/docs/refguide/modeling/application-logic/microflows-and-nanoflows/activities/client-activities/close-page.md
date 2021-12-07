@@ -22,9 +22,9 @@ This action is ignored and does not work when a microflow is called from an offl
 
 The **Close page** activity closes the currently open page. For example, it can be used to close a pop-up page:
 
-{{% image_container width="200" %}}
+{{/* % image_container width="200" % */}}
 ![](/attachments/refguide/modeling/application-logic/microflows-and-nanoflows/activities/client-activities/close-page/close-page.png)
-{{% /image_container %}}
+{{/* % /image_container % */}}
 
 ## 2 Properties
 

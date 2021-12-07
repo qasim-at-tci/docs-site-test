@@ -99,8 +99,8 @@ To merge cells to the right, left, up, or down, you can also click the correspon
 
 An example of table properties is represented in the image below:
 
-{{% image_container width="250" %}}![Table Properties](/attachments/refguide/modeling/pages/structure-widgets/table/table-properties.png)
-{{% /image_container %}}
+{{/* % image_container width="250" % */}}![Table Properties](/attachments/refguide/modeling/pages/structure-widgets/table/table-properties.png)
+{{/* % /image_container % */}}
 
 Table properties consist of the following sections:
 

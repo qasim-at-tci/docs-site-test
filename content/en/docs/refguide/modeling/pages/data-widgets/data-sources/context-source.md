@@ -21,8 +21,8 @@ The **Entity (path)** property specifies the entity that will be shown in the da
 
 If you have a nested data view, you can select an entity that has associations with the entity of a surrounding data container, and the entity of the surrounding data container should be a parent of this association. For more information on associations, see [Associations](associations). 
 
-{{% image_container width="400" %}}![Context Source](/attachments/refguide/modeling/pages/data-widgets/data-sources/context-source/context-source-example.png)
-{{% /image_container %}}
+{{/* % image_container width="400" % */}}![Context Source](/attachments/refguide/modeling/pages/data-widgets/data-sources/context-source/context-source-example.png)
+{{/* % /image_container % */}}
 
 ## 3 Read More
 

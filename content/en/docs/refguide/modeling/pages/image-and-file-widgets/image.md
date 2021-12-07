@@ -27,8 +27,8 @@ If you want to dynamically show different images based on data, you need to add 
 
 An example of static image properties is represented in the image below:
 
-{{% image_container width="300" %}}![Image Properties](/attachments/refguide/modeling/pages/image-and-file-widgets/image/image-properties.png)
-{{% /image_container %}}
+{{/* % image_container width="300" % */}}![Image Properties](/attachments/refguide/modeling/pages/image-and-file-widgets/image/image-properties.png)
+{{/* % /image_container % */}}
 
 Static image properties consist of the following sections:
 

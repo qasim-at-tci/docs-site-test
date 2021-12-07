@@ -56,7 +56,7 @@ Starts the AR camera view, and contains all other AR widgets. This widget is the
 every AR widget that is embedded in it. For example, if you use a **ImageTracker (AR)** to recognize an image, and put a
 **Cube (AR)** in it, the cube will start in the exact middle of your image:
 
-{{% image_container width="300" %}}![Cube](/attachments/refguide/mobile/ar-widgets/scale-one.jpg){{% /image_container %}}
+{{/* % image_container width="300" % */}}![Cube](/attachments/refguide/mobile/ar-widgets/scale-one.jpg){{/* % /image_container % */}}
 ### 3.3 Plane Selector (AR)
 
 **PlaneSelector (AR)** finds surfaces that could fit your specified size. A user first scans their room by walking around the room with their phone while scanning. During this, all the surfaces are found and checked for size. On the large enough surfaces, an object similar to **Square (AR)** is shown and can be clicked to be selected. This will then be the starting point of embedded widgets.

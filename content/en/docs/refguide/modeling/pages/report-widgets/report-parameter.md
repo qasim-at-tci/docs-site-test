@@ -27,8 +27,8 @@ If you add a report parameter widget on the page, you must also add a [Report Bu
 
 An example of report parameter properties is represented in the image below:
 
-{{% image_container width="300" %}}![Report parameter in structure mode](/attachments/refguide/modeling/pages/report-widgets/report-parameter/report-parameter-properties.png)
-{{% /image_container %}}
+{{/* % image_container width="300" % */}}![Report parameter in structure mode](/attachments/refguide/modeling/pages/report-widgets/report-parameter/report-parameter-properties.png)
+{{/* % /image_container % */}}
 
 Report parameter properties consist of the following sections:
 

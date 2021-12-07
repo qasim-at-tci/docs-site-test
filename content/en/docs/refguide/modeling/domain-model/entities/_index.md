@@ -53,8 +53,8 @@ Non-persistable entities are stored in the runtime memory and never get committe
 
 An example of the entity properties is represented in the image below:
 
-{{% image_container width="300" %}}![](/attachments/refguide/modeling/domain-model/entities/entity-properties.png)
-{{% /image_container %}}
+{{/* % image_container width="300" % */}}![](/attachments/refguide/modeling/domain-model/entities/entity-properties.png)
+{{/* % /image_container % */}}
 
 Entity properties consist of the following sections:
 

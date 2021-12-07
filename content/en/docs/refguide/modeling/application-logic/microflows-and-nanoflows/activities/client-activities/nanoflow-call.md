@@ -15,9 +15,9 @@ This activity can only be used in **Nanoflows**.
 
 The **Call nanoflow** activity can be used to call another [nanoflow](nanoflows). 
 
-{{% image_container width="200" %}}
+{{/* % image_container width="200" % */}}
 ![Nanoflow Call](/attachments/refguide/modeling/application-logic/microflows-and-nanoflows/activities/client-activities/nanoflow-call/nanoflow-call.png)
-{{% /image_container %}}
+{{/* % /image_container % */}}
 
 Arguments can be passed to the nanoflow and the result can be stored in a variable.
 

@@ -21,8 +21,8 @@ For example, the following date picker allows the end-user to see, and set, the 
 
 An example of date picker properties is represented in the image below:
 
-{{% image_container width="250" %}}![](/attachments/refguide/modeling/pages/input-widgets/date-picker/date-picker-properties.png)
-{{% /image_container %}}
+{{/* % image_container width="250" % */}}![](/attachments/refguide/modeling/pages/input-widgets/date-picker/date-picker-properties.png)
+{{/* % /image_container % */}}
 
 Date picker properties consist of the following sections:
 

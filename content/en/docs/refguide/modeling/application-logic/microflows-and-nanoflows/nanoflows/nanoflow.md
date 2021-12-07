@@ -13,8 +13,8 @@ This page describes the properties of nanoflows. For details on using nanoflows 
 
 An example of nanoflow properties is represented in the image below:
 
-{{% image_container width="250" %}}![Nanoflow Properties](/attachments/refguide/modeling/application-logic/microflows-and-nanoflows/nanoflows/nanoflow/nanoflow-properties.png)
-{{% /image_container %}}
+{{/* % image_container width="250" % */}}![Nanoflow Properties](/attachments/refguide/modeling/application-logic/microflows-and-nanoflows/nanoflows/nanoflow/nanoflow-properties.png)
+{{/* % /image_container % */}}
 
 Nanoflow properties consist of the following sections:
 

@@ -21,8 +21,8 @@ Sub-items of menu items are not displayed by this widgets, that means the menu s
 
 An example of a simple menu bar properties is represented in the image below:
 
-{{% image_container width="250" %}}![Simple Menu Bar Properties](/attachments/refguide/modeling/pages/menu-widgets/simple-menu-bar/simple-menu-bar-properties.png)
-{{% /image_container %}}
+{{/* % image_container width="250" % */}}![Simple Menu Bar Properties](/attachments/refguide/modeling/pages/menu-widgets/simple-menu-bar/simple-menu-bar-properties.png)
+{{/* % /image_container % */}}
 
 Menu bar properties consist of the following sections:
 

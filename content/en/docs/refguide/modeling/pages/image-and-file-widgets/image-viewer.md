@@ -18,8 +18,8 @@ A dynamic image must be placed in a data view or a template grid.
 
 An example of dynamic image properties is represented in the image below:
 
-{{% image_container width="250" %}}![Dynamic Image Properties](/attachments/refguide/modeling/pages/image-and-file-widgets/image-viewer/image-viewer-properties.png)
-{{% /image_container %}}
+{{/* % image_container width="250" % */}}![Dynamic Image Properties](/attachments/refguide/modeling/pages/image-and-file-widgets/image-viewer/image-viewer-properties.png)
+{{/* % /image_container % */}}
 
 Dynamic image properties consist of the following sections:
 

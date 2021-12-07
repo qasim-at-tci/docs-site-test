@@ -30,8 +30,8 @@ A data grid contains the following components:
 
 An example of data grid properties is represented in the image below:
 
-{{% image_container width="250" %}}![](/attachments/refguide/modeling/pages/data-widgets/grids/data-grid/data-grid-properties.png)
-{{% /image_container %}}
+{{/* % image_container width="250" % */}}![](/attachments/refguide/modeling/pages/data-widgets/grids/data-grid/data-grid-properties.png)
+{{/* % /image_container % */}}
 
 Data grid properties consist of the following sections:
 

@@ -25,8 +25,8 @@ Events specify actions which can be triggered when the end-user interacts with a
 
 An **On click** event specifies an event that is executed when a user clicks a widget. Often the **On click** property is a part of the **Events** section in properties. For example, you can specify that when a user clicks a customer's profile image, the page with this customer's details will open:
 
-{{% image_container width="350" %}}![](/attachments/refguide/modeling/pages/on-click-event/on-click-event-example.png)
-{{% /image_container %}}
+{{/* % image_container width="350" % */}}![](/attachments/refguide/modeling/pages/on-click-event/on-click-event-example.png)
+{{/* % /image_container % */}}
 
 An on-click event is common for many widgets (for example, image, buttons, list view). 
 

@@ -44,8 +44,8 @@ A layout that has the header property enabled will always show a bar at the top 
 
 This is an example of the default header on iOS:
 
-{{% image_container width="250" %}}![An example of the default header on iOS.](/attachments/refguide/mobile/native-mobile/native-navigation/header.png){{% /image_container %}}
-{{% /image_container %}}
+{{/* % image_container width="250" % */}}![An example of the default header on iOS.](/attachments/refguide/mobile/native-mobile/native-navigation/header.png){{/* % /image_container % */}}
+{{/* % /image_container % */}}
 ### 3.2 Bottom Bar
 
 You can add bottom bar items in the native navigation profile. These items will show up on any page that has a layout with the bottom bar property enabled.
@@ -56,8 +56,8 @@ Every item in the bottom bar has its own navigation stack. This means that if yo
 Pages without a bottom bar are created in a separate stack. If you navigate from a page *without* a bottom bar to a page *with* a bottom bar, then all pages in that stack are closed.
 {{% /alert %}}
 
-{{% image_container width="250" %}}![An example of the default bottom bar on iOS.](/attachments/refguide/mobile/native-mobile/native-navigation/bottombar.png){{% /image_container %}}
-{{% /image_container %}}
+{{/* % image_container width="250" % */}}![An example of the default bottom bar on iOS.](/attachments/refguide/mobile/native-mobile/native-navigation/bottombar.png){{/* % /image_container % */}}
+{{/* % /image_container % */}}
 ## 4 How does Mendix Native Navigation Work?
 
 By default pages are kept open to provide a better user experience, but they must also be managed correctly for your app to have great performance and a logical flow through the app.
@@ -74,24 +74,24 @@ The first page on the stack is always the home page. When you tap a button that 
 
 When you close a page (via a back button, a close action, or swipe to go back (iOS)), only the current page is closed and the previous page becomes visible again.
 
-{{% image_container width="250" %}}![](/attachments/refguide/mobile/native-mobile/native-navigation/singlestack.gif){{% /image_container %}}
-{{% /image_container %}}
+{{/* % image_container width="250" % */}}![](/attachments/refguide/mobile/native-mobile/native-navigation/singlestack.gif){{/* % /image_container % */}}
+{{/* % /image_container % */}}
 #### 4.1.2 Multiple Stacks
 
 If an app has bottom bar items, every item in the bottom bar will have a separate stack. Within a stack you can navigate by opening and closing pages.
 
 If a bottom bar item is not focused, pressing it will focus that item. Switching to another bottom bar item will not close pages in the focused one. If the item is already focused, pressing it again will dismiss all pages from its stack.
 
-{{% image_container width="250" %}}![](/attachments/refguide/mobile/native-mobile/native-navigation/multiplestacks.gif){{% /image_container %}}
-{{% /image_container %}}
+{{/* % image_container width="250" % */}}![](/attachments/refguide/mobile/native-mobile/native-navigation/multiplestacks.gif){{/* % /image_container % */}}
+{{/* % /image_container % */}}
 #### 4.1.3 Pop-Ups
 
 When a page with a pop-up layout is opened, a new stack is created and all pages in this stack fully cover the screen. To get back to the previous stack, the pop-up has to be closed.
 
 It is possible to open other pop-up pages inside the pop-up, and all of those together behave as a single stack. When opening a normal page from the pop-up, the pop-ups will be closed first.
 
-{{% image_container width="250" %}}![](/attachments/refguide/mobile/native-mobile/native-navigation/popups.gif){{% /image_container %}}
-{{% /image_container %}}
+{{/* % image_container width="250" % */}}![](/attachments/refguide/mobile/native-mobile/native-navigation/popups.gif){{/* % /image_container % */}}
+{{/* % /image_container % */}}
 ### 4.2 Opening and Closing Pages
 
 Often you need to have control of page history to determine, for example, which page is shown when you navigate back. By default, the Close page action only closes a single page in the current stack, but it can be configured to close more pages.

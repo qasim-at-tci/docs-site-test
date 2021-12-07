@@ -83,13 +83,13 @@ For more information on associations' delete behavior, see the [Delete Behavior]
 
 <a name="delete-example"></a> For example, the **On delete of 'Customer' object** option below should be set to **Keep 'Order' objects**:
 
-{{% image_container width="350" %}}
+{{/* % image_container width="350" % */}}
 ![](/attachments/refguide/modeling/application-logic/microflows-and-nanoflows/activities/object-activities/deleting-objects/delete-limitations-example-0.png)
-{{% /image_container %}}
+{{/* % /image_container % */}}
 
-{{% image_container width="350" %}}
+{{/* % image_container width="350" % */}}
 ![](/attachments/refguide/modeling/application-logic/microflows-and-nanoflows/activities/object-activities/deleting-objects/delete-limitations-example-1.png)
-{{% /image_container %}}
+{{/* % /image_container % */}}
 
 ## 5 Common Section{#common}
 

@@ -23,8 +23,8 @@ The page title widget makes it possible to embed the page title in a [layout](la
 
 An example of page title properties is represented in the image below:
 
-{{% image_container width="300" %}}![Page Title Properties](/attachments/refguide/modeling/pages/text-widgets/page-title/page-title-properties.png)
-{{% /image_container %}}
+{{/* % image_container width="300" % */}}![Page Title Properties](/attachments/refguide/modeling/pages/text-widgets/page-title/page-title-properties.png)
+{{/* % /image_container % */}}
 
 Page title properties consist of the following sections:
 

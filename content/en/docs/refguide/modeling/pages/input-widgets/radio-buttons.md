@@ -27,8 +27,8 @@ For example, the following image contains two sets of radio buttons.  The first 
 
 An example of radio button properties is represented in the image below:
 
-{{% image_container width="250" %}}![](/attachments/refguide/modeling/pages/input-widgets/radio-buttons/radio-buttons-properties.png)
-{{% /image_container %}}
+{{/* % image_container width="250" % */}}![](/attachments/refguide/modeling/pages/input-widgets/radio-buttons/radio-buttons-properties.png)
+{{/* % /image_container % */}}
 
 Radio button properties consist of the following sections:
 

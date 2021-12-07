@@ -18,15 +18,15 @@ Charts allow you to display data series visually on your app pages in a wide ran
 
 With Mendix Charts you can quickly create beautiful charts. The following charts are included:
 
-* **Area** chart – a line chart with a fill to the X-axis {{% image_container width="200" %}}![Sample Area Chart](/attachments/refguide/modeling/pages/chart-widgets/sample-area-chart.png){{% /image_container %}}
-{{% /image_container %}}* **Bar** chart – horizontal bars, grouped or stacked {{% image_container width="200" %}}![Sample Bar Chart](/attachments/refguide/modeling/pages/chart-widgets/sample-bar-chart.png){{% /image_container %}}
-{{% /image_container %}}* **Bubble** chart – add a size dimension to your chart {{% image_container width="200" %}}![Sample Bubble Chart](/attachments/refguide/modeling/pages/chart-widgets/sample-bubble-chart.png){{% /image_container %}}
-{{% /image_container %}}* **Column** chart – vertical bars, grouped or stacked {{% image_container width="200" %}}![Sample Column Chart](/attachments/refguide/modeling/pages/chart-widgets/sample-column-chart.png){{% /image_container %}}
-{{% /image_container %}}* **Heat map** – show data values by color in a 2D matrix {{% image_container width="200" %}}![Sample Heat Map](/attachments/refguide/modeling/pages/chart-widgets/sample-heat-map.png){{% /image_container %}}
-{{% /image_container %}}* **Line** chart – straight or curved lines, with or without markers {{% image_container width="200" %}}![Sample Line Chart](/attachments/refguide/modeling/pages/chart-widgets/sample-line-chart.png){{% /image_container %}}
-{{% /image_container %}}* **Pie** chart – a pie or a doughnut chart {{% image_container width="200" %}}![Sample Pie Chart](/attachments/refguide/modeling/pages/chart-widgets/sample-pie-chart.png){{% /image_container %}}
-{{% /image_container %}}* **Time series** – show data ordered by time {{% image_container width="200" %}}![Sample Time Series](/attachments/refguide/modeling/pages/chart-widgets/sample-time-series.png){{% /image_container %}}
-{{% /image_container %}}
+* **Area** chart – a line chart with a fill to the X-axis {{/* % image_container width="200" % */}}![Sample Area Chart](/attachments/refguide/modeling/pages/chart-widgets/sample-area-chart.png){{/* % /image_container % */}}
+{{/* % /image_container % */}}* **Bar** chart – horizontal bars, grouped or stacked {{/* % image_container width="200" % */}}![Sample Bar Chart](/attachments/refguide/modeling/pages/chart-widgets/sample-bar-chart.png){{/* % /image_container % */}}
+{{/* % /image_container % */}}* **Bubble** chart – add a size dimension to your chart {{/* % image_container width="200" % */}}![Sample Bubble Chart](/attachments/refguide/modeling/pages/chart-widgets/sample-bubble-chart.png){{/* % /image_container % */}}
+{{/* % /image_container % */}}* **Column** chart – vertical bars, grouped or stacked {{/* % image_container width="200" % */}}![Sample Column Chart](/attachments/refguide/modeling/pages/chart-widgets/sample-column-chart.png){{/* % /image_container % */}}
+{{/* % /image_container % */}}* **Heat map** – show data values by color in a 2D matrix {{/* % image_container width="200" % */}}![Sample Heat Map](/attachments/refguide/modeling/pages/chart-widgets/sample-heat-map.png){{/* % /image_container % */}}
+{{/* % /image_container % */}}* **Line** chart – straight or curved lines, with or without markers {{/* % image_container width="200" % */}}![Sample Line Chart](/attachments/refguide/modeling/pages/chart-widgets/sample-line-chart.png){{/* % /image_container % */}}
+{{/* % /image_container % */}}* **Pie** chart – a pie or a doughnut chart {{/* % image_container width="200" % */}}![Sample Pie Chart](/attachments/refguide/modeling/pages/chart-widgets/sample-pie-chart.png){{/* % /image_container % */}}
+{{/* % /image_container % */}}* **Time series** – show data ordered by time {{/* % image_container width="200" % */}}![Sample Time Series](/attachments/refguide/modeling/pages/chart-widgets/sample-time-series.png){{/* % /image_container % */}}
+{{/* % /image_container % */}}
 The widgets contain several settings which can be changed in Studio Pro to customize the look and feel and also offer support for on click events and custom tooltips. See [Chart Configuration](charts-configuration) to learn how to configure Mendix charts.
 
 If the standard chart settings are not sufficient for your purposes, see [Chart Advanced Cheat Sheet](charts-advanced-cheat-sheet) for information on advanced configuration of your basic charts.
@@ -41,8 +41,8 @@ From version 1.4 of the basic charts you can create charts with a variable numbe
 
 With *Any Chart* you can build all the chart types that are possible with Plotly.js up to the version supported by the widget (see the widget description in the Marketplace for more details). If you want to build a chart which is not available in the Basic charts, *Any Chart* is your friend.
 
-{{% image_container width="400" %}}![Sample Contour Chart made with Any Chart](/attachments/refguide/modeling/pages/chart-widgets/contour.png){{% /image_container %}}
-{{% /image_container %}}
+{{/* % image_container width="400" % */}}![Sample Contour Chart made with Any Chart](/attachments/refguide/modeling/pages/chart-widgets/contour.png){{/* % /image_container % */}}
+{{/* % /image_container % */}}
 The plotly charts require a configuration based on JSON, therefore *Any Chart* has JSON as input parameters. You can create this JSON dynamically in your microflow via a JSON Structure document and use this in the *Any Chart* configuration. It is also possible to define static JSON configuration which is combined with the dynamic JSON.
 
 This module also contains several [building blocks](charts-any-building-blocks) for inspiration and as starting point. If you want to create a new chart, we suggest you check out the plotly.js website.

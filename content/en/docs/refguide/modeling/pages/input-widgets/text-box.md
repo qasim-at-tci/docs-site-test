@@ -28,8 +28,8 @@ For example, the following text box allows the end-user to see, and set, the **N
 
 An example of text box properties is represented in the image below:
 
-{{% image_container width="250" %}}![](/attachments/refguide/modeling/pages/input-widgets/text-box/text-box-properties.png)
-{{% /image_container %}}
+{{/* % image_container width="250" % */}}![](/attachments/refguide/modeling/pages/input-widgets/text-box/text-box-properties.png)
+{{/* % /image_container % */}}
 
 Text box properties consist of the following sections:
 

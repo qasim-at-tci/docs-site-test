@@ -112,8 +112,8 @@ The recommendation contains the description of the identified issue, potential i
 
 The third level of assistance is **auto-fixing** where the bot can automatically implement the best practice and fix the issue in just one click. To avoid undesirable changes, auto-fixing is only available when the bot can safely refactor the code without creating an error or making other undesirable change in the model. Each performance issue has an icon in the pane that indicates whether it is auto-fixable. If the icon has the “A” letter, the issue can be auto-fixed:
 
-{{% image_container width="45" %}}![Auto-Fixable Icon](/attachments/refguide/modeling/menus/view-menu/mx-assist-performance-bot/auto-fixable.png)
-{{% /image_container %}}
+{{/* % image_container width="45" % */}}![Auto-Fixable Icon](/attachments/refguide/modeling/menus/view-menu/mx-assist-performance-bot/auto-fixable.png)
+{{/* % /image_container % */}}
 
 To auto-fix the issue, follow the steps below:
 

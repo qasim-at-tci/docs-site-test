@@ -13,8 +13,8 @@ Grid columns allow you to set properties for a [data grid](data-grid) or [refere
 
  An example of grid column properties is represented in the image below: 
 
-{{% image_container width="250" %}}![](/attachments/refguide/modeling/pages/data-widgets/grids/data-grid/columns/column-properties.png)
-{{% /image_container %}}
+{{/* % image_container width="250" % */}}![](/attachments/refguide/modeling/pages/data-widgets/grids/data-grid/columns/column-properties.png)
+{{/* % /image_container % */}}
 
 Grid column properties consist of the following sections:
 

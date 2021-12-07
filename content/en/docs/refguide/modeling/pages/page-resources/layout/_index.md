@@ -11,9 +11,9 @@ tags: ["studio pro", "layout widgets", "layout", "page template", "pages"]
 
 Layouts specify what comes where. Each [page](page) is based on a layout. The layout contains widgets and structures that return on every page based on that layout. For example, it is common to put a menu bar widget in a layout so that the menu is visible on all pages.
 
-{{% image_container width="400" %}}
+{{/* % image_container width="400" % */}}
 ![](/attachments/refguide/modeling/pages/page-resources/layout/layout-example.png)
-{{% /image_container %}}
+{{/* % /image_container % */}}
 
 A layout consists of content and [placeholders](placeholder). The content is everything that should be present in every page that uses the layout, from navigation bars to sign-out buttons. Placeholders are empty areas that later form the canvas for any pages that make use of the layout. The layout content remains the same in every page, but the placeholders cover what is unique to every individual page. 
 
@@ -29,8 +29,8 @@ Mendix will intelligently detect if pages share a layout, so no user input is re
 
 An example of layout properties is represented in the image below:
 
-{{% image_container width="250" %}}![Example of the layout properties pane](/attachments/refguide/modeling/pages/page-resources/layout/layout-properties.png)
-{{% /image_container %}}
+{{/* % image_container width="250" % */}}![Example of the layout properties pane](/attachments/refguide/modeling/pages/page-resources/layout/layout-properties.png)
+{{/* % /image_container % */}}
 
 Layout properties consist of the following sections:
 

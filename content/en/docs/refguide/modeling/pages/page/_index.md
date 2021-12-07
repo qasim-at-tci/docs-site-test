@@ -96,8 +96,8 @@ In **Structure mode**, there are several ways to add an element on a page:
 
     b. Select between adding a widget or a building block.<br/>
 
-    {{% image_container width="400" %}}![](/attachments/refguide/modeling/pages/page/adding-widget-in-drop-zone.png)
-    {{% /image_container %}}<br/>
+    {{/* % image_container width="400" % */}}![](/attachments/refguide/modeling/pages/page/adding-widget-in-drop-zone.png)
+    {{/* % /image_container % */}}<br/>
 
     c. Select an element you would like to add and confirm your choice by clicking **Select**.
 

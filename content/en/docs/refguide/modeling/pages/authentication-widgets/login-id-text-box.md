@@ -20,8 +20,8 @@ The **Login ID text box** should be placed on a page together with a [Password t
 
 An example of login ID text box properties is represented in the image below:
 
-{{% image_container width="250" %}}![Login ID Text Box Properties](/attachments/refguide/modeling/pages/authentication-widgets/login-id-text-box/logid-id-properties.png)
-{{% /image_container %}}
+{{/* % image_container width="250" % */}}![Login ID Text Box Properties](/attachments/refguide/modeling/pages/authentication-widgets/login-id-text-box/logid-id-properties.png)
+{{/* % /image_container % */}}
 
 Login ID text box properties consist of the following sections:
 

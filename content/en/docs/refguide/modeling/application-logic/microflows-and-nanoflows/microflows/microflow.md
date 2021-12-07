@@ -13,8 +13,8 @@ This document describes the properties of a microflow. If you want to see what m
 
 An example of microflow properties is represented in the image below:
 
-{{% image_container width="250" %}}![Microflow Properties](/attachments/refguide/modeling/application-logic/microflows-and-nanoflows/microflows/microflow/microflow-properties.png)
-{{% /image_container %}}
+{{/* % image_container width="250" % */}}![Microflow Properties](/attachments/refguide/modeling/application-logic/microflows-and-nanoflows/microflows/microflow/microflow-properties.png)
+{{/* % /image_container % */}}
 
 Microflow properties consist of the following sections:
 

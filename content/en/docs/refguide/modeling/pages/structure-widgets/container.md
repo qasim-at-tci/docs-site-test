@@ -19,8 +19,8 @@ In a browser, it is rendered as a simple `div` element by default. It is also po
 
 An example of container properties is represented in the image below:
 
-{{% image_container width="300" %}}![Container Properties](/attachments/refguide/modeling/pages/structure-widgets/container/container-properties.png)
-{{% /image_container %}}
+{{/* % image_container width="300" % */}}![Container Properties](/attachments/refguide/modeling/pages/structure-widgets/container/container-properties.png)
+{{/* % /image_container % */}}
 
 Container properties consist of the following sections:
 

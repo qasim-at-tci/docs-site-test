@@ -52,7 +52,7 @@ def attachmentChangeMove(oldPath, dirpath, newDirAtt, name):
     fullAttachmentRefSearch = '(?<=\])\(.*?attachments/(.*)?\)'
     #pattern to search against, does not capture + or extra . in names, still can get a false positive with 
     #multiple '![something](something)' in a single line
-    attNameSearch = '(?<=\])\(.*?attachments([-/\+\w]*?)([-.\+\w= ]*)\)'
+    attNameSearch = '(?<=\])\(.*?attachments([-./\+\w]*?)([-.\+\w= ]*)\)'
     logName = str()
     #define new dir for attachment
     newAttDir = startDir.replace('content\\', '') + 'static\\attachments' + newDirAtt.replace('/', os.sep)
@@ -264,7 +264,7 @@ for entry in attLeftover:
     with fileinput.input(os.path.join(entry["path"], entry["file"]), inplace=True, backup='', encoding="utf-8") as file:
         for line in file:
             if entry["line No."] == fileinput.filelineno():
-                attNameSearch = '(?<=\])\((.*?)/attachments([-/\+\w]*?)([-.\+\w= ]*)\)'
+                attNameSearch = '(?<=\])\((.*?)/attachments([-./\+\w]*?)([-.\+\w= ]*)\)'
                 matched = re.search(attNameSearch,line)
                 #if there's a match on the specified line continue to change reference
                 if matched != None:

@@ -1,7 +1,8 @@
 ---
 title: "Solve Known Version Control Issues"
+url: /howto/collaboration-requirements-management/troubleshoot-version-control-issues
 category: "Collaboration"
-#menu_order: 7
+weight: 7
 description: "This document presents a list of problems and fixes for version control issues."
 tags: ["version control", "troubleshoot", "Studio Pro", "Subversion", "TortoiseSVN"]
 #If moving or renaming this doc file, implement a temporary redirect and let the respective team know they should update the URL in the product. See Mapping to Products for more details.
@@ -22,7 +23,7 @@ Below is a list of known errors and the steps to fix them.
 
 ### 2.1 Getting an Error Containing `SharpSvn.SvnAuthenticationException: Proxy authentication failed`
 
-![Error dialog with proxy authentication failed](attachments/troubleshoot-version-control/oopsproxy.png)
+![Error dialog with proxy authentication failed](/attachments/howto/collaboration-requirements-management/troubleshoot-version-control-issues/oopsproxy.png)
 
 This error means that Studio Pro has problems reaching the version control server because of a proxy server.
 
@@ -32,7 +33,7 @@ Follow these steps:
 2. Go to the **Advanced** tab. 
 3.  In the **Proxy server** section, change the **Proxy server** settings. Fill in the correct **User name** and **Password**.
 
-    ![Proxy settings](attachments/troubleshoot-version-control/proxysettings.png)
+    ![Proxy settings](/attachments/howto/collaboration-requirements-management/troubleshoot-version-control-issues/proxysettings.png)
 
 ### 2.2 Getting an Error Containing Another `SharpSvn.SvnAuthenticationException`
 
@@ -52,7 +53,7 @@ To solve this issue, follow these steps:
 
 1. Install [TortoiseSVN](https://tortoisesvn.net/), as suggested in [System Requirements](/refguide/system-requirements).
 
-	Mendix Studio Pro uses the Subversion 1.9 working copy. Previous versions of the Mendix Desktop Modeler used a Subversion 1.7 working copy. These working copy versions are *not* compatible. Always use the version of TortoiseSVN that matches your app model. If you open a local model from Mendix version 7.x or 6.x with the latest version of TortoiseSVN, you will no longer be able to open it in Mendix.
+	{{% alert color="warning" %}}Mendix Studio Pro uses the Subversion 1.9 working copy. Previous versions of the Mendix Desktop Modeler used a Subversion 1.7 working copy. These working copy versions are *not* compatible. Always use the version of TortoiseSVN that matches your app model. If you open a local model from Mendix version 7.x or 6.x with the latest version of TortoiseSVN, you will no longer be able to open it in Mendix.{{% /alert %}}
 
 2. Go to the parent directory (folder) of your app (this is the folder with the **<folder_name>** from the error message).
 3. Right-click to open the folder's context menu and select **TortoiseSVN** > **Clean up**.
@@ -70,7 +71,7 @@ To solve this issue, follow the steps below:
 
 1. Install [TortoiseSVN](https://tortoisesvn.net/), as suggested in [System Requirements](/refguide/system-requirements).
 
-   Mendix Studio Pro uses the Subversion 1.9 working copy. Previous versions of the Mendix Desktop Modeler used a Subversion 1.7 working copy. These working copy versions are *not* compatible. Always use the version of TortoiseSVN that matches your app model. If you open a local model from Mendix version 7.x or 6.x with the latest version of TortoiseSVN, you will no longer be able to open it in Mendix.
+   {{% alert color="warning" %}}Mendix Studio Pro uses the Subversion 1.9 working copy. Previous versions of the Mendix Desktop Modeler used a Subversion 1.7 working copy. These working copy versions are *not* compatible. Always use the version of TortoiseSVN that matches your app model. If you open a local model from Mendix version 7.x or 6.x with the latest version of TortoiseSVN, you will no longer be able to open it in Mendix.{{% /alert %}}
 
 2. Open the app folder via Studio Pro by selecting **App** > **Show App Directory in Explorer**.
 
@@ -136,29 +137,29 @@ ResolveIgnoreConflict.mpr.bak
 deployment
 ```
 
-
+{{% alert color="info" %}}
 The first five lines are the same, and after that the lines in your list can be different.
-
+{{% /alert %}}
 
 Merging the branch to the main line will result in the following information message: 
 
-![](attachments/troubleshoot-version-control/mergesuccessfuldialog.png)
+![](/attachments/howto/collaboration-requirements-management/troubleshoot-version-control-issues/mergesuccessfuldialog.png)
 
-
+{{% alert color="info" %}}
 A conflict is reported on the app *folder*. This usually means that there is a conflict on the `svn:ignore` property.
-
+{{% /alert %}}
 
 To resolve a conflict on the `svn:ignore` property, follow these steps:
 
 1.   Install [TortoiseSVN](https://tortoisesvn.net/), as suggested in [System Requirements](/refguide/system-requirements).
 	
-	Mendix Studio Pro uses the Subversion 1.9 working copy. Previous versions of the Mendix Desktop Modeler used a Subversion 1.7 working copy. These working copy versions are *not* compatible. Always use the version of TortoiseSVN that matches your app model. If you open a local model from Mendix version 7.x or 6.x with the latest version of TortoiseSVN, you will no longer be able to open it in Mendix.
+	{{% alert color="warning" %}}Mendix Studio Pro uses the Subversion 1.9 working copy. Previous versions of the Mendix Desktop Modeler used a Subversion 1.7 working copy. These working copy versions are *not* compatible. Always use the version of TortoiseSVN that matches your app model. If you open a local model from Mendix version 7.x or 6.x with the latest version of TortoiseSVN, you will no longer be able to open it in Mendix.{{% /alert %}}
 	
 2. Open the app directory in Windows File Explorer.
 
 3.  Right-click the background of the app folder and choose **TortoiseSVN** > **Edit Conflicts**. The following pop-up window will be shown (resize the window to display all the information):
 
-	![](attachments/troubleshoot-version-control/editconflictsdialog.png)
+	![](/attachments/howto/collaboration-requirements-management/troubleshoot-version-control-issues/editconflictsdialog.png)
 
 4. Copy all the lines starting with `modeler-merge-marker` to the clipboard. 
 
@@ -170,11 +171,11 @@ To resolve a conflict on the `svn:ignore` property, follow these steps:
 
 8.  Remove the special lines that start with `<<<<<<<`, `=======`, and `>>>>>>>`. For this example, we end up with the following combined ignore list:
 
-	![](attachments/troubleshoot-version-control/combinedignorelist.png)
+	![](/attachments/howto/collaboration-requirements-management/troubleshoot-version-control-issues/combinedignorelist.png)
 
-	
+	{{% alert color="info" %}}
 	This includes both the lines from the main line and from the branch. The order is not important.
-	
+	{{% /alert %}}
 
 9. Click **OK** and then **OK** again to confirm the change.
 

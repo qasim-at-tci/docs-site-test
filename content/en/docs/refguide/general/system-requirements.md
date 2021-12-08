@@ -1,8 +1,8 @@
 ---
 title: "System Requirements"
-category: "General Info"
 url: /refguide/system-requirements
-weight: 1
+category: "General Info"
+weight: 10
 description: "Presents the system requirements for using the Mendix Platform."
 tags: ["studio pro"]
 #If moving or renaming this doc file, implement a temporary redirect and let the respective team know they should update the URL in the product. See Mapping to Products for more details.
@@ -23,13 +23,13 @@ The following frameworks are automatically installed (if necessary):
 * Microsoft Visual C++ 2015 Redistributable Package
 * AdoptOpenJDK 11 or Oracle JDK 11 (the former is installed automatically) if you do not have any JDK 11 installed) 
 
-
+{{% alert color="info" %}}
 You can choose which JDK is used for building and running locally via the **Edit** > **Preferences** menu item in Studio Pro.
+{{% /alert %}}
 
-
-
+{{% alert color="warning" %}}
 Please note the limitation that the database viewer built into Studio Pro (as described in [How to Share the Development Database](/howto/collaboration-requirements-management/sharing-the-development-database)) does not work with JDK 11.06 or 11.07.
-
+{{% /alert %}}
 
 ### 2.1 Firewall Settings
 
@@ -43,11 +43,11 @@ Studio Pro needs access to the following URLs in order to work. If your firewall
 
 If you want to use TortoiseSVN in combination with Studio Pro, download the latest version from the [TortoiseSVN](https://tortoisesvn.net/) website.
 
-
+{{% alert color="warning" %}}
 Mendix Studio Pro uses the Subversion 1.9 working copy. Previous versions of the Mendix Desktop Modeler used a Subversion 1.7 working copy. These working copy versions **are not compatible**.<br />
 <br />
 Always use the version of TortoiseSVN which matches your app model. If you open a local model from Mendix version 7.x or 6.x with the latest version of TortoiseSVN **you will no longer be able to open it in Mendix**.
-
+{{% /alert %}}
 
 ### 2.3 File Locations
 
@@ -95,6 +95,10 @@ In both cases you need `repository write` permission.
 
 We have a compatibility limitation with AWS CodeCommit in Git Technology Preview for Studio Pro.
 
+### 2.5 Graphics Card
+
+If you are using the Intel® UHD Graphics 630 graphics processor, please ensure that you are using [driver version 27.20.100.9664](https://www.catalog.update.microsoft.com/Search.aspx?q=Intel(R)+UHD+Graphics+630) or above.
+
 ## 3 Team Server {#ts}
 
 The [Team Server](/developerportal/collaborate/team-server) is implemented using Subversion, and Studio Pro uses the HTTPS protocol to communicate with that server. To access the Team Server from within Studio Pro, the network at your location needs the following settings:
@@ -107,9 +111,9 @@ The [Team Server](/developerportal/collaborate/team-server) is implemented using
 
 [Mendix Studio](/studio) is optimized for use with Google Chrome. While Chrome is the officially supported browser, you can also use Mendix Studio with other popular browsers like Mozilla Firefox, Apple Safari, and Microsoft Edge. 
 
-
+{{% alert color="info" %}}
 The browser you use needs to have JavaScript turned on.
-
+{{% /alert %}}
 
 ## 5 Cloud Foundry
 
@@ -145,9 +149,9 @@ The Mendix Docker buildpack supports the following Kubernetes versions:
 
 When running Mendix on a server, you will need Java Runtime Environment (JRE) 11. To download an OpenJDK distribution from AdoptOpenJDK, see [AdoptOpenJDK Installation](https://adoptopenjdk.net/installation.html). To download a commercial Oracle distribution, see [Java SE Downloads](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 
-
+{{% alert color="info" %}}
 There is an issue since Java 7 that causes timeouts when using web services with a certain amount of data. You can circumvent this issue by adding the VM params `-Djava.net.preferIPv4Stack=true`. Mendix Studio Pro will do this for you, but if you are running Mendix on premises on a Windows server, you will need to do this yourself. For more information about this issue, see [HotSpot (64bit server) hangs on socket read (JVM 1.7 bug?) - updated](http://blog.bielu.com/2011/11/hotspot-64bit-server-hangs-on-socket.html) and [Possible Bug in Java 7](https://forums.oracle.com/forums/thread.jspa?messageID=9985748).
-
+{{% /alert %}}
 
 ## 8 Databases {#databases}
 
@@ -157,20 +161,20 @@ Current support:
 
 * [IBM DB2](db2) 11.1 and 11.5 for Linux, Unix, and Windows
 * [MariaDB](mysql) 10.2, 10.3, 10.4, 10.5
-* [Microsoft SQL Server](/developerportal/deploy/mendix-on-windows-microsoft-sql-server) 2016, 2017, 2019
-* [Azure SQL](https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-2017) v12 compatibility mode 130 or higher
+* [Microsoft SQL Server](/developerportal/deploy/mendix-on-windows-microsoft-sql-server) 2017, 2019
+* [Azure SQL](https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-2017) v12 compatibility mode 140 or higher
 * [MySQL](mysql) 8.0
 * [Oracle Database](oracle) 19
 * PostgreSQL 9.6, 10, 11, 12, 13
 * [SAP HANA](saphana) 2.00.040.00.1545918182
 
-
+{{% alert color="warning" %}}
 Each app must have its own database. Mendix apps cannot share data by sharing the same database.
 
 If you want two apps to share the same database, then you need to share the data from one app to the other using APIs. In Mendix these are supported by [Data Hub](/data-hub/share-data/) or the REST and OData services described in the [integration](integration) section of the *Studio Pro Guide*. This is referred to as a *microservices* architecture.
 
 For more information on why data cannot be shared between apps see [Data Storage](data-storage#databases). Use the [Database Replication](/appstore/modules/database-replication) module if you need to copy the data from one app to another.
-
+{{% /alert %}}
 
 ## 9 File Storage {#file-storage}
 
@@ -202,13 +206,13 @@ For server-based installations, the following storage types mounted by the OS ar
 * Apple Safari (latest stable desktop version and latest version for each [supported iOS](#mobileos) version)
 * Microsoft Edge (latest stable desktop version)
 
-
+{{% alert color="warning" %}}
 Internet Explorer is no longer supported in Studio Pro 9. As the market is moving away from Internet Explorer and Mendix continues to align with the best practices of the modern web ecosystem, we have dropped support for Internet Explorer 11. This allows us to keep in line with user expectations. Removing support has already improved app loading times and performance, and it will enable us to continue making improvements and innovating using modern web features.<br />
 <br />
 As of Studio Pro 9, app end-users still using IE will be shown an **Unsupported Browser** message stating that upgrading to a modern browser is required. You can [customize this message](/howto/front-end/customize-styling-new#customize-unsupported-browsers) to meet your needs.<br />
 <br />
 If you still need to support IE11, note that Studio Pro [8](/releasenotes/studio-pro/8.18) and [7](/releasenotes/studio-pro/7.23) will continue supporting IE11. Mendix recommends using Studio Pro 8 or 7 until your app end-users have upgraded their browsers.
-
+{{% /alert %}}
 
 ## 11 Mobile Operating Systems {#mobileos}
 

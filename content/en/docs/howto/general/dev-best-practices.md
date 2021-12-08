@@ -1,7 +1,8 @@
 ---
 title: "Implement Mendix Best Practices for Development"
+url: /howto/general/dev-best-practices
 category: "General Info"
-#menu_order: 7
+weight: 7
 tags: ["best practice", "development", "develop", "reusable", "prefix"]
 #Academy are SMEs for verification, they discuss and link to this doc in training
 ---
@@ -47,7 +48,7 @@ Every app has at least one configuration, but it may have many. Every app starts
 
 ### 2.4 User Roles
 
-The [user roles](/refguide/user-roles) should have logical names that reflect the different types of users that will use the application. The user roles are singular and use an UpperCamelCase notation, like **FunctionalAdministrator**. User roles are mostly defined in English, but there is an option to name these in a different language, since the user role is visible in the front-end.
+The [user roles](/refguide/user-roles) should have logical names that reflect the different types of users that will use the application. The user roles are singular and use an UpperCamelCase notation, like **FunctionalAdministrator**. User roles are mostly defined in English, but there is an option to name these in a different language, since the user role is visible in the front end.
 
 Each user role should correspond to only one module role per module. In other words, a user role should not map to multiple module roles within the same module. This helps to keep the number of applicable module roles for a user to a minimum, which reduces complexity in understanding the security model and reduces the performance impact of complex security rules.
 
@@ -69,9 +70,9 @@ The [module roles](/refguide/module-security#module-role) should have logical na
 
 Most of the time, an [entity](/refguide/entities) reflects a real-world object that people can relate to. Therefore, the entity name should also reflect that object and identify its purpose. There are sometimes app-specific exceptions that lead to creating other types of entity, but that is up to you. The name of an entity is singular since an object is a single instance of the entity. A good example is using **Customer** and not **Customers**. Furthermore, we advise avoiding abbreviations, underscores, mathematical characters or any other special characters in the names of entities. Entity names also use UpperCamelCase, for example, **HousekeepingRecord** or **LogEntry**.
 
-
+{{% alert color="info" %}}
 Following these entity naming conventions will prevent issues with naming conflicts between modules and entities. For example, if a module named **Customer** contains an entity named **customer** (note the lower-case "c"), there will be a Java compilation error and the app will not run. Renaming the entity to **Customer** will solve the problem.
-
+{{% /alert %}}
 
 #### 3.2.2 Entity Attributes
 
@@ -79,9 +80,9 @@ The entity [attribute](/refguide/attributes) should reflect a property of a real
 
 Attributes that do not reflect business-related data, but are only necessary for technical reasons, should start with an underscore (`_`).
 
-
+{{% alert color="info" %}}
 A strong indicator for determining whether or not an attribute is business-related is whether you would still capture it if you were using a paper-only process. If you would, it is likely that the attribute will deliver business value.
-
+{{% /alert %}}
 
 #### 3.2.3 Associations
 
@@ -152,9 +153,9 @@ For attributes, you can choose to store the value in the database or to calculat
 
 | Event Type                | Prefix             | Used In |
 |---------------------------|--------------------|---- |
-| On enter event            | OEN\_{Purpose}   | Input widgets   |
-| On change event           | OCH\_{Purpose}   | Input widgets   |
-| On leave event            | OLE\_{Purpose}   | Input widgets   |
+| On enter event            | OEN\_{Purpose}   | Input elements   |
+| On change event           | OCH\_{Purpose}   | Input elements   |
+| On leave event            | OLE\_{Purpose}   | Input elements   |
 | Data source               | DS\_{Purpose}    | Data view, list view, data grid, template grid |
 | Action button             | ACT\_{Purpose}   | Menu item, navigation item, microflow and action button, drop-down button<br />(“IVK\_” is used historically) |
 
@@ -370,9 +371,9 @@ Apps should keep up with new Mendix releases as much as possible.
 
 ### 4.8 Marketplace Content
 
-When introducing a new [Mendix Marketplace](https://appstore.home.mendix.com/index3.html) component to an app, carefully consider the support level of the component. Using components that are community supported introduces a maintainability and upgrade risk.
+When introducing a new [Mendix Marketplace](https://marketplace.mendix.com/) component to an app, carefully consider the support level of the component. Using components that are community supported introduces a maintainability and upgrade risk.
 
-Marketplace modules should NOT be modified. If an ApMarketplace module is modified, updating to a new version becomes much harder, because the changes will be overwritten when a new version is downloaded from the Marketplace. If changing an Marketplace module is unavoidable, you have two options:
+Marketplace modules should NOT be modified. If a Marketplace module is modified, updating to a new version becomes much harder, because the changes will be overwritten when a new version is downloaded from the Marketplace. If changing an Marketplace module is unavoidable, you have two options:
 
 * Mark any changes you make explicitly and clearly, and perform them again when the module is updated
 * Copy the contents of the Marketplace module to another module in your app and use that module instead (remember that your app will no longer reflect updates to the original Marketplace module)

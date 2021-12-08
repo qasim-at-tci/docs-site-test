@@ -1,7 +1,8 @@
 ---
 title: "Minimize the Number of In-Use Objects in Your Session"
+url: /howto/general/minimize-number
 category: "General Info"
-#menu_order: 6
+weight: 6
 tags: ["object", "session", "architecture", "stateless", "runtime", "client", "state"]
 ---
 
@@ -26,7 +27,7 @@ After a microflow has run, any new objects or updates to existing objects that w
 
 The following diagram shows the flow of objects in detail:
 
-![](attachments/minimize-number-of-objects-in-session/object_flow.png)
+![](/attachments/howto/general/minimize-number/object_flow.png)
 
 ## 3 Minimizing the Number of In-Use Objects in Your Session
 
@@ -52,11 +53,11 @@ If you make sure to commit any changes to persistable objects, they do not need 
 
 In other words, by reducing the number of requests during which objects are not committed, you reduce the network traffic necessary to use the app.
 
-## 5 Workflow Objects
+## 5 Objects in Multi-Page End-User Interactions
 
 ### 5.1 Scenario
 
-If an object is used during a flow that spans multiple pages but is not displayed on every one of those pages, the Mendix Client could incorrectly determine that the object is not necessary anymore. This situation can also happen if you allow users to navigate backwards through a flow using the **Close** button or a browser's **Back** button. In that case, the objects on the page that was previously displayed might have been removed already.
+If an object is used during an end-user interaction that spans multiple pages but is not displayed on every one of those pages, the Mendix Client could incorrectly determine that the object is not necessary anymore. This situation can also happen if you allow end-users to navigate to pages that they saw previously using the **Close** button or a browser's **Back** button. In that case, the objects on the page that was previously displayed might have been removed already.
 
 ### 5.2 Tip
 
@@ -64,17 +65,17 @@ To prevent this from occurring, you can link non-persistable objects that have l
 
 To do this, first create a reference between your entity and the **Session** entity in the **System** module:
 
-![](attachments/minimize-number-of-objects-in-session/domain_model_npe.png)
+![](/attachments/howto/general/minimize-number/domain_model_npe.png)
 
 Then link the object to the current session when you create it in a microflow:
 
-![](attachments/minimize-number-of-objects-in-session/create_object_dialog.png)
+![](/attachments/howto/general/minimize-number/create_object_dialog.png)
 
 Because it is always possible to look at the current **Session** object, any objects related to the current session can also always be retrieved. The Mendix Client must then always keep these objects around; they will never be removed.
 
-
+{{% alert color="info" %}}
 There is a drawback here as well: since the objects will never be removed, they will be in memory indefinitely. It is very important to remove these objects as soon as they are not necessary anymore.
-
+{{% /alert %}}
 
 ## 6 Integrations
 

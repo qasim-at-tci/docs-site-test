@@ -1,7 +1,8 @@
 ---
 title: "Implement Community Best Practices for App Performance"
+url: /howto/general/community-best-practices-for-app-performance
 category: "General Info"
-#menu_order: 8
+weight: 8
 tags: ["best practice", "performance", "community"]
 aliases:
     - /howtogeneral/bestpractices/best-practices-for-app-performance-in-mendix-7.html
@@ -9,11 +10,11 @@ aliases:
 
 ## 1 Introduction
 
-
+{{% alert color="info" %}}
 
 This document is created by and for the Mendix community. It collects performance best practices in the form of do's and don'ts.
 
-
+{{% /alert %}}
 
 A must-have for your app is that it performs well. Your users will not accept anything else, and they will choose alternatives if the performance is not good. This document describes some best practices to apply during development to in order to get a better performing app.
 
@@ -87,6 +88,7 @@ Indexes is a topic with a long history of best practices from the database world
 * Combine paths to the same associated entity if query logic allows this.
 * In older PostgreSQL databases, it was wise to start the XPath with attribute clauses, since the database query optimizer was processing clauses in order. Nowadays, it is claimed that the query optimizer has improved, and this "rule" is no longer needed.
 * Make sure that the attributes used are indexed.
+* If a role has two access rules for the same entity, one giving read-only access, and another giving read and write access, do not make those access rules exclusive. Make the read-only rule include the read and write rule. For example, if access level is based on a boolean attribute `Editable`, create two access rules: the first granting read-only access to all objects (no constraint) and the second granting read and write access to some objects (constraint: `[Editable = true()]`). Do not add the constraint `[Editable = false()]` to the first access rule as this creates unnecessary complexity in the resulting SQL.
 
 ## 8 OQL Best Practices
 
@@ -101,6 +103,6 @@ For OQL, many of the same best practices apply as for XPath.
 
 ## 10 Web Services & XML Best Practices
 
-* Use SHA256 instead of BCrypt.
+* Use SSHA256 instead of BCrypt.
 * Validating against schema slows down the processing.
 * Using sub-transactions for microflows slows down processing.

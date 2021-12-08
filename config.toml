@@ -102,7 +102,7 @@ section = ["HTML", "print"]
 # MvM - add line below to print every page
 page = ["HTML", "print"]
 # MvM - add line below to output MxDocsAlgolia at root of /public
-home = ["MxDocsAlgolia"]
+# home = ["MxDocsAlgolia"]
 
 # MvM - add line below to activate production of RSS pages
 [outputFormats]

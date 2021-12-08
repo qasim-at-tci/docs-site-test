@@ -1,8 +1,8 @@
 ---
 title: "MxBuild"
-category: "General Info"
 url: /refguide/mxbuild
-weight: 4
+category: "General Info"
+weight: 50
 description: "Describes MxBuild which is a command-line tool for building and deploying Mendix Apps"
 tags: ["build", "deploy", "deployment package", "command-line", "studio pro"]
 ---
@@ -13,23 +13,23 @@ MxBuild is a Windows and Linux command-line tool that can be used to build a Men
 
 The version of MxBuild which you need is dependent on the version of the Mendix model you want to build. You can find your correct MxBuild by entering this URL into a browser and replacing `mxversion` with your own, full Mendix version number: `https://cdn.mendix.com/runtime/mxbuild-{mxversion}.tar.gz`.
 
-
+{{% alert color="info" %}}
 
 A build number is included in the version, and this has to be included in the link path mentioned above — for example`8.12.1.3458` is the 3458 build of the 8.12.1 Studio Pro release.
 
 You can find the build number in path of your Mendix installation (for example if your installation looks like this `C:\Program Files\Mendix\8.12.1.3458`, use this URL to get your files: https://cdn.mendix.com/runtime/mxbuild-8.12.1.3458.tar.gz).
 
-Any public version of Studio Pro in this  [Studio Pro Releases List](https://appstore.mendix.com/link/modelers/) will allow you to download MxBuild files. If you experience trouble downloading files, make sure your build is listed there.
+Any public version of Studio Pro in this  [Studio Pro Releases List](https://marketplace.mendix.com/link/studiopro/) will allow you to download MxBuild files. If you experience trouble downloading files, make sure your build is listed there.
 
-
+{{% /alert %}}
 
 You can extract the files using your favorite archival tool, such as [7-Zip](https://www.7-zip.org/).
 
 For details on the system requirements for MxBuild, see [System Requirements](system-requirements#mxbuild).
 
-
+{{% alert color="info" %}}
 Except where specifically mentioned, the examples used in this document are for Windows.
-
+{{% /alert %}}
 
 ## 2 Command Line
 
@@ -62,9 +62,9 @@ Command-line options are described in the table below:
 
 ### 2.2 Options When Creating a Package
 
-
+{{% alert color="info" %}}
 The following options are only applicable with the `--target=package` option:
-
+{{% /alert %}}
 
 Options when creating a package are described in the table below;
 

@@ -1,7 +1,8 @@
 ---
 title: "LTS, MTS & Monthly Releases"
+url: /releasenotes/studio-pro/lts-mts
 category: "Studio Pro"
-#menu_order: 1
+weight: 1
 ---
 
 ## 1 Introduction
@@ -42,7 +43,7 @@ Support for an LTS version ends when a third consecutive major version is releas
 
 This diagram illustrates the LTS concept with version and [end of support](#end) examples:
 
-![](attachments/lts.png)
+![](/attachments/releasenotes/studio-pro/lts-mts/lts.png)
 
 ### 2.2 Release Cycle
 
@@ -60,7 +61,9 @@ The impact of upgrading from an LTS to an LTS is often the lowest of these optio
 
 An MTS is a minor version released approximately every 6 months after a new major version release for General Availability.
 
-In the past, MTS versions have been [8.6](8.6), [8.12](8.12), and [8.18](8.18). However, with the release of version 9 for General Availability, 8.18 is now an LTS, so there are no longer any MTS versions for version 8. Furthermore, there are no current MTS versions for Studio Pro. There will only be upcoming MTS versions for version 9 starting with 9.6.
+This is the current MTS version for Studio Pro:
+
+* [9.6](9.6) (started in September 2021)
 
 If you are on an innovation track with your development and need to get the latest and greatest Mendix has to offer every month, then upgrade to an MTS and stay on that version with its patch releases until the next MTS version is released.
 

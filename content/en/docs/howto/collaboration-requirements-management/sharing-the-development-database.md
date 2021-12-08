@@ -1,7 +1,8 @@
 ---
 title: "Share the Development Database"
+url: /howto/collaboration-requirements-management/sharing-the-development-database
 category: "Collaboration"
-#menu_order: 40
+weight: 40
 tags: ["studio pro"]
 ---
 
@@ -9,9 +10,9 @@ tags: ["studio pro"]
 
 All Mendix applications need a database running in the background. While developing an application it is advised to use the standard built-in database that is supplied with Mendix Studio Pro. This how-to will teach you how to open and manage the data stored inside the built-in database.
 
-
+{{% alert color="warning" %}}
 This document is about sharing a database between developers working on **the same app**. It is not possible to share one database between different apps. If you need to copy data to another app, use the [Database Replication](/appstore/modules/database-replication) module.
-
+{{% /alert %}}
 
 ## 2 Prerequisites
 
@@ -37,7 +38,7 @@ One application can make use of many different databases. Take the following ste
 1.  Double-click **Settings** in the **App Explorer** to open the **App Settings** dialog box.
 2.  On the **Configurations** tab, select the preferred database configuration in the grid, and click **Make active**.
   
-    ![](attachments/18448637/18580427.png)
+    ![](/attachments/howto/collaboration-requirements-management/sharing-the-development-database/18580427.png)
 
 3. Click **OK** to confirm your choice. 
 
@@ -47,15 +48,15 @@ To start the built-in database viewer, follow these steps:
 
 1.  Run the application locally (if this is the first time, Studio Pro will ask you to create the new database, click **Yes** when this occurs):
 
-    ![](attachments/18448637/18580426.png)
-
+    {{/* % image_container width="150" % */}}![](/attachments/howto/collaboration-requirements-management/sharing-the-development-database/18580426.png){{/* % /image_container % */}}
+{{/* % /image_container % */}}
 2.  When the application is running, in the **Console** pane, select **Advanced** > **Start built-in database viewer** to open the built-in database viewer:
 
-   ![](attachments/18448637/18580425.png) 
+   ![](/attachments/howto/collaboration-requirements-management/sharing-the-development-database/18580425.png) 
 
     The **Database Manager** dialog box will be displayed (depending on the data model of the application):
 
-   ![](attachments/18448637/18580424.png)
+   ![](/attachments/howto/collaboration-requirements-management/sharing-the-development-database/18580424.png)
 
 On the left pane, all tables from all modules in the running application are shown. On the upper-right pane, it is possible to enter SQL queries and on the lower-right pane, the results from the entered SQL query will be shown.
 
@@ -73,15 +74,15 @@ To execute queries from the explorer (the left pane) in the **Database Manager**
 
 1.  Right-click a table and select the preferred action:
 
-    ![](attachments/18448637/18580423.png)
+    ![](/attachments/howto/collaboration-requirements-management/sharing-the-development-database/18580423.png)
 
 2.  To select all customers from the table CUSTOMER, choose the first option. It will automatically fill the SQL command in the top-right pane:
 
-    ![](attachments/18448637/18580422.png)
+    ![](/attachments/howto/collaboration-requirements-management/sharing-the-development-database/18580422.png)
 
 3.  Click **Execute SQL** to execute this query:
 
-    ![](attachments/18448637/18580421.png)
+    ![](/attachments/howto/collaboration-requirements-management/sharing-the-development-database/18580421.png)
 
 On the bottom-right pane, the results are shown and a total of 50 rows is retrieved from the database. From the standard actions, it is also possible to delete, update, and insert records. The standard actions can also be customized to retrieve, update, or delete specific data. Advanced knowledge about the SQL language is needed to get the desired results.
 
@@ -91,7 +92,7 @@ The built-in database can easily be shared with other members of the team. It is
 
 1.  Select **Version Control** > **Add Snapshot of Data**:
 
-    ![](attachments/18448637/18580420.png)
+    ![](/attachments/howto/collaboration-requirements-management/sharing-the-development-database/18580420.png)
 
 2. Click **Yes** to commit.
 
@@ -105,21 +106,21 @@ To import a data snapshot into the model, the app has to be updated since the la
 
 1.  To update the application, click **Update** on the **Changes** tab.
 
-    ![](attachments/18448637/18580419.png)
+    ![](/attachments/howto/collaboration-requirements-management/sharing-the-development-database/18580419.png)
 
 2.  To implement the data snapshot, extract the database from a ZIP file to the **deployment** directory.
 
-    ![](attachments/18448637/18580417.png)
+    ![](/attachments/howto/collaboration-requirements-management/sharing-the-development-database/18580417.png)
 
 3.  Copy the **data** directory to the **data** directory in the **deployment** directory.
 
-
+{{% alert color="warning" %}}
 Make sure the names of the databases are not the same or make a copy of your own database first so it will not be overwritten.
-
+{{% /alert %}}
 
 ## 9 Read More
 
 *   [Stories](/developerportal/collaborate/stories)
 *   [Contributing to a GitHub repository](contribute-to-a-github-repository)
-*   [Set Up a GitHub Repo to Publish an App Store Item](set-up-repo)
+*   [Set Up a GitHub Repo to Publish a Marketplace Item](set-up-repo)
 *   [Version Control](/refguide/version-control)

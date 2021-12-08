@@ -1,9 +1,12 @@
 ---
 title: "Studio Pro 9 Guide"
+url: /refguide
 description: "The various sections of the Mendix Studio Pro Guide provide details on the features and functionality of the Mendix Platform."
 tags: ["studio pro"]
-url: /refguide
-weight: 2
+weight: 10
+cascade:
+    - space: "Studio Pro 9 Guide"
+    - mendix_version: "9"
 ---
 
 ## 1 Introduction
@@ -50,5 +53,5 @@ Mobile app development allows you to create native mobile and hybrid apps and an
 
 The *Studio Pro 9 Guide* is divided into the following categories:
 
-
+{{/* % category_block % */}}
 

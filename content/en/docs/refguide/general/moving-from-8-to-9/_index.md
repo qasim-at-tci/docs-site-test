@@ -1,7 +1,8 @@
 ---
 title: "Moving from Mendix Studio Pro 8 to 9"
 url: /refguide/moving-from-8-to-9
-weight: 2
+category: "General Info"
+weight: 20
 description: "Provides details on updating your app from Mendix 8 to Mendix 9, including sections on converting your app and deprecated features."
 tags: ["studio pro", "studio"]
 ---
@@ -31,9 +32,9 @@ Make sure that you have either committed your latest changes to Team Server, or 
 
 ### 3.2 Upgrade to the Latest Release of Version 8
 
-
+{{% alert color="warning" %}}
 It is technically required for you to upgrade your app to Mendix 8.12 first to be able to update it to Mendix 9. However, we recommend you update to the latest version of Mendix 8: [8.18](/releasenotes/studio-pro/8.18).
-
+{{% /alert %}}
 
 To upgrade to Mendix 8.18, follow these steps:
 
@@ -83,9 +84,9 @@ Mendix 9 comes with a new Atlas theme including new page templates and building 
 
 Finally, review the sections below and ensure that you have made all the changes necessary. Test the app for any unexpected results.
 
-
+{{% alert color="success" %}}
 Congratulations! Your app has been successfully upgraded to Mendix 9 and you can continue working as normal.
-
+{{% /alert %}}
 
 ## 4 Runtime API Changes
 

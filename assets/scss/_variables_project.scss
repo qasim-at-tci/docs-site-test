@@ -33,11 +33,13 @@ $light: #D3F3EE !default;
 $dark: #0A1325 !default; // MX Midnight 100 (MxDock color)
 $blue: #0CABF9 !default; // MX Blue
 $orange: #BA5A31 !default;
+$gray-light: #F3F3F4 !default; // NK - added for design proposal
 $gray-100: #F8F8F8 !default; // NK - changed to better align to Figma Docs mockup
 $gray-200: #E7E7E9 !default; // NK - changed to better align to Figma Docs mockup
 $gray-300: #dee2e6 !default;
 $gray-400: #E6E7E9 !default; // MX Midnight 10 
 $gray-500: #CED0D3 !default; // MX Midnight 20 
+$gray-border: #C2C4C9 !default; // NK - added for design proposal
 $gray-600: #9DA1A8 !default; // MX Midnight 40 
 $gray-700: #6C717C !default; // MX Midnight 60 
 $gray-800: #3B4251 !default; // MX Midnight 80 
@@ -50,8 +52,8 @@ $code-color: darken($secondary, 20%) !default;
 
 $border-color: $gray-200 !default; // NK - changed to better align to Figma Docs mockup
 $td-sidebar-tree-root-color: $secondary !default; // NK - switched top left nav bar link and line color to secondary
-$td-sidebar-bg-color: $gray-100 !default;//rgba($primary, 0.03) !default;
-$td-sidebar-border-color: $border-color !default;
+$td-sidebar-bg-color: $gray-light !default;//rgba($primary, 0.03) !default;
+$td-sidebar-border-color: $gray-border !default;
 
 // Background colors for the sections on home page etc. It is a paint by number system, starting at 0, where the number is taken from the shortcode's ordinal
 // if not provided by the user.

@@ -11,7 +11,7 @@
           <div class="col-sm">
             {{ if $gh_url }}
               <!-- NK - changed icon properties -->
-              <a href="{{ $gh_url }}" target="_blank"><i class="fa fa-edit fa-fw" style="font-size: 1.5rem;" data-toggle="tooltip" title="Edit on Github"></i></a>
+              <a href="{{ $gh_url }}" target="_blank"><img class="my-icon" src="/icons/content-paper-edit.svg" title="Edit on Github"></a>
             {{ else if $gh_repo }}
               {{ $gh_repo_path := printf "%s/content/%s" $gh_branch $pathFormatted }}
               {{ if and ($gh_subdir) (.Site.Language.Lang) }}
@@ -28,11 +28,11 @@
             {{ $newPageQS := querify "value" $newPageStub.Content "filename" "change-me.md" | safeURL }}
             {{ $newPageURL := printf "%s/new/%s?%s"  $gh_repo $gh_repo_path $newPageQS }}
               <!-- NK - changed icon properties -->
-              <a href="{{ $editURL }}" target="_blank"><i class="fa fa-edit fa-fw" style="font-size: 1.5rem;" data-toggle="tooltip" title="Edit on Github"></i></a>
+              <a href="{{ $editURL }}" target="_blank"><img class="my-icon" src="/icons/content-paper-edit.svg" title="Edit on Github"></a>
           </div>
           <div class="col-sm">
               <!-- NK - changed icon properties -->
-              <a href="{{ $issuesURL }}" target="_blank"><i class="fa fa-envelope fa-fw" style="font-size: 1.5rem;" data-toggle="tooltip" title="Leave feeback"></i></a>
+              <a href="{{ $issuesURL }}" target="_blank"><img class="my-icon" src="/icons/messages-bubble-text-1.svg" title="Leave feeback"></a>
               <!-- NK - deactivated icon for project issue -->
               <!-- {{ if $gh_project_repo }}
                 {{ $project_issueURL := printf "%s/issues/new" $gh_project_repo }}
@@ -44,7 +44,7 @@
           </div>
           <div class="col-sm">
             <!-- NK - changed icon properties -->
-            <a id="print" href="{{ .Permalink | safeURL }}"><i class="fa fa-print fa-fw" style="font-size: 1.5rem;" data-toggle="tooltip" title="Go to print view"></i></a>
+            <a id="print" href="{{ .Permalink | safeURL }}"><img class="my-icon" src="/icons/print-text.svg" title="Go to print view"></a>
         {{ end }}
           </div>
       </div>

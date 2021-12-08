@@ -4,6 +4,7 @@ url: /releasenotes/studio-pro/8
 category: "Studio Pro"
 description: "The release notes for version 8 of Mendix Studio Pro."
 no_list: false
+weight: 22
 #If moving or renaming this doc file, implement a temporary redirect and let the respective team know they should update the URL in the product. See Mapping to Products for more details.
 ---
 

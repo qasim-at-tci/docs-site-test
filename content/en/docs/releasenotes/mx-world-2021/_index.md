@@ -5,6 +5,7 @@ tags: ["mendix world", "announcements", "features", "feature release", "products
 #notoc: true
 #layout: wide
 #toc-level: "3"
+weight: 60
 ---
 
 ## 1 Introduction

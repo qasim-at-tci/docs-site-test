@@ -2,6 +2,7 @@
 title: "Studio"
 url: /releasenotes/studio
 frontpage_featured: true
+weight: 10
 ---
 
 The release notes for [Mendix Studio](/studio/) are correlated with the version ranges of [Mendix Studio Pro](/releasenotes/studio-pro/): 

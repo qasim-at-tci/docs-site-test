@@ -2,6 +2,7 @@
 title: "Mobile"
 url: /releasenotes/mobile
 frontpage_featured: true
+weight: 15
 ---
 
 This category includes the following release notes: 

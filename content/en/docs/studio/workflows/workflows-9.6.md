@@ -33,7 +33,7 @@ To create an app with Mendix version 9.5, do the following:
 
 Next to just exploring the functionality, you can also build an app in Studio that will later be published to production. 
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 Since workflows are in Beta, there are limitations that apply to [Beta features](/releasenotes/beta-features/) and it might be better to not put the app in production until workflows are GA. 
 {{% /alert %}}
 

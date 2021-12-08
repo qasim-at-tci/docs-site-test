@@ -5,7 +5,7 @@ description: "How to create content for the Mendix Marketplace."
 tags: ["marketplace", "marketplace component", "app service", "solution"]
 ---
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 These guides for creating content in the Marketplace are under active development and will be regularly extended with new sections. Make sure to check in regularly to stay up to date with the latest documentation!
 {{% /alert %}}
 

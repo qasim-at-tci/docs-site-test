@@ -9,6 +9,6 @@ no_list: false
 
 These are the release notes for Mendix Studio Pro version 8:
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 With Mendix 8, the product has been renamed from **Mendix Desktop Modeler** to **Mendix Studio Pro**.
 {{% /alert %}}

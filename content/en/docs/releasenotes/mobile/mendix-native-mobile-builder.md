@@ -60,7 +60,7 @@ App Center's CodePush OTA page improvements:
 
 ##### Local Project Configuration Support
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 This feature becomes available only for projects using Native Template 5.1.9 or later. For older projects, please update your Native Template.* 
 {{% /alert %}}
 

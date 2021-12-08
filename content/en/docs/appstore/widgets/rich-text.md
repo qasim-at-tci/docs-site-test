@@ -31,7 +31,7 @@ The input and output is sanitized. All unsupported HTML tags and JavaScript is r
 	* `a` tag: `href`, `name`, `target`
 * Schemes: `http`, `https`, `ftp`, `mailto`
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 To be fully secure, all user HTML input should be sanitized on the server side too. This could be done with the XSSSanitize action found in the [Community Commons](/appstore/modules/community-commons-function-library). When the option 'Sanitize content' is set to 'false' server side sanitating is required before showing any HTML content.
 {{% /alert %}}
 

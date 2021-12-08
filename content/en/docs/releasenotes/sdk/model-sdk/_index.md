@@ -12,7 +12,7 @@ These are the release notes for the [Mendix Model SDK](/apidocs-mxsdk/mxsdk/sdk-
 * [2](model-sdk-2)
 * [1](model-sdk-1)
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 
 The release notes include all minor versions and patches.
 

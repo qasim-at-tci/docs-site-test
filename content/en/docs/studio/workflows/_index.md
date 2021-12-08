@@ -7,7 +7,7 @@ tags: ["workflow", "workflows", "Studio"]
 #If moving or renaming this doc file, implement a temporary redirect and let the respective team know they should update the URL in the product. See Mapping to Products for more details.
 ---
 
-{{% alert type="warning" %}}
+{{% alert color="warning" %}}
 Workflows in Studio are temporarily unavailable for apps with Mendix version 9.6. We introduced workflows as a Beta feature in Mendix 9 and are now incorporating feedback we received from our community to improve workflows.
 
 Workflows in Studio are available for apps with Mendix version 9.5.
@@ -15,7 +15,7 @@ Workflows in Studio are available for apps with Mendix version 9.5.
 
 ## 1 Introduction
 
-{{% alert type="warning" %}}
+{{% alert color="warning" %}}
 This functionality is in Beta. For more information on Beta products, see [Beta Versions](/releasenotes/beta-features/).
 {{% /alert %}}
 

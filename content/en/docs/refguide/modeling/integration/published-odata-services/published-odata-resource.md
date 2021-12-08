@@ -29,7 +29,7 @@ You can see the location where the resource will be published in **Example of lo
 
 In the **Public documentation** tab, you can provide a summary and a description of the exposed entity.
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 
 [IBM DB2](db2) does not support read-isolated data retrieval operations that are non-blocking in a multi-user environment. Therefore, the data retrieved by OData might not be 100% consistent if the same data rows are modified concurrently by another user. 
 
@@ -39,7 +39,7 @@ In the **Public documentation** tab, you can provide a summary and a description
 
 When you have selected an entity in the list to the left, its published attributes and associations are shown in the list to the right. In this list, you can add, edit, delete and move these attributes and associations.
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 
 The **System.ID** attribute is used as a key in OData services and must always be checked.
 
@@ -47,7 +47,7 @@ The **System.ID** attribute is used as a key in OData services and must always b
 
 Attributes of published entities are **Nillable** by default. This means that if their value is empty then they will be encoded as explicit nulls in the OData content. If **Nillable** is unchecked for an attribute, the attribute cannot be empty (as this will result in a runtime error).
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 
 Attributes of type **Binary** cannot be exported through OData services except for the **Contents** field of the **System.FileDocument** attribute.
 
@@ -57,7 +57,7 @@ Attributes of type **Binary** cannot be exported through OData services except f
 
 Use **Exposed entity name** in the **Edit published resource** window to customize the name of the resource that is exposed to the outside world. The default is the name of the exposed entity in the domain model. The **Exposed entity name** must start with a letter followed by letters or digits with a maximum length of 480 characters. 
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 
 Location URIs must be unique. Exposing two different resources at the same location will result in a consistency error.
 
@@ -67,7 +67,7 @@ Attributes and associations can be customized in the same way by clicking **Edit
 
 For associations, the exposed name is the name given to the navigation property (which is the property referring to the associated object(s)). The default is the same as the name of the association in the domain model.
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 
 When names have been customized in this way, the name of the entity, attribute, or association as defined in the domain model will not be exposed to the outside world. For all OData communication, the exposed name is used.
 
@@ -99,6 +99,6 @@ Default: *10000*
 
 A published OData resource is always readable. Use the checkbox for **Updatable (write)** to indicate that clients can update the values of attributes and associations. Only users that have write entity access to attributes and associations can update them. For more information, see [OData query options](odata-query-options#updating-objects).
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 This *Capabilities* section was introduced in Studio Pro [9.6.0](/releasenotes/studio-pro/9.6).
 {{% /alert %}}

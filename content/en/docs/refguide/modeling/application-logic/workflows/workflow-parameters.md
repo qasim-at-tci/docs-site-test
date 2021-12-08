@@ -28,7 +28,7 @@ For **WorkflowInstance** parameter uses an entity that stores data on the workfl
 
 The **WorkflowContext** parameter uses a business-related entity that travels through the workflow. 
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 
 The **WorkflowInstance** entity should have a one-to-one or a one-to-many association to the **WorkflowContext** entity. 
 

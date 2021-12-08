@@ -11,7 +11,7 @@ tags: ["Native", "Parallels", "Mac", "Mobile"]
 
 Using Parallels, you can run Mendix Studio Pro on your Mac device using a Windows virtual machine.
 
-{{% alert type="warning" %}}
+{{% alert color="warning" %}}
 Studio Pro does not run under Parallels on Apple Silicon Macs, such as the M1.
 {{% /alert %}}
 
@@ -78,11 +78,11 @@ Congratulations! You have successfully configured port forwarding to enable test
 
 ## 4 Viewing Your App on Your Testing Device
 
-{{% alert type="warning" %}}
+{{% alert color="warning" %}}
 Whenever you create or open a Mendix app in Mendix Studio Pro, be sure to do so from a mapped drive instead of a network drive.
 {{% /alert %}}
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 If you experience issues connecting with the Make It Native app, make sure your firewall is not preventing a connection. For information resolving Windows Defender and other firewall-related issues, see the [Error: Unable to Load Script](/howto/mobile/common-issues#unable-load-script) section of *Troubleshoot Common Native Mobile Issues*
 {{% /alert %}}
 

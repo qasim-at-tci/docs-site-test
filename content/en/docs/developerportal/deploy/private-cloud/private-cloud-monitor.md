@@ -10,7 +10,7 @@ tags: ["Monitor", "Logging", "Private Cloud", "Environment"]
 
 ## 1 Introduction
 
-{{% alert type="info" %}}Monitoring Mendix for Private Cloud environments is supported in Mendix Operator v2.1.0 and above.{{% /alert %}}
+{{% alert color="info" %}}Monitoring Mendix for Private Cloud environments is supported in Mendix Operator v2.1.0 and above.{{% /alert %}}
 
 Mendix for Private Cloud provides a [Prometheus](https://prometheus.io/) API that can be scraped by a local Prometheus server.
 This API can also be used by other monitoring solutions that support scraping the Prometheus API.
@@ -32,14 +32,14 @@ If you already have installed Prometheus, Loki, and Grafana in your cluster, you
 This section contains a quick start guide on how to install Grafana and its dependencies in a cluster by using the [Loki Helm chart](https://grafana.com/docs/loki/latest/installation/helm/).
 In addition, this section explains how to install and configure a logging solution based on [Loki](https://grafana.com/docs/loki/next/).
 
-{{% alert type="warning" %}}These instructions have been simplified to make the installation process as easy as possible.
+{{% alert color="warning" %}}These instructions have been simplified to make the installation process as easy as possible.
 
 Before installing Prometheus, Loki, and Grafana in a production environment, consult with your cluster administrator and IT security teams
 to ensure that this logging/monitoring solution is compliant with your organization's security policies.{{% /alert %}}
 
 ### 2.1 Prerequisites
 
-{{% alert type="warning" %}}The Grafana Helm chart doesn't yet support Kubernetes version 1.22 and above.{{% /alert %}}
+{{% alert color="warning" %}}The Grafana Helm chart doesn't yet support Kubernetes version 1.22 and above.{{% /alert %}}
 
 Before installing Grafana, make sure you have [installed Helm](https://grafana.com/docs/loki/latest/installation/helm/) and can access your Kubernetes cluster.
 
@@ -113,12 +113,12 @@ kubectl --namespace={namespace} create ingress loki-grafana \
 --default-backend="loki-grafana:80"
 ```
 
-{{% alert type="info" %}}The Ingress object configuration depends on how the Ingress Controller is set up in your cluster.
+{{% alert color="info" %}}The Ingress object configuration depends on how the Ingress Controller is set up in your cluster.
 
 You might need to adjust additional Ingress parameters, for example specify the ingress class, annotations, or TLS configuration.{{% /alert %}}
 
 
-{{% alert type="info" %}}The domain name needs to be configured so that it resolves to the Ingress Controller's IP address.
+{{% alert color="info" %}}The domain name needs to be configured so that it resolves to the Ingress Controller's IP address.
 
 You can use the same wildcard domain name as other Mendix apps - for example, if you're using _mendix.example.com_ as the Mendix for Private Cloud domain name,
 you can use `grafana.mendix.example.com` as the domain name for Grafana.{{% /alert %}}
@@ -200,7 +200,7 @@ To read logs from Pods (including logs from Mendix app environments), the Loki s
 Promtail runs a pod on every Kubernetes node, and this pod reads local container logs from the host system.
 Promtail pods require elevated permissions to read those logs.
 
-{{% alert type="info" %}}Promtail can be replaced with other similar components, for example Fluentd, Fluent Bit, Filebeat, or Azure Container Insights.
+{{% alert color="info" %}}Promtail can be replaced with other similar components, for example Fluentd, Fluent Bit, Filebeat, or Azure Container Insights.
 
 All of these use the same mechanism for reading logs, and replacing Promtail with an alternative will still require logs to be collected using a privileged container.{{% /alert %}}
 
@@ -326,7 +326,7 @@ If you would like to enable Prometheus scraping only for a specific environment,
 
 #### 3.2.2 Enable Scraping in Standalone Mode
 
-{{% alert type="warning" %}}Do not use this approach in Connected mode - any annotations you set this way will be overridden by annotations set in the Private Cloud section of the Developer Portal.{{% /alert %}}
+{{% alert color="warning" %}}Do not use this approach in Connected mode - any annotations you set this way will be overridden by annotations set in the Private Cloud section of the Developer Portal.{{% /alert %}}
 
 Open an environment's `MendixApp` CR [for editing](private-cloud-operator#edit-cr) and add the following pod annotations:
 
@@ -355,7 +355,7 @@ Mendix for Private Cloud offers a reference dashboard that looks similar to [Men
 
 In addition, this dashboard will display Mendix app and Runtime logs.
 
-{{% alert type="warning" %}}
+{{% alert color="warning" %}}
 Mendix for Private Cloud uses a `m2ee-metrics` sidecar that collects metrics from the [admin port](/refguide/monitoring-mendix-runtime) and translates them into a format supported by Prometheus.
 This approach works with all Mendix versions, starting from Mendix 7.23.
 
@@ -393,14 +393,14 @@ Select the **Namespace**, **Environment internal name** and **Pod name** from th
 
 ![](/attachments/developerportal/deploy/private-cloud/private-cloud-monitor/grafana-select-pod.png)
 
-{{% alert type="info" %}}If the dropdowns are empty, this means that no metrics are available for that date range.
+{{% alert color="info" %}}If the dropdowns are empty, this means that no metrics are available for that date range.
 Select another date range in the top right corner, or check if Prometheus is set up correctly.{{% /alert %}}
 
 Metrics are displayed per pod and not aggregated on a namespace or environment level.
 Every time an app is restarted or scaled up, this will add new pods or replace existing pods with new ones.
 You will need to select the currently running pod from the dropdown to monitor its metrics and logs.
 
-{{% alert type="info" %}}This dashboard is provided for reference and can be used as an example.
+{{% alert color="info" %}}This dashboard is provided for reference and can be used as an example.
 You can use it to build a custom dashboard with details that are relevant for your organization, such as aggregating metrics per namespace/project or displaying additional metrics from another source.{{% /alert %}}
 
 ### 4.3 Configuring Metrics Links

@@ -19,7 +19,7 @@ Native remote push notifications have more capabilities than hybrid push notific
 
 Follow the sections below to complete these three tasks and enable native remote push notifications. After you have completed this document, see [How To Use Native Push Notifications](/howto/mobile/native-remote-notifications) for instructions on implementing native push notifications.
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 
 Push notifications will not work in XCode's Simulator. For iOS, notifications only work on physical devices.
 
@@ -79,7 +79,7 @@ The Native Mobile Builder simplifies the process of adding any capabilities to y
 {{/* % /image_container % */}}
 1. Click **Upload google-service.json file**. Navigate to where you saved your app's **google-services.json** file and select it. The tool will verify that the required app id is included in *json* file and will notify you if otherwise. That is to prevent you using the wrong configuration files, which would result in push notifications not working. 
 
-	{{% alert type="info" %}}The tool will warn you if *google-services.json* does not include a correct custom developer app's app identifier in the format of `(chosen app id)-developerapp`. It can be safely ignored if you do not plan on testing push notifications with a custom developer app.{{% /alert %}}
+	{{% alert color="info" %}}The tool will warn you if *google-services.json* does not include a correct custom developer app's app identifier in the format of `(chosen app id)-developerapp`. It can be safely ignored if you do not plan on testing push notifications with a custom developer app.{{% /alert %}}
 
 1. Click **Upload GoogleServices-info.plist file**. Navigate to where you saved your app's *GoogleServices-info.plist* file and select it. The tool will verify that the required app id is included in *json* file and will notify you if otherwise. That is to prevent you using the wrong configuration files, which would result in push notifications not working.
 1. Click **Save**.

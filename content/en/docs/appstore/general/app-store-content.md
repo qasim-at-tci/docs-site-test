@@ -44,7 +44,7 @@ To download a component from the Marketplace via Studio Pro, follow these steps:
 
     ![Search result for rating](/attachments/appstore/general/app-store-content/marketplace.png)
     
-    {{% alert type="warning" %}}Results for Marketplace content searches done in Studio Pro may differ from those done in the [online Marketplace](app-store-overview) due to sync issues.{{% /alert %}}
+    {{% alert color="warning" %}}Results for Marketplace content searches done in Studio Pro may differ from those done in the [online Marketplace](app-store-overview) due to sync issues.{{% /alert %}}
 
 5.  Click the component or **Read more** to view the details of the component.
 
@@ -65,7 +65,7 @@ After you download a component:
 
 After you download a component, you can use the component in your app. 
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 For more information on how a component works, check the **Documentation** tab on the page of the component in the Marketplace.
 {{% /alert %}}
 
@@ -95,7 +95,7 @@ To add the Rating widget from the Marketplace via Studio Pro, follow these steps
 
     ![Rating widget in the page](/attachments/appstore/general/app-store-content/widget-dropped-in-page.png)
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 If you want to delete a widget from the app, go to **App** > **Show App Directory in Explorer** to open the app folder, and then remove the *.mpk* file from the **widgets** folder.
 {{% /alert %}}
 
@@ -140,7 +140,7 @@ To add the Email with Template module from the Marketplace via Studio Pro, follo
 
     ![Import Module dialog box](/attachments/appstore/general/app-store-content/import-module.png)
 
-    {{% alert type="warning" %}}When you select **Replace existing module**, a warning will show you which files in the app directory will be overwritten. If you click **OK**, these files will be replaced by the standard files. Be careful with this option when you have made changes to a module that you downloaded – once the files are replaced, you will have the standard Marketplace module again, with new entities and attributes. The entities and attributes that you renamed and their respective tables and columns represented in the database are all deleted. We recommend that you do not make changes to the downloaded modules, unless you will not update your component in the future and understand the implications of your changes.{{% /alert %}}
+    {{% alert color="warning" %}}When you select **Replace existing module**, a warning will show you which files in the app directory will be overwritten. If you click **OK**, these files will be replaced by the standard files. Be careful with this option when you have made changes to a module that you downloaded – once the files are replaced, you will have the standard Marketplace module again, with new entities and attributes. The entities and attributes that you renamed and their respective tables and columns represented in the database are all deleted. We recommend that you do not make changes to the downloaded modules, unless you will not update your component in the future and understand the implications of your changes.{{% /alert %}}
 
 3. In the **Import Module** dialog box, click **Import**.
 
@@ -152,7 +152,7 @@ To add the Email with Template module from the Marketplace via Studio Pro, follo
 
 Unlike a widget, you can see a module in your App Explorer. A module contains a domain model, pages, and microflow logic. A module downloaded from the Marketplace stores files if the module contains files (for example, files that are contained in the **userlib** or **resource** folders). In addition, a module downloaded from the Marketplace has a light blue icon to differentiate it from the development modules.
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 Sometimes additional widgets are added when you download a module. For example, **Image Crop** module contains the **Image Cropper** widget.
 {{% /alert %}}
 
@@ -166,7 +166,7 @@ For details on configuring the Email with Templates module in Studio Pro, see [E
 
 Downloading an app or layout will create a new app structure in the location that you enter. After you click **Download**, a window will appear where you can specify how the app should be created.
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 You cannot create a new app in an existing repository that is not empty.
 {{% /alert %}}
 
@@ -174,7 +174,7 @@ You cannot create a new app in an existing repository that is not empty.
 
 Downloading a theme is very similar to downloading a widget. Like a widget, a theme is added to the app structure – in the **theme** folder of your app. A theme downloaded from the Marketplace will immediately be set as the active theme for your app. You can find out which theme is active for your app in the app **Settings**.
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 If you want to delete a widget from the app, go to **App** > **Show App Directory in Explorer** to open the app folder, and then remove the ZIP file from the **theme** folder.
 {{% /alert %}}
 

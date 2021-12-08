@@ -68,7 +68,7 @@ If Studio is enabled for this development line, the process first ensures that t
 
 Committing is the action, invoked in Studio Pro, of creating a set of changes and sending/pushing all your changes to the [repository](#repository) and making a new [revision](#revision).
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 When using Git, it is possible to store the committed data in a local repository, but not yet push it to the central [repository](#repository). In SVN these actions are always done together.
 {{% /alert %}}
 
@@ -105,7 +105,7 @@ A Tag is a way of identifying a commit in addition to the [revision](#revision) 
 * Patch: used to identify a fix to an error in a previously-released app
 * Revision: this is added automatically and is the revision number of the commit
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 Tags are supported by Studio Pro Git ([BYO](branch-line-manager-dialog#byo-server-app) and Team Server) from Mendix version 9.8.0.
 {{% /alert %}}
 
@@ -147,7 +147,7 @@ The developer using Studio Pro wants to include the changes made by the develope
 
 All the changes from the Studio working copy are put into a new revision on the Team Server (state 4). This revision is merged into the Studio Pro working copy. While the Studio Pro working copy is being updated, Studio is locked temporarily so that the Studio working copy is stable while it is copied.
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 This will also pick up changes from other developers using Studio Pro, if they have committed changes to this branch.
 {{% /alert %}}
 
@@ -199,7 +199,7 @@ When you add a branch line, you take a copy of an existing [revision](#revision)
 
 In Mendix each commit within a [repository](#repository) is given a unique identifier. 
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 In SVN, the unique identifiers are numbers. As each commit has a unique number in this case, version numbers given to revisions along any chosen branch line may not be consecutive.
 {{% /alert %}}
 

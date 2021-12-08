@@ -6,7 +6,7 @@ tags: ["studio", "web modeler"]
 #This document is mapped to the landing page, update the link there if renaming or moving the doc file.
 ---
 
-{{% alert type="warning" %}}
+{{% alert color="warning" %}}
 
 The **Studio 9 Guide** describes Mendix Studio functionality that corresponds to Mendix version 9. It describes the latest Studio functionality and features.
 

@@ -222,7 +222,7 @@ Next you are going to create a show page action for **ON_tapNotification**.
 
 Now you will set up a data view on your home page.
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 Local notifications do not support **On recieve** events.
 {{% /alert %}}
 

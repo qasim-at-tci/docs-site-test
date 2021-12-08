@@ -15,7 +15,7 @@ To use the API, you need to set up a **Consumed Web Service** using the WDSL for
 . You can find out how to do this in [How to Consume a Complex Web Service](/howto/integration/consume-a-complex-web-service).
 The actions in the feedback API can then be called in a microflow using the **Call web service** action. This is described in the *Studio Pro Guide* here: [Call Web Service Action](/refguide/call-web-service-action).
 
-{{% alert type="info" %}}
+{{% alert color="info" %}}
 
 Each call also requires the parameters 'username' and 'password'. These are the public credentials you will find below; actual authentication of requests is done through API keys.
 

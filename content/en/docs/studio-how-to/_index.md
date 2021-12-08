@@ -2,6 +2,10 @@
 title: "Studio 9 How-to's"
 url: /studio-how-to
 tags: ["studio", "how to"]
+weight: 25
+cascade:
+    - space: "Studio 9 How-to's"
+    - mendix_version: "9"
 ---
 
 {{% alert color="warning" %}}

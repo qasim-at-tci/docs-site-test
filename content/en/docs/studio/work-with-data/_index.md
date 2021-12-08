@@ -1,7 +1,7 @@
 ---
 title: "Working with Data"
 url: /studio/work-with-data
-menu_order: 30
+weight: 30
 description: "Describes how to work with data in Mendix Studio."
 tags: ["studio", "data", "working with data", "work with data"]
 ---

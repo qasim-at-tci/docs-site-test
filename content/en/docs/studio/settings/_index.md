@@ -2,7 +2,7 @@
 title: "Settings"
 url: /studio/settings
 description: "Describes the Settings menu in Mendix Studio."
-menu_order: 90
+weight: 90
 tags: ["studio", "settings", "widgets"]
 ---
 

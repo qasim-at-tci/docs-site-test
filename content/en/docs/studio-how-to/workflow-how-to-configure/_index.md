@@ -2,7 +2,7 @@
 title: "Configure a Workflow in Studio for the Employee Onboarding Process"
 url: /studio-how-to/workflow-how-to-configure
 description: "Describes how to configure a workflow in Mendix Studio."
-menu_order: 05
+weight: 05
 tags: ["studio", "workflow", "how to", task", "onboarding"]
 ---
 

@@ -2,7 +2,7 @@
 title: "General Info"
 url: /studio/general
 description: "Describes various features of Mendix Studio."
-menu_order: 10
+weight: 10
 tags: ["studio", "studio pro"]
 aliases:
     - /howto/tutorials/index.html

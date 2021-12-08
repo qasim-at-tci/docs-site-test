@@ -2,7 +2,7 @@
 title: "Configure a Domain Model"
 url: /studio-how-to/domain-model-how-to-configure
 description: "This how-to describes the process of configuring the domain model in Mendix Studio."
-menu_order: 30
+weight: 30
 tags: ["studio", "domain model", "decision", "domain model"]
 ---
 

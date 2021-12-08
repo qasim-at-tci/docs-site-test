@@ -4,7 +4,7 @@ url: /developerportal/operate/restore-backup-locally
 # try using linktitle rather than having to rename everything to add the -a-
 linktitle: "restore backup locally"
 parent: "backups"
-menu_order: 40
+weight: 40
 description: "This page describes how to restore a backup."
 tags: ["Backup","Restore","Local","Developer Portal"]
 #To update these screenshots, you can log in with credentials detailed in How to Update Screenshots Using Team Apps.

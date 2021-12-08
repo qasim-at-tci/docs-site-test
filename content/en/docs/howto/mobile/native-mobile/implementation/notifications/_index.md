@@ -2,7 +2,7 @@
 title: "Use Notifications"
 url: /howto/mobile/notifications
 parent: "implementation"
-menu_order: 50
+weight: 50
 description: Tutorials for configuring push and local notifications.
 tags: ["mobile", "native", "push", "local", "firebase"]
 ---

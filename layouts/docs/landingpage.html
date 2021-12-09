@@ -46,12 +46,168 @@
           <!-- MvM: Move breadcrumb above banner -->
           {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
           {{ partial "version-banner.html" . }}
-		  <h1>{{ .Page.Title}}</h1>
-		  <br><br>
-		  <h3>{{ .Page.Description}}</h3>
-		  <br><br><br>
-		  {{ .Page.Content }}
-          </main>
+          <div class="row">
+            <div class="col-6">
+              <h1 class="page-title">{{ .Page.Title}}</h1>
+              <br>
+              <h5>{{ .Page.Description}}</h5>
+            </div>
+            <div class="col">
+              <img src="/images/docs-extended.png" width="320px">
+            </div>
+          </div>
+          <!-- Start of landing page cards -->
+          <div class="container my-container">
+            <div class="row">
+              <div class="col cards-layout">
+                <div class="row my-row">
+                  <div class="card w-50">
+                    <div class="card-body">
+                      <div class="row">
+                        <img class="my-icon" src="/icons/mx-pro-logo.png"><a href="/refguide/" target="_blank"><h4 class="card-title">Studio Pro 9</h4></a>
+                      </div>
+                      <p class="card-text"><ul class="landing-list">
+                        <li class="link-list"><a href="https://docs.mendix.com/refguide/general" target="_blank">General Info</a></li>
+                        <li class="link-list"><a href="https://docs.mendix.com/refguide/modeling" target="_blank">App Modeling</a></li>
+                        <li class="link-list"><a href="https://docs.mendix.com/refguide/mobile" target="_blank">Mobile</a></li></ul></p>
+                    </div>
+                  </div>
+                  <div class="card w-50">
+                    <div class="card-body">
+                      <div class="row">
+                        <img class="my-icon" src="/icons/mx-studio.png"><a href="/studio/" target="_blank"><h4 class="card-title">Studio 9</h4></a>
+                      </div>
+                      <p class="card-text"><ul class="landing-list">
+                        <li class="link-list"><a href="https://docs.mendix.com/studio/general" target="_blank">General Info</a></li>
+                        <li class="link-list"><a href="https://docs.mendix.com/studio/page-editor" target="_blank">Pages</a></li>
+                        <li class="link-list"><a href="https://docs.mendix.com/studio/studio-how-to" target="_blank">Studio How-to's</a></li></ul></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row my-row">
+                  <div class="card w-50">
+                    <div class="card-body">
+                      <div class="row">
+                        <img class="my-icon" src="/icons/mx-dev-portal.png"><a href="/developerportal/" target="_blank"><h4 class="card-title">Developer Portal</h4></a>
+                      </div>
+                      <p class="card-text"><ul class="landing-list">
+                        <li class="link-list"><a href="https://docs.mendix.com/developerportal/deploy" target="_blank">Deployment</a></li>
+                        <li class="link-list"><a href="https://docs.mendix.com/developerportal/control-center" target="_blank">Control Center</a></li>
+                        <li class="link-list"><a href="https://docs.mendix.com/developerportal/support" target="_blank">Support</a></li></ul></p>
+                    </div>
+                  </div>
+                  <div class="card w-50">
+                    <div class="card-body">
+                      <div class="row">
+                        <img class="my-icon" src="/icons/shopping-cart-1.png"><a href="/appstore/" target="_blank"><h4 class="card-title">Marketplace</h4></a>
+                      </div>
+                      <p class="card-text"><ul class="landing-list">
+                        <li class="link-list"><a href="https://docs.mendix.com/appstore/creating-content" target="_blank">Creating Content</a></li>
+                        <li class="link-list"><a href="https://docs.mendix.com/appstore/modules" target="_blank">Modules</a></li>
+                        <li class="link-list"><a href="https://docs.mendix.com/appstore/widgets" target="_blank">Widgets</a></li></ul></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row my-row">
+                  <div class="card w-50">
+                    <div class="card-body">
+                      <div class="row">
+                        <img class="my-icon" src="/icons/mx-data-hub.png"><a href="/data-hub/" target="_blank"><h4 class="card-title">Data Hub</h4></a>
+                      </div>
+                      <p class="card-text"><ul class="landing-list">
+                        <li class="link-list"><a href="https://docs.mendix.com/data-hub/share-data" target="_blank">Share Data Between Apps</a></li>
+                        <li class="link-list"><a href="https://docs.mendix.com/data-hub/write-data" target="_blank">Write Data to Another App</a></li>
+                        <li class="link-list"><a href="https://docs.mendix.com/data-hub/data-hub-catalog" target="_blank">Data Hub Catalog</a></li></ul></p>
+                    </div>
+                  </div>
+                  <div class="card w-50">
+                    <div class="card-body">
+                      <div class="row">
+                        <img class="my-icon" src="/icons/multiple-neutral-2.png"><a href="/partners/" target="_blank"><h4 class="card-title">Strategic Partners</h4></a>
+                      </div>
+                      <p class="card-text"><ul class="landing-list">
+                        <li class="link-list"><a href="https://docs.mendix.com/partners/siemens" target="_blank">Siemens</a></li>
+                        <li class="link-list"><a href="https://docs.mendix.com/partners/sap" target="_blank">SAP</a></li>
+                        <br>
+                      </ul></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col col-sm-2 my-column">
+                <div class="row">
+                  <img class="my-icon" src="/icons/space-rocket-flying.png"><a href="/releasenotes/" target="_blank"><h4 class="card-title">Latest Releases</h4></a>
+                </div>
+                <p class="card-text"><ul class="landing-list">
+                  <li class="link-list"><a href="https://docs.mendix.com/releasenotes/studio-pro/9.8" target="_blank">Studio Pro 9.8.1</a></li>
+                  <p class="rn-date">Oct 10th, 2021</p>
+                  <li class="link-list"><a href="https://docs.mendix.com/releasenotes/studio/9.7-and-above" target="_blank">9.7 and Above</a></li>
+                  <p class="rn-date">Oct 25th, 2021</p>
+                  <li class="link-list"><a href="https://docs.mendix.com/releasenotes/mobile/nt-6-rn" target="_blank">Native Template 6.2.9</a></li>
+                  <p class="rn-date">Sep 18th, 2021</p>
+                  <li class="link-list"><a href="https://docs.mendix.com/releasenotes/developer-portal" target="_blank">Developer Portal</a></li>
+                  <p class="rn-date">Sep 12th, 2021</p>
+                  <li class="link-list"><a href="https://docs.mendix.com/releasenotes/developer-portal/deployment" target="_blank">Deployment</a></li>
+                  <p class="rn-date">Sep 3rd, 2021</p>
+                  <li class="link-list"><a href="https://docs.mendix.com/releasenotes/data-hub" target="_blank">Data Hub</a></li>
+                  <p class="rn-date">Aug 29th, 2021</p>
+                  <li class="link-list"><a href="https://docs.mendix.com/releasenotes/app-store" target="_blank">Marketplace</a></li>
+                  <p class="rn-date">Oct 15th, 2021</p>
+                  <li class="link-list"><a href="https://docs.mendix.com/releasenotes/sdk/model-sdk-4" target="_blank">Model SDK 4.57.0</a></li>
+                  <p class="rn-date">Oct 25th, 2021</p>
+                  <li class="link-list"><a href="https://docs.mendix.com/releasenotes/sdk/metamodel-9.8" target="_blank">Metamodel 9.8</a></li>
+                  <p class="rn-date">Dec 24th, 2021</p>
+                </ul></p>
+              </div>
+            </div>
+            <br>
+            <div class="row my-row">
+              <h3 class="title-row">Most Popular</h3>
+            </div>
+            <div class="row">
+              <div class="col-4 image-card-col">
+                <div class="card image-card">
+                  <img src="/images/most-popular-string-function-calls.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h4 class="card-title">String Function Calls</h4>
+                    <br>
+                    <a href="https://docs.mendix.com/refguide/string-function-calls" class="btn btn-outline-secondary doc-link">Go to doc</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4 image-card-col">
+                <div class="card image-card">
+                  <img src="/images/most-popular-development-best-practices.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h4 class="card-title">Best Development Practices</h4>
+                    <br>
+                    <a href="https://docs.mendix.com/howto/general/dev-best-practices" class="btn btn-outline-secondary doc-link">Go to doc</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4 image-card-col">
+                <div class="card image-card">
+                  <img src="/images/most-popular-system-requirements.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h4 class="card-title">System Requirements</h4>
+                    <br>
+                    <a href="https://docs.mendix.com/refguide/system-requirements" class="btn btn-outline-secondary doc-link">Go to doc</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row my-row">
+              <h3 class="title-row">Contribute to Docs? Here Is How:</h3>
+            </div>
+            <div class="row my-row">
+              <p class="card-text"><ul class="contributing-list">
+                <li class="link-list"><a href="https://docs.mendix.com/developerportal/community-tools/contribute-to-the-mendix-documentation" target="_blank">Contribute to the Documentation</a></li>
+                <li class="link-list"><a href="https://docs.mendix.com/developerportal/community-tools/documentation-writing-guidelines" target="_blank">Documentation Writing Guidelines</a></li>
+                <li class="link-list"><a href="https://docs.mendix.com/howto/collaboration-requirements-management/contribute-to-a-github-repository" target="_blank">Contribute to a Mendix Github Repository</a></li>
+              </ul></p>
+            </div>
+          </div>
         </div>
       </div>
 	  {{ partial "footer.html" . }}

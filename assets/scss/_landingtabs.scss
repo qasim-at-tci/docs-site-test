@@ -10,7 +10,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
+/*
 ul.nav.nav-tabs {
 	list-style-type: none;
 	overflow: hidden;
@@ -67,7 +67,7 @@ ul.nav.nav-tabs {
   footer.auto-height {
 	min-height: auto;
   }
-  .my-column{
+   .my-column{
 	margin-top: 0.25rem;
 	margin-bottom: 1rem;
 	margin-left: 0.75%;
@@ -86,7 +86,7 @@ ul.nav.nav-tabs {
 		flex: 0 0 97%;
 		max-width: 97%;
 	}
-}
+} 
 
   .row.lp-row{
 	padding-left: 0;
@@ -94,7 +94,7 @@ ul.nav.nav-tabs {
 	margin-left: 1%;
   }
   
-  /* .inline-svg {
+  .inline-svg {
 	display: inline-block;
 	vertical-align: middle;
   

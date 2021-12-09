@@ -101,7 +101,7 @@
     .td-sidebar-link.tree-root{
         font-weight: $font-weight-bold;
         color: $td-sidebar-tree-root-color;
-        border-bottom: 1px $td-sidebar-tree-root-color solid;
+        border-bottom: none;//1px $td-sidebar-tree-root-color solid; // NK - deactivated to align with design proposal
         margin-bottom: 1rem;
     }
 }

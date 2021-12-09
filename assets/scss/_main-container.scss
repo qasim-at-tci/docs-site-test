@@ -28,8 +28,8 @@
     main {
         @include media-breakpoint-up(md) {
             padding-top: 5.5rem;
-			border-left: 1px solid $border-color; // NK - moved from toc, to fully span height of screen
-			border-right: 1px solid $border-color; // NK - moved from left menu, to fully span height of screen
+			border-left: 1px solid $gray-border; // NK - moved from toc, to fully span height of screen
+			border-right: 1px solid $gray-border; // NK - moved from left menu, to fully span height of screen
         }
 
 
@@ -42,7 +42,8 @@
 // NK - to fully stretch the footer & bottom of dock
 div.footer{
 	background-color: $gray-100;
-	border-top: 1px solid $border-color;
+	border-top: 1px solid $gray-border;
+    border-bottom: 1px solid $gray-border;
 	margin: 0 -15px;
 	padding: 0.5rem 0;
 }

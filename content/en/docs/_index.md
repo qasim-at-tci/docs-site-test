@@ -4,7 +4,7 @@ linktitle: "Docs"
 url: /
 type: landingpage
 layout: landingpage
-description: Search, collaborate & contribute to build better Mendix apps
+description: Browse the documentation per product, read about latest releases, and contribute to docs to improve them.
 aliases:
     - /docs/index.html
     - /docs/Overview.html
@@ -13,7 +13,7 @@ cascade:
 #for future ease of maintenance, the tab contents might have to be split up into snippets
 ---
 
-{{< landingtabs >}}
+<!-- {{< landingtabs >}}
 {{< landingtab "Studio Pro 9" >}}
 
 {{< blocks/section color="white" type="lp-row">}}
@@ -265,4 +265,4 @@ For announcement of latest release notes, features and issues.
 {{< /blocks/section >}}
 
 {{< /landingtab >}}
-{{< /landingtabs >}}
+{{< /landingtabs >}} -->

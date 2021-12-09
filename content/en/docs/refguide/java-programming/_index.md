@@ -3,6 +3,7 @@ title: "Java Programming"
 url: /refguide/java-programming
 description: "Describes how to use the Mendix Java library and use Eclipse as an environment to write your Mendix Java Actions."
 tags: ["studio pro"]
+weight: 60
 ---
 
 ## 1 Introduction

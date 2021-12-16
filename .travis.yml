@@ -65,20 +65,11 @@ before_deploy:
   - aws --version
   - chmod +x $TRAVIS_BUILD_DIR/_scripts/deploy.sh
   - echo $path
-  - pyenv init --path # try suggestion here https://unop.uk/python-pyenv-shims-not-in-path-fix/
-  - echo $path
-  - pyenv init -
-  - echo $path
   - pyenv versions # list python versions supported by pyenv in case version in next command is removed
   - pyenv global 3.6.7 # this version needs to be already installed in the travis build
   - pyenv version
-  - which python
-  - pyenv which python
-  - which pip
-  - pyenv which pip
-  - python --version # confirm which version of python we are using
-  - pyenv local 3.6.7
   - python --version
+  - python3 --version
   - pip install --upgrade 'algoliasearch>=2.0,<3.0' # install Algolia Python API Client version 2
 
 deploy:

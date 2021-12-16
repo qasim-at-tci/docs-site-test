@@ -64,7 +64,11 @@ before_deploy:
   - sudo ./aws/install # install AWS command line
   - aws --version
   - chmod +x $TRAVIS_BUILD_DIR/_scripts/deploy.sh
+  - echo $path
   - pyenv init --path # try suggestion here https://unop.uk/python-pyenv-shims-not-in-path-fix/
+  - echo $path
+  - pyenv init -
+  - echo $path
   - pyenv versions # list python versions supported by pyenv in case version in next command is removed
   - pyenv global 3.6.7 # this version needs to be already installed in the travis build
   - pyenv version

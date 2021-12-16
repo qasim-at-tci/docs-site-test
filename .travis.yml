@@ -66,8 +66,8 @@ before_deploy:
   - chmod +x $TRAVIS_BUILD_DIR/_scripts/deploy.sh
   - pyenv versions # list python versions supported by pyenv in case version in next command is removed
   - pyenv global 3.6.7 # this version needs to be already installed in the travis build
-  - python --version # confirm which version of python we are using
-  - pip install --upgrade 'algoliasearch>=2.0,<3.0' # install Algolia Python API Client version 2
+  - python3 --version # confirm which version of python we are using
+  - pip3 install --upgrade 'algoliasearch>=2.0,<3.0' # install Algolia Python API Client version 2
 
 deploy:
 # Need to decide where to deploy to, so need to do the actual deployment in a script https://docs.travis-ci.com/user/job-lifecycle#complex-build-commands

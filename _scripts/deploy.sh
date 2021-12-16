@@ -51,8 +51,8 @@ pwd
 
 if ([ "${TRAVIS_BRANCH}" == "master" ])
 then
-  python3 --version
-  python3 _scripts/pushmxdocsalgolia.py
+  python --version
+  python _scripts/pushmxdocsalgolia.py
 fi
 
 

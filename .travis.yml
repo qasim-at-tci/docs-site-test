@@ -28,7 +28,9 @@ before_install:
   - npm install # use npm rather than yarn - HUGO doesn't have that many dependencies
 
 install:
-  - mkdir public  # Creating public folder. <Maybe> The process of syncing to public is probably deadlocked behind waiting for the public folder to be made, and is never signalled that it is created which ends up stalling the build.
+  # ---------------------
+  - mkdir public  # This because <Maybe> the process of syncing to public is probably deadlocked behind waiting for the public folder to be made, and is never signalled that the folder is created, which ends up stalling the build on Travis CI.
+  # ----------------------
   - hugo # which flags do we need?
 
 before_script:

@@ -28,6 +28,7 @@ before_install:
   - npm install # use npm rather than yarn - HUGO doesn't have that many dependencies
 
 install:
+  - mkdir public
   - hugo # which flags do we need?
 
 before_script:

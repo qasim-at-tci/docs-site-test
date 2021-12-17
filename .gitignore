@@ -4,12 +4,13 @@
 # NK - Hugo 
 hugo.exe
 
+# Start directories with / to ensure that only directories in the ROOT are ignored, could be duplicate names
+
 # The built site
-public/
-
-resources/
+/public/
+# Resources file 
+/resources/
 # Node modules required for the site - built each time using npm install
-node_modules/
-
+/node_modules/
 # MvM - Put HUGO and NODE (and dependencies) into /bin folder
 /bin/
